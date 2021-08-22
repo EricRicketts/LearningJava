@@ -21,10 +21,15 @@ class VehicleTest {
 
     @Test
     void range() {
-        int[] expected = {500, 225};
-        int[] results = new int[2];
-        results[0] = minivan.range();
-        results[1] = sportsCar.range();
+        int[] expected = new int[]{500, 225};
+        int[] results = new int[]{minivan.range(), sportsCar.range()};
+        assertArrayEquals(expected, results);
+    }
+
+    @Test
+    void fuelNeeded() {
+        double[] expected = new double[]{12.0, 20.0};
+        double[] results = new double[]{minivan.fuelNeeded(300), sportsCar.fuelNeeded(300)};
         assertArrayEquals(expected, results);
     }
 }
