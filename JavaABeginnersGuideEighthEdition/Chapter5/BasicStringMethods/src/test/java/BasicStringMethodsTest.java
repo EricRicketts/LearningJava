@@ -51,4 +51,11 @@ class BasicStringMethodsTest {
         assertEquals(23, str3.lastIndexOf("repeats"));
     }
 
+    @Test
+    void subString() {
+        str1 = "Java makes the Web move.";
+        str2 = str1.substring(5, 18);
+        assertEquals("makes the Web", str2);
+    }
+
 }
