@@ -84,4 +84,17 @@ class MiscellaneousArrayTest {
         int[] results = {x, y};
         assertArrayEquals(expected, results);
     }
+
+    @Test
+    void breakOutOfForEachLoop() {
+        int expected = 5;
+        boolean found = false;
+        for (int n: nums1.array) {
+            if (n == 5) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
+    }
 }
