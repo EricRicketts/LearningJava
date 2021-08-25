@@ -11,7 +11,7 @@ class MethodOverloadingTest {
     void setUp() {
         ob = new MethodOverloading();
     }
-    
+
     @Test
     void ov1Demo() {
         assertEquals("no parameters", ob.ov1Demo());
