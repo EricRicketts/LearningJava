@@ -29,4 +29,12 @@ class ConstructorOverloadingTest {
         assertEquals(15, ob.x);
     }
 
+    @Test
+    void summationExamples() {
+        Summation s1 = new Summation(5);
+        Summation s2 = new Summation(s1);
+        int[] expected = new int[]{15, 15};
+        int[] results = new int[]{s1.sum, s2.sum};
+        assertArrayEquals(expected, results);
+    }
 }
