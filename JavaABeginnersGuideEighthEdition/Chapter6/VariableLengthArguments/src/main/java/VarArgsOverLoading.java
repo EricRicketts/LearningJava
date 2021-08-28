@@ -15,3 +15,7 @@ public class VarArgsOverLoading {
         return variables;
     }
 }
+/*
+    we have a potential case of ambiguity here as listVariables() would produce an error,
+    with no arguments Java does not know if the variable list is integer or character
+*/
