@@ -1,8 +1,11 @@
 public class Triangle extends TwoDShape {
     private String style;
+    int i;
 
     Triangle() {
         super();
+        super.i = 0; // use this to initialize super class instance variable with the same name as the subclass
+        i = 1;
         style = "none";
     }
 

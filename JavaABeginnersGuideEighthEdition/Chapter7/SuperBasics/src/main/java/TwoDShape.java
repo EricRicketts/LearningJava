@@ -1,6 +1,7 @@
 public class TwoDShape {
     private double length;
     private double width;
+    int i;
 
     TwoDShape() {
         length = width = 0;
@@ -16,6 +17,7 @@ public class TwoDShape {
     }
 
     double getLength() { return length; }
+    int getI() { return i; }
     double getWidth() { return width; }
     void setLength(double l) { length = l; }
     void setWidth(double w) { width = w; }

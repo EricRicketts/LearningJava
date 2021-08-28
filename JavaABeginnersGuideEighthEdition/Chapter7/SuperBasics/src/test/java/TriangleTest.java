@@ -26,4 +26,11 @@ class TriangleTest {
     void showStyle() {
         assertEquals("Triangle is of style or type 345", t3.showStyle());
     }
+
+    @Test
+    void showCommonInstanceVariables() {
+        int[] expected = new int[]{0, 1};
+        int[] results = new int[]{t1.getI(), t1.i};
+        assertArrayEquals(expected, results);
+    }
 }
