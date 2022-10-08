@@ -9,5 +9,6 @@ public class App
         System.out.println(HelloWorldChallenge.message("Eric"));
         System.out.println(VariableChallenge.intVariable());
         System.out.println(VariableOperatorChallenge.operators());
+        System.out.println(ExpressionsChallenge.multipleVariable());
     }
 }

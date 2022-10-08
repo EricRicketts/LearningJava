@@ -32,4 +32,10 @@ public class AppTest {
         expectedInt = 35;
         assertEquals(expectedInt, VariableOperatorChallenge.operators());
     }
+
+    @Test
+    public void testExpressionChallengeMultipleVariables() {
+        expectedInt = 23;
+        assertEquals(expectedInt, ExpressionsChallenge.multipleVariable());
+    }
 }
