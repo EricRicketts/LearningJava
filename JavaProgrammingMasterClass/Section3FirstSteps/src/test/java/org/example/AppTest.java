@@ -1,5 +1,4 @@
 package org.example;
-import org.example.Hello;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,5 +11,12 @@ public class AppTest {
     public void testHelloMessage() {
         expectedString = "Hello World!";
         assertEquals(expectedString, Hello.message());
+    }
+
+    @Test
+    public void testHelloWorldChallengeMessage() {
+        expectedString = "Hello Eric!";
+        String name = "Eric";
+        assertEquals(expectedString, HelloWorldChallenge.message(name));
     }
 }
