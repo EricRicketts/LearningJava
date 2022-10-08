@@ -7,5 +7,6 @@ public class App
     {
         System.out.println(Hello.message());
         System.out.println(HelloWorldChallenge.message("Eric"));
+        System.out.println(VariableChallenge.intVariable());
     }
 }
