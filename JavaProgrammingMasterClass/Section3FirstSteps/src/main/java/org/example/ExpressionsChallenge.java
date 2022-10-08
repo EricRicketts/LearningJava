@@ -7,6 +7,7 @@ public class ExpressionsChallenge {
         int mySecondNumber = 12;
         int myThirdNumber = 6;
 
-        return myFirstNumber + mySecondNumber + myThirdNumber;
+        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;
+        return myTotal;
     }
 }
