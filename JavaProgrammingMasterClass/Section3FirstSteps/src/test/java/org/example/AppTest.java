@@ -26,4 +26,10 @@ public class AppTest {
         expectedInt = 5;
         assertEquals(expectedInt, VariableChallenge.intVariable());
     }
+
+    @Test
+    public void testVariableOperatorChallengeOperators() {
+        expectedInt = 35;
+        assertEquals(expectedInt, VariableOperatorChallenge.operators());
+    }
 }
