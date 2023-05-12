@@ -10,5 +10,6 @@ public class App
         System.out.println(VariableChallenge.intVariable());
         System.out.println(VariableOperatorChallenge.operators());
         System.out.println(ExpressionsChallenge.multipleVariable());
+        System.out.println(FinalVariableChallenge.result());
     }
 }

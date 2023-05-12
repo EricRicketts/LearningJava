@@ -38,4 +38,10 @@ public class AppTest {
         expectedInt = 23;
         assertEquals(expectedInt, ExpressionsChallenge.multipleVariable());
     }
+
+    @Test
+    public void testFinalVariableChallengeResult() {
+        expectedInt = -400;
+        assertEquals(expectedInt, FinalVariableChallenge.result());
+    }
 }
