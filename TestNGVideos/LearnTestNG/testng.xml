@@ -3,12 +3,18 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/ericricketts/Documents/LearningJava/TestNGVideos/LearnTestNG">
         <classes>
-            <class name="org.example.PersonTest">
+            <class name="org.example.FirstPersonTest">
                 <methods>
                     <include name="testGetAge"/>
                     <include name="testGetFullName"/>
                     <include name="testGetFirstName"/>
                     <include name="testGetLastName"/>
+                </methods>
+            </class>
+            <class name="org.example.SecondPersonTest">
+                <methods>
+                    <include name="testAgeAndName"/>
+                    <include name="testSetAge"/>
                 </methods>
             </class>
         </classes>
