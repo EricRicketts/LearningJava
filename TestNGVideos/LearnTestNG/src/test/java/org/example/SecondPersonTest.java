@@ -34,7 +34,12 @@ public class SecondPersonTest {
         expected = new ArrayList<>(List.of(32, 40));
         results = new ArrayList<>();
         results.add(secondPerson.getAge());
-
+        // secondPerson.setAge(58);
+        //  if we comment the setAge call below and uncomment the setAge call above we will
+        // get test fail.  TestNG, as configured for this project will produce a failed xml
+        // file => testng-failed.xml.  This is very convenient as we can make changes and
+        // just rerun the failing tests identified in the testng-failed.xml file.  This file
+        // includes the failing test methods but also any setup that is required.
         secondPerson.setAge(40);
         results.add(secondPerson.getAge());
 
