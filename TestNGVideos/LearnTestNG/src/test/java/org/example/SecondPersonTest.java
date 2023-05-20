@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SecondPersonTest {
-    Person secondPerson;
+    Person person, secondPerson;
 
     List<Object> expected;
     List<Object> results;
     @BeforeMethod
     public void setUp() {
+        person = new Person();
         secondPerson = new Person("Daffy", "Duck", 32);
     }
 
-    @Test
+    @Test(priority = -1)
     public void testAgeAndName() {
         expected = new ArrayList<>();
         expected.add(32);
@@ -29,7 +30,7 @@ public class SecondPersonTest {
         assertEquals(results, expected);
     }
 
-    @Test
+    @Test(priority = 0)
     public void testSetAge() {
         expected = new ArrayList<>(List.of(32, 40));
         results = new ArrayList<>();
@@ -44,5 +45,27 @@ public class SecondPersonTest {
         results.add(secondPerson.getAge());
 
         Assert.assertEquals(results, expected);
+    }
+
+    @Test(priority = 2)
+    public void testSetFirstName() {
+        person.setFirstName("Foghorn");
+
+        Assert.assertEquals(person.getFirstName(), "Foghorn");
+    }
+
+    @Test(priority = 1)
+    public void testSetLastName() {
+        person.setLastName("Leghorn");
+
+        Assert.assertEquals(person.getLastName(), "Leghorn");
+    }
+
+    @Test(priority = 3, enabled = false)
+    public void testGetFullName() {
+        person.setFirstName("Bugs");
+        person.setLastName("Bunny");
+
+        Assert.assertEquals(person.getFullName(), "Bugs Bunny");
     }
 }

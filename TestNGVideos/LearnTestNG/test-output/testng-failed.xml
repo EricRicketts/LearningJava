@@ -3,12 +3,11 @@
 <suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="/Users/ericricketts/Documents/LearningJava/TestNGVideos/LearnTestNG(failed)">
     <classes>
-      <class name="org.example.SecondPersonTest">
+      <class name="org.example.ThirdPersonTest$innerTest">
         <methods>
-          <include name="setUp"/>
-          <include name="testSetAge"/>
+          <include name="testAnnotationOrder"/>
         </methods>
-      </class> <!-- org.example.SecondPersonTest -->
+      </class> <!-- org.example.ThirdPersonTest$innerTest -->
     </classes>
   </test> <!-- /Users/ericricketts/Documents/LearningJava/TestNGVideos/LearnTestNG(failed) -->
 </suite> <!-- Failed suite [All Test Suite] -->

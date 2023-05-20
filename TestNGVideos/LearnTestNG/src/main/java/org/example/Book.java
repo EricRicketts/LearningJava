@@ -18,6 +18,8 @@ public class Book {
         this.cost = cost;
     }
 
+    public Book() {}
+
     // getters
 
     public String getTitle() {

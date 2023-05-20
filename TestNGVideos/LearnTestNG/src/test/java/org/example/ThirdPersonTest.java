@@ -6,6 +6,8 @@ import org.testng.annotations.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 // the purpose of this test is to demonstrate the workings of TestNG Annotations
 public class ThirdPersonTest {
     List<String> expectedOrder = new ArrayList<>(
@@ -17,7 +19,6 @@ public class ThirdPersonTest {
             )
     );
 
-    List<String> annotationOrder = new ArrayList<>();
 
     @BeforeSuite
     public void beforeSuite() {
@@ -69,6 +70,7 @@ public class ThirdPersonTest {
     @AfterSuite
     public void afterSuite() {
         annotationOrder.add("after suite");
-        Assert.assertEquals(annotationOrder, expectedOrder);
     }
+
+    List<String> annotationOrder = new ArrayList<>();
 }

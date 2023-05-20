@@ -12,17 +12,21 @@
                 </methods>
             </class>
             <class name="org.example.SecondPersonTest">
-                <!--
-                It is not necessary to include the <methods></methods>
-                tag, if we just list the class name then all the tests
-                in the class will be run as this ThirdPersonTest demonstrates.
-                -->
                 <methods>
                     <include name="testAgeAndName"/>
                     <include name="testSetAge"/>
+                    <include name="testSetFirstName"/>
+                    <include name="testSetLastName"/>
+                    <include name="testGetFullName"/>
                 </methods>
             </class>
-            <class name="org.example.ThirdPersonTest"></class>
+            <class name="org.example.ThirdPersonTest">
+                <methods>
+                    <include name="testOne"/>
+                    <include name="testTwo"/>
+                </methods>
+            </class>
+            <class name="org.example.BookTest"></class>
         </classes>
     </test>
 </suite>
