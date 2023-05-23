@@ -61,6 +61,9 @@ public class SecondPersonTest {
         Assert.assertEquals(person.getLastName(), "Leghorn");
     }
 
+    // enabled = false is how we exclude a test in the testing_all.xml file
+    // testGetFullName is included as a method to run however, the annotation
+    // below excludes it.
     @Test(priority = 3, enabled = false)
     public void testGetFullName() {
         person.setFirstName("Bugs");

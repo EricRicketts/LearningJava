@@ -31,6 +31,8 @@ public class AppTest {
             expressions are: health = 100, health < 25, highScore > 1000,
             ((health < 25) && (highScore > 1000)), highScore - 1000,
             highScore = highScore - 1000
+
+            Note expressions do not include the semicolon
         */
     }
 }
