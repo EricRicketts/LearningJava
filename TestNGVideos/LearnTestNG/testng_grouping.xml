@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/ericricketts/Documents/LearningJava/TestNGVideos/LearnTestNG">
+        <groups>
+            <run>
+<!--                <include name="odd"/>-->
+<!--                <include name="even"/>-->
+                <exclude name="even"/>
+<!--                <exclude name="odd"/>-->
+            </run>
+        </groups>
+        <classes>
+            <class name="org.example.GroupingTest" />
+        </classes>
+    </test>
+</suite>
+<!--
+    If we run both <include> elements the entire suite will run (we must comment out the exclude elements)
+    We con only exclude one group at a time if we use both exclude elements
+    then no tests will run, this makes sense
+-->
