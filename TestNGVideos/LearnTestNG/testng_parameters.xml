@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="specialSetupPerson" value="bugs bunny"/>
+    <parameter name="firstName" value="Bugs"/>
+    <parameter name="lastName" value="Bunny"/>
+    <parameter name="age" value="23"/>
+    <test verbose="2" preserve-order="true"
+          name="/Users/ericricketts/Documents/LearningJava/TestNGVideos/LearnTestNG/src/test/java/org/example/ParametersTest.java">
+        <classes>
+            <class name="org.example.ParametersTest">
+                <methods>
+                    <include name="testFullName"/>
+                    <include name="testGetDecadesFromAge"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
