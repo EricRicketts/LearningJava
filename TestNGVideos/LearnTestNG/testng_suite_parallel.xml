@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel Test Suite" parallel="tests" thread-count="2">
+    <parameter name="specialSetupPerson" value="bugs bunny"/>
+    <parameter name="firstName" value="Bugs"/>
+    <parameter name="lastName" value="Bunny"/>
+    <parameter name="age" value="23"/>
+    <test verbose="2" preserve-order="true" name="First Test">
+        <classes>
+            <class name="org.example.BookTest">
+                <methods>
+                    <include name="testGetSecondBookTitle"/>
+                </methods>
+            </class>
+            <class name="org.example.DataProviderTest">
+                <methods>
+                    <include name="testGetPersonAttributes"/>
+                    <include name="testSetPersonAttributesFirstIteration"/>
+                </methods>
+            </class>
+            <class name="org.example.FirstPersonTest">
+                <methods>
+                    <include name="testGetAge"/>
+                    <include name="testGetFullName"/>
+                    <include name="testGetFirstName"/>
+                    <include name="testGetLastName"/>
+                </methods>
+            </class>
+
+            <class name="org.example.ParametersTest">
+                <methods>
+                    <include name="testFullName"/>
+                    <include name="testGetDecadesFromAge"/>
+                </methods>
+            </class>
+            <class name="org.example.SecondPersonTest">
+                <methods>
+                    <include name="testAgeAndName"/>
+                    <include name="testSetAge"/>
+                    <include name="testSetFirstName"/>
+                    <include name="testSetLastName"/>
+                    <include name="testGetFullName"/>
+                </methods>
+            </class>
+            <class name="org.example.ThirdPersonTest">
+                <methods>
+                    <include name="testOne"/>
+                    <include name="testTwo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="Second Test">
+       <classes>
+           <class name="org.example.ParallelTestOne">
+               <methods>
+                   <include name="testGetFullName"/>
+                   <include name="testGetAge"/>
+                   <include name="testSetFirstAndLastNames"/>
+                   <include name="testSetAge"/>
+               </methods>
+           </class>
+           <class name="org.example.ParallelTestTwo">
+               <methods>
+                   <include name="testGetTitle"/>
+                   <include name="testGetAuthor"/>
+                   <include name="testGetPublisher"/>
+                   <include name="testGetYear"/>
+                   <include name="testGetPrice"/>
+               </methods>
+           </class>
+       </classes>
+    </test>
+</suite>
