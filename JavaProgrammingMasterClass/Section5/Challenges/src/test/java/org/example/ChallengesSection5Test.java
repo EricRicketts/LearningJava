@@ -72,4 +72,40 @@ public class ChallengesSection5Test {
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
+
+    @Test
+    public void testForScoreOf500() {
+        setExpectedNameAndPosition("Eric managed to get into position 2 on the high score list");
+        setResultantNameAndPosition(
+                ScoringChallenge.displayHighScorePosition(
+                        "Eric",
+                        ScoringChallenge.calculateHighScorePosition(500)
+                )
+        );
+        Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
+    }
+
+    @Test
+    public void testForScoreOf100() {
+        setExpectedNameAndPosition("Eric managed to get into position 3 on the high score list");
+        setResultantNameAndPosition(
+                ScoringChallenge.displayHighScorePosition(
+                        "Eric",
+                        ScoringChallenge.calculateHighScorePosition(100)
+                )
+        );
+        Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
+    }
+
+    @Test
+    public void testForScoreOf25() {
+        setExpectedNameAndPosition("Eric managed to get into position 4 on the high score list");
+        setResultantNameAndPosition(
+                ScoringChallenge.displayHighScorePosition(
+                        "Eric",
+                        ScoringChallenge.calculateHighScorePosition(25)
+                )
+        );
+        Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
+    }
 }
