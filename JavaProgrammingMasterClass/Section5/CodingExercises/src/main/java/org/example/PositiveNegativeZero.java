@@ -1,6 +1,6 @@
 package org.example;
 
-public class CodingExercisesSection5 {
+public class PositiveNegativeZero {
     public static String checkNumber(int number) {
         String sign = "zero";
         if (number > 0) {
