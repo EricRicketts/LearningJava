@@ -18,6 +18,7 @@ public class ChallengesSection5Test {
     private Integer finalScore;
     private String expectedNameAndPosition;
     private String resultantNameAndPosition;
+    private int highScorePosition;
 
     @BeforeEach
     public void setUp() {
@@ -52,59 +53,49 @@ public class ChallengesSection5Test {
     @Test
     public void testForScoreOf1500() {
         setExpectedNameAndPosition("Eric managed to get into position 1 on the high score list");
+        setHighScorePosition(ScoringChallenge.calculateHighScorePosition(1500));
         setResultantNameAndPosition(
-                ScoringChallenge.displayHighScorePosition(
-                        "Eric",
-                        ScoringChallenge.calculateHighScorePosition(1500)
-                )
+                ScoringChallenge.displayHighScorePosition("Eric", getHighScorePosition())
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
 
     @Test
     public void testForScoreOf1000() {
-        setExpectedNameAndPosition("Eric managed to get into position 1 on the high score list");
+        setExpectedNameAndPosition("Wendy managed to get into position 1 on the high score list");
+        setHighScorePosition(ScoringChallenge.calculateHighScorePosition(1000));
         setResultantNameAndPosition(
-                ScoringChallenge.displayHighScorePosition(
-                        "Eric",
-                        ScoringChallenge.calculateHighScorePosition(1000)
-                )
+                ScoringChallenge.displayHighScorePosition("Wendy", getHighScorePosition())
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
 
     @Test
     public void testForScoreOf500() {
-        setExpectedNameAndPosition("Eric managed to get into position 2 on the high score list");
+        setExpectedNameAndPosition("Fred managed to get into position 2 on the high score list");
+        setHighScorePosition(ScoringChallenge.calculateHighScorePosition(500));
         setResultantNameAndPosition(
-                ScoringChallenge.displayHighScorePosition(
-                        "Eric",
-                        ScoringChallenge.calculateHighScorePosition(500)
-                )
+                ScoringChallenge.displayHighScorePosition("Fred", getHighScorePosition())
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
 
     @Test
     public void testForScoreOf100() {
-        setExpectedNameAndPosition("Eric managed to get into position 3 on the high score list");
+        setExpectedNameAndPosition("Steve managed to get into position 3 on the high score list");
+        setHighScorePosition(ScoringChallenge.calculateHighScorePosition(100));
         setResultantNameAndPosition(
-                ScoringChallenge.displayHighScorePosition(
-                        "Eric",
-                        ScoringChallenge.calculateHighScorePosition(100)
-                )
+                ScoringChallenge.displayHighScorePosition("Steve", getHighScorePosition())
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
 
     @Test
     public void testForScoreOf25() {
-        setExpectedNameAndPosition("Eric managed to get into position 4 on the high score list");
+        setExpectedNameAndPosition("Mary managed to get into position 4 on the high score list");
+        setHighScorePosition(ScoringChallenge.calculateHighScorePosition(25));
         setResultantNameAndPosition(
-                ScoringChallenge.displayHighScorePosition(
-                        "Eric",
-                        ScoringChallenge.calculateHighScorePosition(25)
-                )
+                ScoringChallenge.displayHighScorePosition("Mary", getHighScorePosition())
         );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
