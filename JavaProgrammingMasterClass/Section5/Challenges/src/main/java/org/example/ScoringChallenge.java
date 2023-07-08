@@ -9,8 +9,9 @@ public class ScoringChallenge {
             return 2; 
         } else if (score >= 100) {
             return 3;
+        } else {
+            return 4;
         }
-        return 4;
     }
     public static String displayHighScorePosition(String name, int position) {
         return name + " managed to get into position " + position + " on the high score list";
