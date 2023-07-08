@@ -58,7 +58,18 @@ public class ChallengesSection5Test {
                         ScoringChallenge.calculateHighScorePosition(1500)
                 )
         );
+        Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
+    }
 
+    @Test
+    public void testForScoreOf1000() {
+        setExpectedNameAndPosition("Eric managed to get into position 1 on the high score list");
+        setResultantNameAndPosition(
+                ScoringChallenge.displayHighScorePosition(
+                        "Eric",
+                        ScoringChallenge.calculateHighScorePosition(1000)
+                )
+        );
         Assertions.assertEquals(getExpectedNameAndPosition(), getResultantNameAndPosition());
     }
 }
