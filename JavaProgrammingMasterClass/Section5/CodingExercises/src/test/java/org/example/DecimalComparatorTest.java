@@ -8,7 +8,22 @@ public class DecimalComparatorTest {
     @Nested
     public class DecimalComparatorTrueCompares {
         @Test
+        public void testThreeDigitDecimalPlacesPositiveNumbers() {
+            Assertions.assertTrue(DecimalComparator.areEqualByThreeDecimalPlaces(3.175, 3.175));
+        }
+
+        @Test
+        public void testThreeDigitDecimalPlacesNegativeNumbers() {
+            Assertions.assertTrue(DecimalComparator.areEqualByThreeDecimalPlaces(-3.175, -3.175));
+        }
+
+        @Test
         public void testFourAndThreeDigitDecimalPlaces() {
+            Assertions.assertTrue(DecimalComparator.areEqualByThreeDecimalPlaces(3.1756, 3.175));
+        }
+
+        @Test
+        public void testFourAndThreeDigitDecimalPlacesNegativeNumbers() {
             Assertions.assertTrue(DecimalComparator.areEqualByThreeDecimalPlaces(-3.1756, -3.175));
         }
 
@@ -23,6 +38,11 @@ public class DecimalComparatorTest {
         @Test
         public void testLastDigitOfTheThreeDecimalPlacesDoNoMatch() {
             Assertions.assertFalse(DecimalComparator.areEqualByThreeDecimalPlaces(3.175, 3.176));
+        }
+
+        @Test
+        public void testLastDigitOfTheThreeDecimalPlacesDoNoMatchNegativeNumbers() {
+            Assertions.assertFalse(DecimalComparator.areEqualByThreeDecimalPlaces(-3.175, -3.176));
         }
 
         @Test
