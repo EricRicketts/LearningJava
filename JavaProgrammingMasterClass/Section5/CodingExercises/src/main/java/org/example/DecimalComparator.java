@@ -43,13 +43,3 @@ public class DecimalComparator {
         return equalToThreeDecimalPlaces;
     }
 }
-/*
-    algorithm
-    1.  make sure the numbers are the same signs
-    2.  Take the absolute value of the numbers to get rid of any "-" signs.
-    3.  convert each number to a string
-    4.  if strings have different lengths and both of length 5 or greater
-    5.  find the longer string
-    6.  substring it down to a length of 5 characters
-    7.  compare the strings
-*/
