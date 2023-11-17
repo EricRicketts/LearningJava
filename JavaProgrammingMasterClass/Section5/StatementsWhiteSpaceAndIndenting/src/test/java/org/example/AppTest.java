@@ -1,9 +1,42 @@
 package org.example;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class AppTest {
+
+    IfThenExamples ifThenExamples;
+    @BeforeEach
+    public void setUp() {
+        ifThenExamples = new IfThenExamples(100);
+    }
+
+    @Test
+    public void testIfBranch() {
+        Assertions.assertEquals(
+            "Your score was less than 1000.",
+            ifThenExamples.scoreResults()
+        );
+    }
+
+    @Test
+    public void testIfElseBranch() {
+        ifThenExamples.setScore(2500);
+        Assertions.assertEquals(
+                "Your score was between 1000 and 5000 inclusive.",
+                ifThenExamples.scoreResults()
+        );
+    }
+
+    @Test
+    public void testElseBranch() {
+        ifThenExamples.setScore(6000);
+        Assertions.assertEquals(
+            "Your score was greater than 5000.",
+            ifThenExamples.scoreResults()
+        );
+    }
 
     @Test
     public void testStatementsPartOne() {

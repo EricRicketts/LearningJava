@@ -11,12 +11,30 @@ public class AppTest {
 
     @BeforeEach
     public void setUp() {
-        keyWordsAndExprContainer = new KeyWordsAndExpressionsContainer();
+        keyWordsAndExprContainer =
+                new KeyWordsAndExpressionsContainer();
     }
 
     @Test
     public void testConvertMiToKm() {
-        assertEquals(16.09344, keyWordsAndExprContainer.convertMiToKm(10));
+        assertEquals(
+                16.09344,
+                keyWordsAndExprContainer.convertMiToKm(10));
+    }
+
+    @Test
+    public void testComputeHighScore() {
+        assertEquals(
+                1100,
+                keyWordsAndExprContainer.computeNewHighScore(100));
+    }
+
+    @Test
+    public void testHealthAndHighScore() {
+        assertEquals(
+            500,
+            keyWordsAndExprContainer.healthAndHighScore(10, 1500)
+        );
     }
 
     @Test

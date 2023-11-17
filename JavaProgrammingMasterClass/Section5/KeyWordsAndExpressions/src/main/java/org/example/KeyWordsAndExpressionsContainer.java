@@ -8,4 +8,19 @@ public class KeyWordsAndExpressionsContainer {
         double conversionFactor = 1.609344;
         return miles * conversionFactor;
     }
+
+    public int computeNewHighScore(int highScore) {
+        int bonus = 1000;
+        if (highScore > 50) {
+            highScore += 1000;
+        }
+        return highScore;
+    }
+
+    public int healthAndHighScore(int health, int highScore) {
+        if ((health < 25) && (highScore > 1000)) {
+            highScore -= 1000;
+        }
+        return highScore;
+    }
 }
