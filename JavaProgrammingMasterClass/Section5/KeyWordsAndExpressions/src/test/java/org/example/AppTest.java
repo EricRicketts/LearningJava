@@ -5,7 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 
+    private KeyWordsAndExpressionsContainer keyWordsAndExprContainer;
+
     private double kmToMi = 1.609344;
+
+    @BeforeEach
+    public void setUp() {
+        keyWordsAndExprContainer = new KeyWordsAndExpressionsContainer();
+    }
+
+    @Test
+    public void testConvertMiToKm() {
+        assertEquals(16.09344, keyWordsAndExprContainer.convertMiToKm(10));
+    }
+
     @Test
     public void testDoubleStatement() {
         // double kilometer = (100 * kmToMi) is a statement; remove the double
