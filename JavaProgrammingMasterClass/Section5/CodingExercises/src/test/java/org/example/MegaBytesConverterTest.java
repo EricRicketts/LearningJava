@@ -24,4 +24,19 @@ public class MegaBytesConverterTest {
             Assertions.assertEquals(expected, result);
         }
     }
+
+    @Test
+    public void testCasesFromCourse() {
+        int[] values = new int[]{-1024, -1, -2050, 0, 1024, 2050, 3000};
+        String[] answers = new String[]{
+            "Invalid Value", "Invalid Value", "Invalid Value",
+                "0 KB = 0 MB and 0 KB", "1024 KB = 1 MB and 0 KB",
+                "2050 KB = 2 MB and 2 KB", "3000 KB = 2 MB and 952 KB"
+        };
+        for (int index = 0; index < values.length; index++) {
+            int value = values[index];
+            String answer = answers[index];
+            Assertions.assertEquals(answer, MegaBytesConverter.printMegaBytesAndKiloBytes(value));
+        }
+    }
 }
