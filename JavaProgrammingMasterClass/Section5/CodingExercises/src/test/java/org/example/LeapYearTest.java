@@ -74,5 +74,26 @@ public class LeapYearTest {
         public void testTwoThousandSixHundred() {
             Assertions.assertFalse(LeapYear.isLeapYear(2600));
         }
+
+        @Test
+        public void testCasesFromCourse() {
+            int[] values = new int[]{
+                -1200, 0, 10_000, -1752, 1800,
+                1855, 1846, 1870, 1900, 1924,
+                1944, 1980, 2000, 2014, 2016,
+                2020, 2100, 2104, 2140, 2150
+            };
+            boolean[] answers = new boolean[]{
+                false, false, false, false, false,
+                false, false, false, false, true,
+                true, true, true, false, true,
+                true, false, true, true, false
+            };
+            for (int index = 0; index < values.length; index++) {
+                int value = values[index];
+                boolean answer = answers[index];
+                Assertions.assertEquals(answer, LeapYear.isLeapYear(value));
+            }
+        }
     }
 }
