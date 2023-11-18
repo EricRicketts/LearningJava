@@ -36,4 +36,30 @@ public class SpeedConverterTest {
             Assertions.assertEquals(expectedValue, resultantValue);
         }
     }
+
+    @Test
+    public void testCasesFromCourseForToMilesPerHour() {
+        double[] values = new double[]{-1.0, -10.0, 0.0, 5.0, 15.25, 55.75, 100.0, 60.5};
+        long[] answers = new long[]{-1, -1, 0, 3, 9, 35, 62, 38};
+        for (int index = 0; index < values.length; index++) {
+            double value = values[index];
+            long answer = answers[index];
+            Assertions.assertEquals(answer, SpeedConverter.toMilesPerHour(value));
+        }
+    }
+
+    @Test
+    public void testCasesFromCourseForPrintConversion() {
+        double[] values = new double[]{-2.0, -25.0, 0.0, 2.0, 1.25, 95.75, 100.4, 10.25};
+        String[] answers = new String[]{
+            "Invalid Value", "Invalid Value", "0.0 km/h = 0 mi/h",
+                "2.0 km/h = 1 mi/h", "1.25 km/h = 1 mi/h", "95.75 km/h = 60 mi/h",
+                "100.4 km/h = 62 mi/h", "10.25 km/h = 6 mi/h"
+        };
+        for (int index = 0; index < values.length; index++) {
+            double value = values[index];
+            String answer = answers[index];
+            Assertions.assertEquals(answer, SpeedConverter.printConversion(value));
+        }
+    }
 }
