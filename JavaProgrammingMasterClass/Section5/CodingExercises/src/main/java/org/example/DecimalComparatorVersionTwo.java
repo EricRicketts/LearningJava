@@ -7,32 +7,30 @@ import java.util.List;
 public class DecimalComparatorVersionTwo {
 
     public static boolean areEqualByThreeDecimalPlaces(double firstNumber, double secondNumber) {
-        List<String> numberOfDecimalsForEachNumber = new ArrayList<>();
-        String firstNumberString = String.valueOf(firstNumber), secondNumberString = String.valueOf(secondNumber);
-        int decimalIndexFirstNumberString = firstNumberString.indexOf(".");
-        int decimalIndexSecondNumberString= secondNumberString.indexOf(".");
+        List<String> finalNumericStrings = new ArrayList<>(2);
+        List<String> originalNumericStrings = new ArrayList<>(Arrays.asList(
+                String.valueOf(firstNumber), String.valueOf(secondNumber)));
+        List<Integer> decimalIndices = new ArrayList<>(Arrays.asList(
+                originalNumericStrings.get(0).indexOf("."),
+                originalNumericStrings.get(1).indexOf(".")
+        ));
 
-        // find the number of decimals for the string representation of each number
-        String decimalsFirstNumberString =
-                firstNumberString.substring(decimalIndexFirstNumberString + 1);
-        String decimalsSecondNumberString =
-                secondNumberString.substring(decimalIndexSecondNumberString + 1);
+        List<String> decimalValues = new ArrayList<>(Arrays.asList(
+            originalNumericStrings.get(0).substring(decimalIndices.get(0) + 1),
+            originalNumericStrings.get(1).substring(decimalIndices.get(1) + 1)
+        ));
 
-        // find the least of amount of decimals compare the first number, second number, and 3
         int shortestDecimalLength = Math.min(
-                Math.min(decimalsFirstNumberString.length(), decimalsSecondNumberString.length()),
-                3);
+                Math.min(decimalValues.get(0).length(), decimalValues.get(1).length()), 3);
 
         // construct the final string representation for each number concatenate the beginning of each
         // number to the decimal point and then from the decimal point to the end of the number
-        firstNumberString = firstNumberString.substring(0, decimalIndexFirstNumberString) +
-                firstNumberString.substring(decimalIndexFirstNumberString,
-                        decimalIndexFirstNumberString + shortestDecimalLength + 1);
-
-        secondNumberString = secondNumberString.substring(0, decimalIndexSecondNumberString) +
-                secondNumberString.substring(decimalIndexSecondNumberString,
-                        decimalIndexSecondNumberString + shortestDecimalLength + 1);
-
-        return firstNumberString.equals(secondNumberString);
+        for (int index = 0; index < originalNumericStrings.size(); index++) {
+            String finalNumericString = originalNumericStrings.get(index).substring(0, decimalIndices.get(index)) +
+                    originalNumericStrings.get(index).substring(decimalIndices.get(index),
+                            decimalIndices.get(index) + shortestDecimalLength + 1);
+            finalNumericStrings.add(finalNumericString);
+        }
+        return finalNumericStrings.get(0).equals(finalNumericStrings.get(1));
     }
 }
