@@ -5,41 +5,32 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DecimalComparator {
-    private static List<String> convertNumbersToStrings(double firstNumber, double secondNumber) {
-        firstNumber = Math.abs(firstNumber);
-        secondNumber = Math.abs(secondNumber);
-        String firstNumberString = Double.toString(firstNumber);
-        String secondNumberString = Double.toString(secondNumber);
-        return Arrays.asList(firstNumberString, secondNumberString);
-    }
-
-    private static boolean notTheSameLengthAndEqualToOrLongerThanFiveCharacters(
-            String firstNumberString, String secondNumberString, int expectedStringLength
-    ) {
-        boolean notSameLength = firstNumberString.length() != secondNumberString.length();
-        boolean bothEqualToOrLongerThanFiveCharacters =
-                firstNumberString.length() >= expectedStringLength &&
-                        secondNumberString.length() >= expectedStringLength;
-
-        return notSameLength && bothEqualToOrLongerThanFiveCharacters;
-    }
 
     public static boolean areEqualByThreeDecimalPlaces(double firstNumber, double secondNumber) {
-        int expectedStringLength = 5;
-        boolean equalToThreeDecimalPlaces = false;
+        List<String> finalNumericStrings = new ArrayList<>(2);
+        List<String> originalNumericStrings = new ArrayList<>(Arrays.asList(
+                String.valueOf(firstNumber), String.valueOf(secondNumber)));
+        List<Integer> decimalIndices = new ArrayList<>(Arrays.asList(
+                originalNumericStrings.get(0).indexOf("."),
+                originalNumericStrings.get(1).indexOf(".")
+        ));
 
-        if ((int) Math.signum(firstNumber) == (int) Math.signum(secondNumber)) {
-            List<String> numbersAsStrings = convertNumbersToStrings(firstNumber, secondNumber);
-            String firstNumberString = numbersAsStrings.get(0), secondNumberString = numbersAsStrings.get(1);
+        List<String> decimalValues = new ArrayList<>(Arrays.asList(
+            originalNumericStrings.get(0).substring(decimalIndices.get(0) + 1),
+            originalNumericStrings.get(1).substring(decimalIndices.get(1) + 1)
+        ));
 
-            if (notTheSameLengthAndEqualToOrLongerThanFiveCharacters(
-                    firstNumberString, secondNumberString, expectedStringLength))
-            {
-                firstNumberString = firstNumberString.substring(0, expectedStringLength);
-                secondNumberString = secondNumberString.substring(0, expectedStringLength);
-            }
-            equalToThreeDecimalPlaces = firstNumberString.equals(secondNumberString);
+        int shortestDecimalLength = Math.min(
+                Math.min(decimalValues.get(0).length(), decimalValues.get(1).length()), 3);
+
+        // construct the final string representation for each number concatenate the beginning of each
+        // number to the decimal point and then from the decimal point to the end of the number
+        for (int index = 0; index < originalNumericStrings.size(); index++) {
+            String finalNumericString = originalNumericStrings.get(index).substring(0, decimalIndices.get(index)) +
+                    originalNumericStrings.get(index).substring(decimalIndices.get(index),
+                            decimalIndices.get(index) + shortestDecimalLength + 1);
+            finalNumericStrings.add(finalNumericString);
         }
-        return equalToThreeDecimalPlaces;
+        return finalNumericStrings.get(0).equals(finalNumericStrings.get(1));
     }
 }
