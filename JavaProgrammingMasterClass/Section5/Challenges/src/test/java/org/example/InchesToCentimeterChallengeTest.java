@@ -28,4 +28,12 @@ public class InchesToCentimeterChallengeTest {
                 InchesToCentimetersChallenge.toCentimeters(3, 7)
         );
     }
+
+    @Test
+    public void testInstructorData() {
+        Assertions.assertEquals(
+                172.72,
+                InchesToCentimetersChallenge.toCentimeters(5, 8)
+        );
+    }
 }
