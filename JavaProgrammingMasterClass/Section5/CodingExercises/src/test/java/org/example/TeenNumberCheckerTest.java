@@ -76,10 +76,14 @@ public class TeenNumberCheckerTest {
                 Arrays.asList(-5, -5, -5), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0),
                 Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0),
                 Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0),
-                Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 12), Arrays.asList(0, 12, 0)
+                Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 12), Arrays.asList(0, 12, 0),
+                Arrays.asList(0, 12, 12), Arrays.asList(12, 0, 0), Arrays.asList(12, 0, 12),
+                Arrays.asList(12, 12, 0), Arrays.asList(12, 12, 12), Arrays.asList(0, 0, 0)
             )
         );
         List<Boolean> results = new ArrayList<>(Arrays.asList(
+                false, false, false,
+                false, false, false,
                 false, false, false,
                 false, false, false,
                 false, false, false,
