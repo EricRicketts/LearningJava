@@ -79,7 +79,23 @@ public class TeenNumberCheckerTest {
                 Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 12), Arrays.asList(0, 12, 0),
                 Arrays.asList(0, 12, 12), Arrays.asList(12, 0, 0), Arrays.asList(12, 0, 12),
                 Arrays.asList(12, 12, 0), Arrays.asList(12, 12, 12), Arrays.asList(0, 0, 0),
-                Arrays.asList(0, 0, 13), Arrays.asList(0, 13, 0), Arrays.asList(0, 13, 13)
+                Arrays.asList(0, 0, 13), Arrays.asList(0, 13, 0), Arrays.asList(0, 13, 13),
+                Arrays.asList(13, 0, 0), Arrays.asList(13, 0, 13), Arrays.asList(13, 13, 0),
+                Arrays.asList(13, 13, 13), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 18),
+                Arrays.asList(0, 18, 0), Arrays.asList(0, 18, 18), Arrays.asList(18, 0, 0),
+                Arrays.asList(18, 0, 18), Arrays.asList(18, 18, 0), Arrays.asList(18, 18, 18),
+                Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 19), Arrays.asList(0, 19, 0),
+                Arrays.asList(0, 19, 19), Arrays.asList(19, 0, 0), Arrays.asList(19, 0, 19),
+                Arrays.asList(19, 19, 0), Arrays.asList(19, 19, 19), Arrays.asList(0, 0, 0),
+                Arrays.asList(0, 0, 20), Arrays.asList(0, 20, 0), Arrays.asList(0, 20, 20),
+                Arrays.asList(20, 0, 0), Arrays.asList(20, 0, 20), Arrays.asList(20, 20, 0),
+                Arrays.asList(20, 20, 20), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 26),
+                Arrays.asList(0, 26, 0), Arrays.asList(0, 26, 26), Arrays.asList(26, 0, 0),
+                Arrays.asList(26, 0, 26), Arrays.asList(26, 26, 0), Arrays.asList(26, 26, 26),
+                Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 29), Arrays.asList(0, 29, 0), Arrays.asList(0, 29, 29),
+                Arrays.asList(29, 0, 0), Arrays.asList(29, 0, 29), Arrays.asList(29, 29, 0), Arrays.asList(29, 29, 29),
+                Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 55), Arrays.asList(0, 55, 0), Arrays.asList(0, 55, 55),
+                Arrays.asList(55, 0, 0), Arrays.asList(55, 0, 55), Arrays.asList(55, 55, 0), Arrays.asList(55, 55, 55)
             )
         );
         List<Boolean> results = new ArrayList<>(Arrays.asList(
@@ -94,7 +110,23 @@ public class TeenNumberCheckerTest {
                 false, false, false,
                 false, false, false,
                 false, false, false,
-                true, true, true
+                true, true, true,
+                true, true, true,
+                true, false, true,
+                true, true, true,
+                true, true, true,
+                false, true, true,
+                true, true, true,
+                true, true, false,
+                false, false, false,
+                false, false, false,
+                false, false, false,
+                false, false, false,
+                false, false, false,
+                false, false, false, false,
+                false, false, false, false,
+                false, false, false, false,
+                false, false, false, false
             )
         );
         for (int index = 0; index < allAges.size(); index++) {
