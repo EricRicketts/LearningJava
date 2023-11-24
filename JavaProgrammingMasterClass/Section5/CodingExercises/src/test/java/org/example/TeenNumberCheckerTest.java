@@ -78,7 +78,8 @@ public class TeenNumberCheckerTest {
                 Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 0),
                 Arrays.asList(0, 0, 0), Arrays.asList(0, 0, 12), Arrays.asList(0, 12, 0),
                 Arrays.asList(0, 12, 12), Arrays.asList(12, 0, 0), Arrays.asList(12, 0, 12),
-                Arrays.asList(12, 12, 0), Arrays.asList(12, 12, 12), Arrays.asList(0, 0, 0)
+                Arrays.asList(12, 12, 0), Arrays.asList(12, 12, 12), Arrays.asList(0, 0, 0),
+                Arrays.asList(0, 0, 13), Arrays.asList(0, 13, 0), Arrays.asList(0, 13, 13)
             )
         );
         List<Boolean> results = new ArrayList<>(Arrays.asList(
@@ -92,7 +93,8 @@ public class TeenNumberCheckerTest {
                 false, false, false,
                 false, false, false,
                 false, false, false,
-                false, false, false
+                false, false, false,
+                true, true, true
             )
         );
         for (int index = 0; index < allAges.size(); index++) {
