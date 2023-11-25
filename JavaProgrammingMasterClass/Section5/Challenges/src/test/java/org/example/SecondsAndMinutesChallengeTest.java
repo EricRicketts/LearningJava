@@ -64,8 +64,26 @@ public class SecondsAndMinutesChallengeTest {
     public void testFiftyNineMinutes() {
         expected = "0h 59m 0s";
         Assertions.assertEquals(
-            "0h 59m 0s",
+                expected,
                 SecondsAndMinutesChallenge.getDuration(59, 0)
+        );
+    }
+
+    @Test
+    public void testSixtyOneMinutesFifteenSeconds() {
+        expected = "1h 1m 15s";
+        Assertions.assertEquals(
+                expected,
+                SecondsAndMinutesChallenge.getDuration(61, 15)
+        );
+    }
+
+    @Test
+    public void testOneHundredThirtyFiveMinutesTwentySeconds() {
+        expected = "2h 15m 20s";
+        Assertions.assertEquals(
+                expected,
+                SecondsAndMinutesChallenge.getDuration(135, 20)
         );
     }
 }
