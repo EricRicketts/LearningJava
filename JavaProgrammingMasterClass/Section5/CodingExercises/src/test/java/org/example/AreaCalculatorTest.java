@@ -91,4 +91,29 @@ public class AreaCalculatorTest {
         }
     }
 
+    @Test
+    public void testCourseTestCasesForRectangleArea() {
+        List<Double> firstSides = new ArrayList<>(Arrays.asList(
+                0.0, 10.0, 2.0, 1.75, -1.0, 1.0, -1.0, 4.265
+            )
+        );
+        List<Double> secondSides = new ArrayList<>(Arrays.asList(
+                0.0, 5.0, 6.25, 5.5, 5.0, -5.0, -5.0, 8.387
+            )
+        );
+        List<Double> results = new ArrayList<>(Arrays.asList(
+                0.0, 50.0, 12.5, 9.625, -1.0, -1.0, -1.0, 35.770555
+            )
+        );
+        for (int index = 0; index < firstSides.size(); index++) {
+            double firstSide = firstSides.get(index);
+            double secondSide = secondSides.get(index);
+            double result = results.get(index);
+            Assertions.assertEquals(
+                    result,
+                    AreaCalculator.area(firstSide, secondSide)
+            );
+        }
+    }
+
 }
