@@ -113,4 +113,22 @@ public class SecondsAndMinutesChallengeTest {
                 SecondsAndMinutesChallenge.getDuration(11_265)
         );
     }
+
+    @Test
+    public void testInstructorDataForSeconds() {
+        expected = "1h 5m 45s";
+        Assertions.assertEquals(
+                expected,
+                SecondsAndMinutesChallenge.getDuration(3945)
+        );
+    }
+
+    @Test
+    public void testInstructorDataForMinutesAndSeconds() {
+        expected = "1h 5m 45s";
+        Assertions.assertEquals(
+                expected,
+                SecondsAndMinutesChallenge.getDuration(65, 45)
+        );
+    }
 }
