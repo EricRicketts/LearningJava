@@ -13,8 +13,12 @@ public class App {
                 result = "value is 2";
                 break;
             }
+            case 3: case 4: case 5: {
+                result = "case testing for 3, 4, or 5 on one line.  Value is " + value;
+                break;
+            }
             default: {
-                result = "value is neither 1 or 2";
+                result = "value is not 1, 2, 3, 4, or 5";
             }
         }
         return result;
