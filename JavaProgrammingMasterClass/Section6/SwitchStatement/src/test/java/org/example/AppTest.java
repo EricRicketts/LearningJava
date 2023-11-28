@@ -28,5 +28,13 @@ public class AppTest {
                     App.firstSwitchStatement(input)
             );
         }
+        for (int index = 0; index < inputs.size(); index++) {
+            int input = inputs.get(index);
+            String result = results.get(index);
+            Assertions.assertEquals(
+                    result,
+                    App.secondSwitchStatement(input)
+            );
+        }
     }
 }

@@ -23,4 +23,16 @@ public class App {
         }
         return result;
     }
+
+    public static String secondSwitchStatement(int value) {
+        String result = "";
+        switch (value) {
+            case 1 -> result = "value is 1";
+            case 2 -> result = "value is 2";
+            case 3, 4, 5 -> result = "case testing for 3, 4, or 5 on one line.  Value is " + value;
+            default -> result = "value is not 1, 2, 3, 4, or 5";
+        }
+        return result;
+
+    }
 }
