@@ -59,4 +59,62 @@ public class App {
             default -> "Invalid entry";
         };
     }
+
+    public static String getNatoPhonetic(Character letter) {
+        String natoPhonetic = "Not Found";
+        switch(letter) {
+            case 'A': {
+                natoPhonetic = "Able";
+                break;
+            }
+            case 'B': {
+                natoPhonetic = "Baker";
+                break;
+            }
+            case 'C': {
+                natoPhonetic = "Charlie";
+                break;
+            }
+            case 'D': {
+                natoPhonetic = "Dog";
+                break;
+            }
+            case 'E': {
+                natoPhonetic = "Easy";
+                break;
+            }
+            default: {}
+        }
+        return natoPhonetic;
+    }
+
+    public static String printDayOfWeek(int day) {
+        // yields were put in for demonstration purposes, as this is the keyword
+        // use to return from a case statement in the enhanced switch, it allows some
+        // logic to be done before returning from the case statement, obviously it must
+        // be the last statement in the case block in this enhanced version of switch.
+        return switch(day) {
+            case 0 -> "Sunday";
+            case 1 -> { yield "Monday"; }
+            case 2 -> "Tuesday";
+            case 3 -> { yield "Wednesday"; }
+            case 4 -> "Thursday";
+            case 5 -> { yield "Friday"; }
+            case 6 -> "Saturday";
+            default -> { yield "Invalid Day"; }
+        };
+    }
+
+    public static String printDayOfWeekUsingIfElse(int day) {
+        String dayOfWeek = "Invalid Day";
+        if (day == 0) dayOfWeek = "Sunday";
+        else if (day == 1) dayOfWeek = "Monday";
+        else if (day == 2) dayOfWeek = "Tuesday";
+        else if (day == 3) dayOfWeek = "Wednesday";
+        else if (day == 4) dayOfWeek = "Thursday";
+        else if (day == 5) dayOfWeek = "Friday";
+        else if (day == 6) dayOfWeek = "Saturday";
+
+        return dayOfWeek;
+    }
 }

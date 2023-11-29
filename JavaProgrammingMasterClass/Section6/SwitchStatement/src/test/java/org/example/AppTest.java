@@ -71,4 +71,45 @@ public class AppTest {
             );
         }
     }
+
+    @Test
+    public void testNatoPhonetics() {
+        List<Character> inputs = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F'));
+        List<String> results = new ArrayList<>(Arrays.asList(
+                "Able", "Baker", "Charlie", "Dog", "Easy", "Not Found"
+            )
+        );
+
+        for (int index = 0; index < inputs.size(); index++) {
+            Character input = inputs.get(index);
+            String result = results.get(index);
+            Assertions.assertEquals(
+                    result,
+                    App.getNatoPhonetic(input)
+            );
+        }
+    }
+
+    @Test
+    public void testDayOfWeek() {
+        List<Integer> days = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7));
+        List<String> daysOfWeek = new ArrayList<>(Arrays.asList(
+                "Sunday", "Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday", "Invalid Day"
+            )
+        );
+
+        for (int index = 0; index < days.size(); index++) {
+            int day = days.get(index);
+            String dayOfWeek = daysOfWeek.get(index);
+            Assertions.assertEquals(
+                    dayOfWeek,
+                    App.printDayOfWeek(day)
+            );
+            Assertions.assertEquals(
+                    dayOfWeek,
+                    App.printDayOfWeekUsingIfElse(day)
+            );
+        }
+    }
 }
