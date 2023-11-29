@@ -37,4 +37,38 @@ public class AppTest {
             );
         }
     }
+
+    @Test
+    public void testGetQuarter() {
+        List<String> inputs = new ArrayList<>(Arrays.asList(
+                "January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December",
+                "Foo Bar"
+            )
+        );
+
+        List<String> results = new ArrayList<>(Arrays.asList(
+                "1st quarter", "1st quarter", "1st quarter",
+                "2nd quarter", "2nd quarter", "2nd quarter",
+                "3rd quarter", "3rd quarter", "3rd quarter",
+                "4th quarter", "4th quarter", "4th quarter",
+                "Invalid entry"
+            )
+        );
+
+        for (int index = 0; index < inputs.size(); index++) {
+            String input = inputs.get(index);
+            String result = results.get(index);
+            Assertions.assertEquals(
+                    result,
+                    App.getQuarterTraditional(input)
+            );
+            Assertions.assertEquals(
+                    result,
+                    App.getQuarterEnhanced(input)
+            );
+        }
+    }
 }

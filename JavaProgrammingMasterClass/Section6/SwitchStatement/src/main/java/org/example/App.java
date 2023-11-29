@@ -35,4 +35,28 @@ public class App {
         return result;
 
     }
+
+    public static String getQuarterTraditional(String month) {
+        switch (month) {
+            case "January": case "February": case "March":
+                return "1st quarter";
+            case "April": case "May": case "June":
+                return "2nd quarter";
+            case "July": case "August": case "September":
+                return "3rd quarter";
+            case "October": case "November": case "December":
+                return "4th quarter";
+        }
+        return "Invalid entry";
+    }
+
+    public static String getQuarterEnhanced(String month) {
+        return switch (month) {
+            case "January", "February", "March" -> "1st quarter";
+            case "April", "May", "June" -> "2nd quarter";
+            case "July", "August", "September" -> "3rd quarter";
+            case "October", "November", "December" -> "4th quarter";
+            default -> "Invalid entry";
+        };
+    }
 }
