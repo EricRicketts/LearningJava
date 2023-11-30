@@ -28,4 +28,39 @@ public class NumberOfDaysInMonthTest {
             );
         }
     }
+
+    @Test
+    public void testDaysInMonth() {
+        List<Integer> monthNumbers = new ArrayList<>(Arrays.asList(
+                -1, 0, 1, 2, 3,
+                4, 5, 6, 7, 8,
+                9, 10, 11, 12, 13,
+                3, 4, 2
+            )
+        );
+        List<Integer> years = new ArrayList<>(Arrays.asList(
+                2001, 2002, 1900, 1904, 1835,
+                1723, 1645, 2013, 2000, 1584,
+                1601, 1701, 1801, 1901, 2011,
+                -2000, 10_000, 1905
+            )
+        );
+        List<Integer> results = new ArrayList<>(Arrays.asList(
+                -1, -1, 31, 29, 31,
+                30, 31, 30, 31, 31,
+                30, 31, 30, 31, -1,
+                -1, -1, 28
+            )
+        );
+
+        for (int index = 0; index < years.size(); index++) {
+            int month = monthNumbers.get(index);
+            int year = years.get(index);
+            int result = results.get(index);
+            Assertions.assertEquals(
+                    result,
+                    NumberOfDaysInMonth.getDaysInMonth(month, year)
+            );
+        }
+    }
 }
