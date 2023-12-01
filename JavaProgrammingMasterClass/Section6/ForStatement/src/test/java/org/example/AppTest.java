@@ -18,4 +18,37 @@ public class AppTest {
                 numbers
         );
     }
+
+    @Test
+    public void testInterestRate() {
+        // note we can use types other than int in a for loop
+        for (double rate = 2.0; rate <= 5.0; rate++) {
+            Assertions.assertEquals(
+                    rate * 100,
+                    App.calculateInterest(10_000, rate)
+            );
+        }
+    }
+
+    @Test
+    public void testInterestRateSmallerIncrements() {
+        for (double rate = 7.5; rate < 10.0; rate+=0.25) {
+            Assertions.assertEquals(
+                    rate,
+                    App.calculateInterest(100, rate)
+            );
+        }
+    }
+
+    @Test
+    public void testInterestRateBreakCondition() {
+        for (double rate = 7.5; rate < 10.0; rate+=0.25) {
+            double interest = App.calculateInterest(100, rate);
+            if (interest > 8.5) break;
+            Assertions.assertEquals(
+                    rate,
+                    interest
+            );
+        }
+    }
 }

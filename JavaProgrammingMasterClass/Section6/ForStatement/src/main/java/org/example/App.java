@@ -11,4 +11,8 @@ public class App {
         }
         return numbers;
     }
+
+    public static double calculateInterest(double principal, double rate) {
+        return (principal * (rate / 100));
+    }
 }
