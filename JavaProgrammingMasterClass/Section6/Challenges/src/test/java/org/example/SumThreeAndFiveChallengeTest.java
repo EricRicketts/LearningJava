@@ -19,5 +19,9 @@ public class SumThreeAndFiveChallengeTest {
                 225,
                 SumThreeAndFiveChallenge.sumMultiplesOfThreeAndFive(100, 120)
         );
+        Assertions.assertEquals(
+                225,
+                SumThreeAndFiveChallenge.sumMultiplesOfThreeAndFive(0, 75)
+        );
     }
 }
