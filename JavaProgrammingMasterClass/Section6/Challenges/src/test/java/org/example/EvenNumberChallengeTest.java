@@ -37,7 +37,7 @@ public class EvenNumberChallengeTest {
 
         int number = 5;
         while (evenNumbersFound <= loopLimit) {
-            if (evenNumbersFound == 5) break;
+            if (evenNumbersFound >= 5) break;
             if (EvenNumberChallenge.isEvenNumber(number)) {
                 evenNumbers.add(number);
                 evenNumbersFound += 1;
