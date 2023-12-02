@@ -11,6 +11,10 @@ public class SumDigitChallengeTest {
                 8,
                 SumDigitChallenge.sumDigits(125)
         );
+        Assertions.assertEquals(
+                8,
+                SumDigitChallenge.sumDigitsInstructorSolution(125)
+        );
     }
 
     @Test
@@ -18,6 +22,10 @@ public class SumDigitChallengeTest {
         Assertions.assertEquals(
                 1,
                 SumDigitChallenge.sumDigits(1_000)
+        );
+        Assertions.assertEquals(
+                1,
+                SumDigitChallenge.sumDigitsInstructorSolution(1_000)
         );
     }
 
@@ -27,6 +35,10 @@ public class SumDigitChallengeTest {
                 -1,
                 SumDigitChallenge.sumDigits(-15)
         );
+        Assertions.assertEquals(
+                -1,
+                SumDigitChallenge.sumDigitsInstructorSolution(-15)
+        );
     }
 
     @Test
@@ -35,6 +47,10 @@ public class SumDigitChallengeTest {
                 8,
                 SumDigitChallenge.sumDigits(8)
         );
+        Assertions.assertEquals(
+                8,
+                SumDigitChallenge.sumDigitsInstructorSolution(8)
+        );
     }
 
     @Test
@@ -42,6 +58,22 @@ public class SumDigitChallengeTest {
         Assertions.assertEquals(
                 25,
                 SumDigitChallenge.sumDigits(167_308)
+        );
+        Assertions.assertEquals(
+                25,
+                SumDigitChallenge.sumDigitsInstructorSolution(167_308)
+        );
+    }
+
+    @Test
+    public void testZero() {
+        Assertions.assertEquals(
+                0,
+                SumDigitChallenge.sumDigits(0)
+        );
+        Assertions.assertEquals(
+                0,
+                SumDigitChallenge.sumDigitsInstructorSolution(0)
         );
     }
 }
