@@ -17,4 +17,25 @@ public class FactorPrinter {
 
         return factors;
     }
+
+    public static void printFactors(int number) {
+        if (number < 1) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        List<Integer> factors = new ArrayList<>();
+        StringBuilder stringOfFactors = new StringBuilder();
+
+        for (int factor = 1; factor <= number / 2; factor++) {
+            if (number % factor == 0) {
+                factors.add(factor);
+                String factorString = factor + " ";
+                stringOfFactors.append(factorString);
+            }
+        }
+        factors.add(number);
+        stringOfFactors.append(number);
+
+        System.out.println(stringOfFactors);
+    }
 }
