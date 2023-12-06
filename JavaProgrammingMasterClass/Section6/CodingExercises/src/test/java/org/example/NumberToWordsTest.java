@@ -132,4 +132,30 @@ public class NumberToWordsTest {
             );
         }
     }
+
+    @Test
+    public void testCourseDataForGetNumberToWords() {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(
+                0, 4, 11, 10,
+                101, -222, 1450, 900,
+                123321, 777, 979, 37683,
+                10000, 1132273
+        ));
+        List<String> answers = new ArrayList<>(Arrays.asList(
+                "Zero", "Four", "One One", "One Zero",
+                "One Zero One", "Invalid Value", "One Four Five Zero", "Nine Zero Zero",
+                "One Two Three Three Two One", "Seven Seven Seven", "Nine Seven Nine",
+                "Three Seven Six Eight Three", "One Zero Zero Zero Zero",
+                "One One Three Two Two Seven Three"
+        ));
+
+        for (int index = 0; index < answers.size(); index++) {
+            int number = numbers.get(index);
+            String answer = answers.get(index);
+            Assertions.assertEquals(
+                    answer,
+                    NumberToWords.getNumberToWords(number)
+            );
+        }
+    }
 }
