@@ -18,11 +18,11 @@ public class App {
 
     public static String getInputFromConsole(int currentYear) {
         String name = System.console().readLine("Hi, what is your name? ");
-        System.out.println("Hi " + name + " , thanks for taking the course!!");
+        System.out.println("Hi " + name + ", thanks for taking the course!!");
 
         String dateOfBirth = System.console().readLine("What year were you born? ");
         String age = String.valueOf(currentYear - Integer.parseInt(dateOfBirth));
 
-        return "Your age is " + age + " years.";
+        return "So you are " + age + " years old.";
     }
 }
