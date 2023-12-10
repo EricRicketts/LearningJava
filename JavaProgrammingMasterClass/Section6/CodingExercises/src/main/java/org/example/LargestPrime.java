@@ -5,18 +5,13 @@ public class LargestPrime {
     public static int getLargestPrime(int number) {
         if (number <= 1) return -1;
         int largestPrime = 2;
-
-        for (int divisor = 2; divisor <= number / 2; divisor++) {
+        int halfOfNumber = number / 2;
+        outer: for (int divisor = 2; divisor <= halfOfNumber; divisor++) {
             int possiblePrimeFactor = -1;
             // divisor found and the divisor is less than the number / 2
             // we then check to see if the divisor is prime in the second for loop
             if (number % divisor == 0) possiblePrimeFactor = divisor;
-            // in this case the divisor is > number / 2 so the number itself is prime
-            // as we have not found any divisors
-            if ((divisor > number / 2) && (number > largestPrime)) {
-                largestPrime = number;
-                break;
-            }
+
             // factor of number found test to see if it is prime
             if (possiblePrimeFactor != -1) {
                 for (int factor = 2; factor <= possiblePrimeFactor; factor++) {
@@ -34,15 +29,14 @@ public class LargestPrime {
                         break;
                     }
                 }
+                // on this alternate branch we ensure we are at half of the number
+                // and that the current largest prime does not evenly divide the number
+                // we can then be sure the number itself is prime
+            } else if ((divisor == halfOfNumber) && (number % largestPrime != 0)) {
+                largestPrime = number;
+                break outer;
             }
         }
         return largestPrime;
     }
 }
-/*
-    1.  take the number 21, factors are 3 and 7
-    2.  2 does not work
-    3.  3 works so factor = 3
-    4.  start with primeFactor = 2
-    5.  prime
-*/
