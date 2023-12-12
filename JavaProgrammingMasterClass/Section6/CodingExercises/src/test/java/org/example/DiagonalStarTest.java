@@ -111,4 +111,94 @@ public class DiagonalStarTest {
                 result
         );
     }
+
+    @Test
+    public void testDiagonalStarFifteen() {
+        expected =
+            "***************\n" +
+            "**           **\n" +
+            "* *         * *\n" +
+            "*  *       *  *\n" +
+            "*   *     *   *\n" +
+            "*    *   *    *\n" +
+            "*     * *     *\n" +
+            "*      *      *\n" +
+            "*     * *     *\n" +
+            "*    *   *    *\n" +
+            "*   *     *   *\n" +
+            "*  *       *  *\n" +
+            "* *         * *\n" +
+            "**           **\n" +
+            "***************";
+        result = DiagonalStar.printSquareStar(15);
+        Assertions.assertEquals(
+                expected,
+                result
+        );
+    }
+
+    @Test
+    public void testDiagonalStarTwenty() {
+        expected =
+            "********************\n" +
+            "**                **\n" +
+            "* *              * *\n" +
+            "*  *            *  *\n" +
+            "*   *          *   *\n" +
+            "*    *        *    *\n" +
+            "*     *      *     *\n" +
+            "*      *    *      *\n" +
+            "*       *  *       *\n" +
+            "*        **        *\n" +
+            "*        **        *\n" +
+            "*       *  *       *\n" +
+            "*      *    *      *\n" +
+            "*     *      *     *\n" +
+            "*    *        *    *\n" +
+            "*   *          *   *\n" +
+            "*  *            *  *\n" +
+            "* *              * *\n" +
+            "**                **\n" +
+            "********************";
+        result = DiagonalStar.printSquareStar(20);
+        Assertions.assertEquals(
+                expected,
+                result
+        );
+    }
+
+    @Test
+    public void testDiagonalStarTwentyFive() {
+        expected =
+            "*************************\n" +
+            "**                     **\n" +
+            "* *                   * *\n" +
+            "*  *                 *  *\n" +
+            "*   *               *   *\n" +
+            "*    *             *    *\n" +
+            "*     *           *     *\n" +
+            "*      *         *      *\n" +
+            "*       *       *       *\n" +
+            "*        *     *        *\n" +
+            "*         *   *         *\n" +
+            "*          * *          *\n" +
+            "*           *           *\n" +
+            "*          * *          *\n" +
+            "*         *   *         *\n" +
+            "*        *     *        *\n" +
+            "*       *       *       *\n" +
+            "*      *         *      *\n" +
+            "*     *           *     *\n" +
+            "*    *             *    *\n" +
+            "*   *               *   *\n" +
+            "*  *                 *  *\n" +
+            "* *                   * *\n" +
+            "**                     **\n" +
+            "*************************";
+        result = DiagonalStar.printSquareStar(25);
+        Assertions.assertEquals(
+                expected,
+                result
+        );
+    }
 }
