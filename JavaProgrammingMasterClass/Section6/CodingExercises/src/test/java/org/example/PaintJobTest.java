@@ -90,4 +90,39 @@ public class PaintJobTest {
             );
         }
     }
+
+    @Test
+    public void testCourseDateThreeParameters() {
+        List<Double> widths = new ArrayList<>(Arrays.asList(
+                -3.4, 0.0, 3.4, 3.4, 1.4, 2.25,
+                3.4, 3.26, 8.45, 7.25, 6.26, 3.46
+        ));
+
+        List<Double> heights = new ArrayList<>(Arrays.asList(
+                2.1, 2.1, -2.1, 0.0, 2.1, 2.0,
+                2.1, 2.15, 4.6, 4.3, 3.84, 7.12
+        ));
+
+        List<Double> areasPerBuckets = new ArrayList<>(Arrays.asList(
+                1.5, 1.5, 1.5, 1.5, -1.5, 0.0,
+                1.5, 0.75, 2.25, 2.35, 2.2, 4.2
+        ));
+
+        List<Integer> bucketCounts = new ArrayList<>(Arrays.asList(
+                -1, -1, -1, -1, -1, -1,
+                5, 10, 18, 14, 11, 6
+        ));
+
+        for (int index = 0; index < bucketCounts.size(); index++) {
+            double width = widths.get(index);
+            double height = heights.get(index);
+            double areaPerBucket = areasPerBuckets.get(index);
+            int bucketCount = bucketCounts.get(index);
+
+            Assertions.assertEquals(
+                    bucketCount,
+                    PaintJob.getBucketCount(width, height, areaPerBucket)
+            );
+        }
+    }
 }
