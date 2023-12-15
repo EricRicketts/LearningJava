@@ -125,4 +125,55 @@ public class PaintJobTest {
             );
         }
     }
+
+    @Test
+    public void testCourseDataFourParameters() {
+        List<Double> widths = new ArrayList<>(Arrays.asList(
+                -3.4, 0.0, 3.4, 3.4, 1.4,
+                2.25, 1.4, 1.4, 3.4, 2.75,
+                0.75, 7.32, 5.55, 4.14, 6.12,
+                9.25, 6.24, 7.55, 6.35, 1.22
+        ));
+
+        List<Double> heights = new ArrayList<>(Arrays.asList(
+                2.1, 2.1, -2.1, 0.0, 2.1,
+                2.0, 2.1, 2.1, 2.1, 3.25,
+                0.75, 6.45, 4.75, 2.28, 3.11,
+                2.22, 5.75, 7.11, 6.65, 3.11
+        ));
+
+        List<Double> areaPerBuckets = new ArrayList<>(Arrays.asList(
+                1.5, 1.5, 1.5, 1.5, -1.5,
+                0.0, 1.5, 1.5, 1.5, 2.5,
+                0.5, 2.22, 3.25, 1.32, 1.25,
+                2.125, 6.25, 3.12, 2.6, 2.5
+        ));
+
+        List<Integer> extraBucketsCounts = new ArrayList<>(Arrays.asList(
+                2, 7, 2, 6, 2,
+                4, -4, -1, 2, 1,
+                0, 10, 3, 1, 2,
+                4, 3, 9, 5, 0
+        ));
+
+        List<Integer> bucketCounts = new ArrayList<>(Arrays.asList(
+                -1, -1, -1, -1, -1,
+                -1, -1, -1, 3, 3,
+                2, 12, 6, 7, 14,
+                6, 3, 9, 12, 2
+        ));
+
+        for (int index = 0; index < bucketCounts.size(); index++) {
+            double width = widths.get(index);
+            double height = heights.get(index);
+            double areaPerBucket = areaPerBuckets.get(index);
+            int extraBuckets = extraBucketsCounts.get(index);
+            int bucketCount = bucketCounts.get(index);
+
+            Assertions.assertEquals(
+                    bucketCount,
+                    PaintJob.getBucketCount(width, height, areaPerBucket, extraBuckets)
+            );
+        }
+    }
 }
