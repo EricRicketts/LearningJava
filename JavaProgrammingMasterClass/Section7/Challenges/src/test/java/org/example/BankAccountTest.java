@@ -80,4 +80,48 @@ public class BankAccountTest {
                 bankAccount.getBalance()
         );
     }
+
+    @Test
+    public void testMakeDeposit() {
+        Assertions.assertEquals(
+                1000.0,
+                bankAccount.getBalance()
+        );
+        Assertions.assertEquals(
+                150.50,
+                bankAccount.deposit(150.50)
+        );
+        Assertions.assertEquals(
+                1150.50,
+                bankAccount.getBalance()
+        );
+    }
+
+    @Test
+    public void testOverWithdrawn() {
+        Assertions.assertEquals(
+                -1,
+                bankAccount.withdraw(2000)
+        );
+        Assertions.assertEquals(
+                1000.0,
+                bankAccount.getBalance()
+        );
+    }
+
+    @Test
+    public void testWithdraw() {
+        Assertions.assertEquals(
+                1000,
+                bankAccount.getBalance()
+        );
+        Assertions.assertEquals(
+                150.50,
+                bankAccount.withdraw(150.50)
+        );
+        Assertions.assertEquals(
+                849.50,
+                bankAccount.getBalance()
+        );
+    }
 }

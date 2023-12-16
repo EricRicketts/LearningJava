@@ -52,7 +52,7 @@ public class BankAccount {
 
     public double deposit(double deposit) {
         this.setBalance(this.getBalance() + deposit);
-        return this.getBalance();
+        return deposit;
     }
 
     public double withdraw(double withdraw) {
@@ -60,6 +60,6 @@ public class BankAccount {
         if (remainingBalance < 0) return -1;
         this.setBalance(remainingBalance);
 
-        return this.getBalance();
+        return withdraw;
     }
 }
