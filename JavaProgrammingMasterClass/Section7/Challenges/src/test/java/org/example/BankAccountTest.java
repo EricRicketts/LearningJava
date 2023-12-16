@@ -82,7 +82,7 @@ public class BankAccountTest {
     }
 
     @Test
-    public void testMakeDeposit() {
+    public void testDeposit() {
         Assertions.assertEquals(
                 1000.0,
                 bankAccount.getBalance()
