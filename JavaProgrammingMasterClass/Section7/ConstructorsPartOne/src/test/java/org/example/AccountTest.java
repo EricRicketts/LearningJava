@@ -49,4 +49,32 @@ public class AccountTest {
                 account.getCustomerEmail()
         );
     }
+
+    @Test
+    public void testDeposit() {
+        double expectedBalance = 1545.55;
+        account.deposit(45.55);
+        Assertions.assertEquals(
+                expectedBalance,
+                account.getBalance()
+        );
+    }
+
+    @Test
+    public void testValidWithdraw() {
+        double expectedBalance = 1454.45;
+        account.withdraw(45.55);
+        Assertions.assertEquals(
+                expectedBalance,
+                account.getBalance()
+        );
+    }
+
+    @Test
+    public void testInvalidWithdraw() {
+        Assertions.assertEquals(
+                -1,
+                account.withdraw(1500.01)
+        );
+    }
 }
