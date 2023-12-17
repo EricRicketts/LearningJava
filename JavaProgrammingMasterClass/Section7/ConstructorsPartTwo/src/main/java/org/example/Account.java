@@ -17,9 +17,18 @@ public class Account {
         this.customerPhone = customerPhone;
     }
 
+    public Account(String customerName, String customerEmail, String customerPhone) {
+        this("000000", 0.0, customerName, customerEmail, customerPhone);
+        // the advice by the instructor is to define only one constructor with all needed parameters
+        // and then use that base instructor in all constructor chaining.  Any other constructor
+        // calls will have to be given the needed parameters if not supplied by the arguments
+    }
     public Account() {
         this("000000", 0.0, "Default Name",
                 "default@example.com", "(000) 000-0000");
+        // unusual case of calling another constructor within a constructor.  First "this"
+        // is used to call the other constructor and second the call to the other constructor
+        // must be the first line on the body of the current constructor call.
     }
 
     public String getNumber() {
