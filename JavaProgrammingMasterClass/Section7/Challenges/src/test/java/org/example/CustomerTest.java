@@ -13,10 +13,10 @@ import java.util.List;
 public class CustomerTest {
 
     final String DEFAULT_NAME = "Default Name";
-    final double DEFAULT_CREDIT_LIMIT = 0.00;
+    final double DEFAULT_CREDIT_LIMIT = 20_000.00;
     final String DEFAULT_EMAIL = "default@example.com";
     final String FIRST_CUSTOMER_NAME = "Elmer Fudd";
-    final double FIRST_CUSTOMER_CREDIT_LIMIT = 10_000.00;
+    final double FIRST_CUSTOMER_CREDIT_LIMIT = 20_000.00;
     final String FIRST_CUSTOMER_EMAIL = "elmer.fudd@warnerbros.com";
     final String SECOND_CUSTOMER_NAME = "Daffy Duck";
     final double SECOND_CUSTOMER_CREDIT_LIMIT = 20_000.00;

@@ -41,6 +41,9 @@ public class Customer {
     }
 
     public Customer() {
-        this("Default Name", 0.00, "default@example.com");
+        this("Default Name", "default@example.com");
+        // this is constructor chaining, the no argument constructor calls the two argument
+        // constructor instead of the three argument constructor because if the credit limit
+        // changes we have to change it in both the two argument and no argument constructors.
     }
 }
