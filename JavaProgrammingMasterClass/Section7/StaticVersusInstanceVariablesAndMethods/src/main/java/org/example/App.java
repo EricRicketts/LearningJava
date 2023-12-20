@@ -16,14 +16,19 @@ public class App {
     private String instanceVariable;
 
     public static String getFirstClassName() {
-        return firstClassName;
+        // this is a complete call to the static variable "firstClassName"
+        return App.firstClassName;
     }
 
     public static void setFirstClassName(String firstClassName) {
+        // this is needed as the complete call of the static variable "firstClassName" is needed
+        // to distinguish between it and the parameter "firstClassName" being passed in
         App.firstClassName = firstClassName;
     }
 
     public static String getSecondClassName() {
+        // since this is a static variable being called from a static method and both are in the same
+        // class it is not necessary to prepend the static method with the class name "App".
         return secondClassName;
     }
 
@@ -31,11 +36,25 @@ public class App {
         App.secondClassName = secondClassName;
     }
 
-    public String getFirstClassNameFromObject() {
-        return firstClassName;
+    public String getFirstClassNameFromObjectVersionOne() {
+        // Instance methods can call static methods
+        return App.getFirstClassName();
     }
 
-    public String getSecondClassNameFromObject() {
+    public String getFirstClassNameFromObjectVersionTwo() {
+        // Instance methods can call static methods, if called from the same class
+        // there is no need to prepend the class name
+        return getFirstClassName();
+    }
+
+    public String getSecondClassNameFromObjectVersionOne() {
+        // instance methods can call static variables in the same class
+        return App.secondClassName;
+    }
+
+    public String getSecondClassNameFromObjectVersionTwo() {
+        // instance methods can call static variables in the same class
+        // if called from the same class there is no need to prepend the class name
         return secondClassName;
     }
 

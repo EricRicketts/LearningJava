@@ -34,7 +34,7 @@ public class AppTest {
         // purposes we will do it in this test suite to illustration the behavior of static variables.
 
         new ArrayList<>(Arrays.asList(firstApp, secondApp)).forEach(appObj -> {
-            Assertions.assertEquals(firstClassName, appObj.getFirstClassNameFromObject());
+            Assertions.assertEquals(firstClassName, appObj.getFirstClassNameFromObjectVersionOne());
         });
 
         // note though two different objects accessed the static variable, "firstClassName" the
@@ -46,15 +46,15 @@ public class AppTest {
         String newFirstClassName = "FizzBuzz";
         App.setFirstClassName(newFirstClassName);
         Assertions.assertEquals(newFirstClassName, App.getFirstClassName());
-        Assertions.assertEquals(newFirstClassName, firstApp.getFirstClassNameFromObject());
-        Assertions.assertEquals(newFirstClassName, secondApp.getFirstClassNameFromObject());
+        Assertions.assertEquals(newFirstClassName, firstApp.getFirstClassNameFromObjectVersionOne());
+        Assertions.assertEquals(newFirstClassName, secondApp.getFirstClassNameFromObjectVersionTwo());
     }
 
     @Test
     public void testSecondClassVariable() {
         // initial assertion on secondClassName static variable
         new ArrayList<>(Arrays.asList(firstApp, secondApp)).forEach(appObj -> {
-            Assertions.assertEquals(secondClassName, appObj.getSecondClassNameFromObject());
+            Assertions.assertEquals(secondClassName, appObj.getSecondClassNameFromObjectVersionOne());
         });
 
         // now change the static variable, it changes across both objects
@@ -62,7 +62,7 @@ public class AppTest {
         App.setSecondClassName(newSecondClassName);
 
         new ArrayList<>(Arrays.asList(firstApp, secondApp)).forEach(appObj -> {
-            Assertions.assertEquals(newSecondClassName, appObj.getSecondClassNameFromObject());
+            Assertions.assertEquals(newSecondClassName, appObj.getSecondClassNameFromObjectVersionTwo());
         });
         // call directly from the class
         Assertions.assertEquals(newSecondClassName, App.getSecondClassName());
