@@ -30,4 +30,28 @@ public class LPAStudentTest {
                lpaStudent.toString()
        );
    }
+
+   @Test
+    public void testLPAStudentIdAccessor() {
+       expected = "xyz123";
+       Assertions.assertEquals(expected, lpaStudent.id());
+   }
+
+    @Test
+    public void testLPAStudentNameAccessor() {
+        expected = "Elmer Fudd";
+        Assertions.assertEquals(expected, lpaStudent.name());
+    }
+
+    @Test
+    public void testLPAStudentBirthDate() {
+       expected = "12/20/2023";
+       Assertions.assertEquals(expected, lpaStudent.dateOfBirth());
+    }
+
+    @Test
+    public void testLPAStudentClassList() {
+       expected = "Java Masterclass";
+       Assertions.assertEquals(expected, lpaStudent.classList());
+    }
 }
