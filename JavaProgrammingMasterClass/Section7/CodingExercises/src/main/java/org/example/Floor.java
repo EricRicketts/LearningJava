@@ -1,6 +1,9 @@
 package org.example;
 
-public record Floor(double width, double length) {
+public class Floor {
+
+    private double width;
+    private double length;
 
     public double getArea() {
         return this.width * this.length;

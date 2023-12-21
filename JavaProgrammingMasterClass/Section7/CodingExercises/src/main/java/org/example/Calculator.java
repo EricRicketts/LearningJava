@@ -6,7 +6,7 @@ public class Calculator {
     private Carpet carpet;
 
     public double getTotalCost() {
-        return floor.getArea() * carpet.cost();
+        return floor.getArea() * carpet.getCost();
     }
 
     public Calculator(Floor floor, Carpet carpet) {
