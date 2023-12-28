@@ -1,22 +1,16 @@
 package org.example;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Worker {
 
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy").withLocale(Locale.US);
     private String name;
-    private String birthDate;
-    private String endDate;
-
-    public int getEndYearForAge() {
-        return endYearForAge;
-    }
-
-    public void setEndYearForAge(int endYearForAge) {
-        this.endYearForAge = endYearForAge;
-    }
-
-    private int endYearForAge;
+    private LocalDate birthDate;
+    private LocalDate endDate;
 
     public String getName() {
         return name;
@@ -26,19 +20,19 @@ public class Worker {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -46,16 +40,14 @@ public class Worker {
 
     public Worker(String name, String birthDate, String endDate) {
         this.name = name;
-        this.birthDate = birthDate;
-        this.endDate = endDate;
+        this.setBirthDate(LocalDate.parse(birthDate, formatter));
+        this.setEndDate(LocalDate.parse(endDate, formatter));
     }
 
-    public int getAge() {
-        // redo age to use Date classes, so Date arithmetic can be performed
-        int currentYear = this.getEndYearForAge();
-        int birthYear = Integer.parseInt(this.getBirthDate().substring(6));
-
-        return (currentYear - birthYear);
+    public long getAge() {
+        LocalDate currentDate = LocalDate.now();
+        Duration duration = Duration.between(currentDate, this.getBirthDate());
+        return Math.abs(duration.toDays());
     }
 
     public double collectPay() {
@@ -63,7 +55,7 @@ public class Worker {
     }
 
     public void terminate(String endDate) {
-        this.setEndDate(endDate);
+        this.setEndDate(LocalDate.parse(endDate, formatter));
     }
 
     @Override
