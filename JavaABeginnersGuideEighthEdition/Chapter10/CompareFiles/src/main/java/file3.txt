@@ -1,3 +1,0 @@
-This is a text file.
-It is being used to compare two files.
-I hope the program works, but like most things it fails the first time you try.
