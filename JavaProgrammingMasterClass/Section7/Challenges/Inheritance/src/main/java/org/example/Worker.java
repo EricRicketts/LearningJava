@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Worker {
 
     final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy").withLocale(Locale.US);
@@ -46,7 +48,7 @@ public class Worker {
 
     public long getAge() {
         LocalDate currentDate = LocalDate.now();
-        Duration duration = Duration.between(currentDate, this.getBirthDate());
+        Duration duration = Duration.ofDays(DAYS.between(currentDate, this.getBirthDate()));
         return Math.abs(duration.toDays());
     }
 

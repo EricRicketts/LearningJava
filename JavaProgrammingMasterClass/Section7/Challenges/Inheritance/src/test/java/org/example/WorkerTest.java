@@ -79,4 +79,15 @@ public class WorkerTest {
         result = extractDateStringFromLocalDate(worker.getEndDate());
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testGetAge() {
+        long currentYear = LocalDate.now().getYear();
+        String birthDate = extractDateStringFromLocalDate(worker.getBirthDate());
+        long birthYear = Long.parseLong(birthDate.split("/")[2]);
+        long resultantAgeInDays = worker.getAge();
+        long ageInYears = resultantAgeInDays / 365;
+        long expectedAgeInYears = currentYear - birthYear;
+        Assertions.assertEquals(expectedAgeInYears, ageInYears);
+    }
 }
