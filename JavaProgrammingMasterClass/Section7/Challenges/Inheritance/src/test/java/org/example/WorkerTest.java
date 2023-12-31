@@ -71,4 +71,12 @@ public class WorkerTest {
         result = extractDateStringFromLocalDate(worker.getEndDate());
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testTerminate() {
+        expected = "12/01/2025";
+        worker.terminate(expected);
+        result = extractDateStringFromLocalDate(worker.getEndDate());
+        Assertions.assertEquals(expected, result);
+    }
 }
