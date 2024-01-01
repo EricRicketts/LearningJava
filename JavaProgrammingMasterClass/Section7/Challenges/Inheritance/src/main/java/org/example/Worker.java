@@ -3,13 +3,12 @@ package org.example;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Worker {
 
-    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy").withLocale(Locale.US);
+    final DateTimeFormatter formatter = new Helper().formatter;
     private String name;
     private LocalDate birthDate;
     private LocalDate endDate;
@@ -62,7 +61,7 @@ public class Worker {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "{" +
+        return "Worker{" +
                 "name='" + name + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 ", endDate='" + endDate + '\'' +
