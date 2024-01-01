@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class WorkerTest {
 
@@ -82,12 +85,29 @@ public class WorkerTest {
 
     @Test
     public void testGetAge() {
-        long currentYear = LocalDate.now().getYear();
-        String birthDate = extractDateStringFromLocalDate(worker.getBirthDate());
-        long birthYear = Long.parseLong(birthDate.split("/")[2]);
-        long resultantAgeInDays = worker.getAge();
-        long ageInYears = resultantAgeInDays / 365;
-        long expectedAgeInYears = currentYear - birthYear;
-        Assertions.assertEquals(expectedAgeInYears, ageInYears);
+        // final assert comparison is in days
+        LocalDate currentDate = LocalDate.now();
+        Duration duration =
+                Duration.ofDays(DAYS.between(currentDate, worker.getBirthDate()));
+        long expected = Math.abs(duration.toDays());
+        long result = worker.getAge();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testToString() {
+        result = worker.toString();
+        expected =
+                "Worker{name='Elmer Fudd'," +
+                        " birthDate='1937-11-06'," +
+                        " endDate='2030-12-31'}";
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testCollectPay() {
+        double expected = 0.0;
+        double result = worker.collectPay();
+        Assertions.assertEquals(expected, result);
     }
 }
