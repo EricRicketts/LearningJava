@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HourlyEmployeeTest {
 
     HourlyEmployee hourlyEmployee;
@@ -40,5 +43,16 @@ public class HourlyEmployeeTest {
         double expectedDoubleWeeklyPay = 2.0 * 40.0 * hourlyEmployee.getHourlyPayRate();
         double resultantDoubleWeeklyPay = hourlyEmployee.getDoublePay();
         Assertions.assertEquals(expectedDoubleWeeklyPay, resultantDoubleWeeklyPay);
+    }
+
+    @Test
+    public void testGetAndSetName() {
+        expected = "Elmer Fudd";
+        result = hourlyEmployee.getName();
+        Assertions.assertEquals(expected, result);
+        expected = "Bugs Bunny";
+        hourlyEmployee.setName(expected);
+        result = hourlyEmployee.getName();
+        Assertions.assertEquals(expected, result);
     }
 }
