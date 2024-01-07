@@ -21,7 +21,7 @@ public class Rectangle {
     public Rectangle() {}
 
     public Rectangle(double width, double length) {
-        this.width = width;
-        this.length = length;
+        this.width = width < 0 ? 0 : width;
+        this.length = length < 0 ? 0 : length;
     }
 }
