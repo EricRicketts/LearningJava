@@ -1,6 +1,8 @@
 package org.example;
 
-public class CoffeeMaker {
+public class CoffeeMaker extends ApplianceState {
 
-    boolean hasWorkToDo;
+    public void addWater() {
+        this.setHasWorkToDo(true);
+    }
 }
