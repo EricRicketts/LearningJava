@@ -4,24 +4,25 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CoffeeMakerTest {
+public class DishWasherTest {
 
-    CoffeeMaker coffeeMaker;
+    DishWasher dishWasher;
 
     @BeforeEach
     public void setUp() {
-        coffeeMaker = new CoffeeMaker();
+        dishWasher = new DishWasher();
     }
 
     @Test
-    public void testNoWorkForCoffeeMaker() {
+    public void testDoDishes() {
         String expected, result;
         expected = "";
-        result = coffeeMaker.brewCoffee();
+        result = dishWasher.doDishes();
         Assertions.assertEquals(expected, result);
-        expected = "The coffee maker is brewing coffee.";
-        coffeeMaker.setHasWorkToDo(true);
-        result = coffeeMaker.brewCoffee();
+        dishWasher.setHasWorkToDo(true);
+        expected = "The dishwasher is washing the dishes.";
+        dishWasher.setHasWorkToDo(true);
+        result = dishWasher.doDishes();
         Assertions.assertEquals(expected, result);
     }
 }

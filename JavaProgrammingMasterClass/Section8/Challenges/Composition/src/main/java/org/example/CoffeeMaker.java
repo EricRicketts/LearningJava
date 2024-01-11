@@ -3,6 +3,6 @@ package org.example;
 public class CoffeeMaker extends ApplianceState {
 
     public String brewCoffee() {
-        return this.isHasWorkToDo() ? "The Coffee maker is brewing coffee." : "";
+        return this.isHasWorkToDo() ? "The coffee maker is brewing coffee." : "";
     }
 }
