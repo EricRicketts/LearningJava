@@ -1,4 +1,4 @@
 package org.example;
 
-public class DishWasher {
+public class DishWasher extends ApplianceState {
 }

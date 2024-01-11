@@ -26,4 +26,11 @@ public class SmartKitchenTest {
         smartKitchen.pourMilk();
         Assertions.assertTrue(smartKitchen.getRefrigerator().isHasWorkToDo());
     }
+
+    @Test
+    public void testLoadDishwasher() {
+        Assertions.assertFalse(smartKitchen.getDishWasher().isHasWorkToDo());
+        smartKitchen.loadDishWasher();
+        Assertions.assertTrue(smartKitchen.getDishWasher().isHasWorkToDo());
+    }
 }

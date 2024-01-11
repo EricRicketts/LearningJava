@@ -3,8 +3,8 @@ package org.example;
 public class SmartKitchen {
 
     private CoffeeMaker coffeeMaker;
-
     private Refrigerator refrigerator;
+    private DishWasher dishWasher;
 
     public CoffeeMaker getCoffeeMaker() {
         return coffeeMaker;
@@ -22,6 +22,14 @@ public class SmartKitchen {
         this.refrigerator = refrigerator;
     }
 
+    public DishWasher getDishWasher() {
+        return dishWasher;
+    }
+
+    public void setDishWasher(DishWasher dishWasher) {
+        this.dishWasher = dishWasher;
+    }
+
     public void addWater() {
         this.getCoffeeMaker().setHasWorkToDo(true);
     }
@@ -30,9 +38,14 @@ public class SmartKitchen {
         this.getRefrigerator().setHasWorkToDo(true);
     }
 
+    public void loadDishWasher() {
+        this.getDishWasher().setHasWorkToDo(true);
+    }
+
     public SmartKitchen() {
-        this.coffeeMaker = new CoffeeMaker();
-        this.refrigerator = new Refrigerator();
+        this.setCoffeeMaker(new CoffeeMaker());
+        this.setRefrigerator(new Refrigerator());
+        this.setDishWasher(new DishWasher());
     }
 
 }
