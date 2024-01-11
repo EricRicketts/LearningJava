@@ -1,4 +1,4 @@
 package org.example;
 
-public class Refrigerator {
+public class Refrigerator extends ApplianceState {
 }
