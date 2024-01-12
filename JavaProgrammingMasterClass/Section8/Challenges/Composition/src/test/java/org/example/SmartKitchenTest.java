@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 public class SmartKitchenTest {
 
     private SmartKitchen smartKitchen;
+    private String expected, result;
 
     @BeforeEach
     public void setUp() {
@@ -32,5 +33,23 @@ public class SmartKitchenTest {
         Assertions.assertFalse(smartKitchen.getDishWasher().isHasWorkToDo());
         smartKitchen.loadDishWasher();
         Assertions.assertTrue(smartKitchen.getDishWasher().isHasWorkToDo());
+    }
+
+    @Test
+    public void testOnlyCoffeeMakerWorking() {
+        expected = "The coffee maker is brewing coffee.";
+        result = smartKitchen.doKitchenWork(true, false, false);
+        result = result.trim();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAllThreeAppliancesWorking() {
+        expected = String.join(" ",
+                "The coffee maker is brewing coffee.",
+                "The Refrigerator is ordering food.",
+                "The dishwasher is washing the dishes.");
+        result = smartKitchen.doKitchenWork(true, true, true);
+        Assertions.assertEquals(expected, result);
     }
 }

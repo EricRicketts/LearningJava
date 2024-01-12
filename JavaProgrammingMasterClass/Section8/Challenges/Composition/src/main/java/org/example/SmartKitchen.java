@@ -44,8 +44,18 @@ public class SmartKitchen {
             boolean coffeeMakerState, boolean refrigeratorState, boolean dishWasherState
     ) {
         if (coffeeMakerState) addWater();
-        if (refrigeratorState) loadDishWasher();
+        if (refrigeratorState) pourMilk();
         if (dishWasherState) loadDishWasher();
+    }
+
+    public String doKitchenWork(
+            boolean coffeeMakerState, boolean refrigeratorState, boolean dishWasherState
+    ) {
+        setKitchenState(coffeeMakerState, refrigeratorState, dishWasherState);
+        return String.join(" ",
+                this.getCoffeeMaker().brewCoffee(),
+                this.getRefrigerator().orderFood(),
+                this.getDishWasher().doDishes());
     }
 
     public SmartKitchen() {
