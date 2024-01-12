@@ -38,7 +38,8 @@ public class SmartKitchenTest {
     @Test
     public void testOnlyCoffeeMakerWorking() {
         expected = "The coffee maker is brewing coffee.";
-        result = smartKitchen.doKitchenWork(true, false, false);
+        smartKitchen.setKitchenState(true, false, false);
+        result = smartKitchen.doKitchenWork();
         result = result.trim();
         Assertions.assertEquals(expected, result);
     }
@@ -49,7 +50,8 @@ public class SmartKitchenTest {
                 "The coffee maker is brewing coffee.",
                 "The Refrigerator is ordering food.",
                 "The dishwasher is washing the dishes.");
-        result = smartKitchen.doKitchenWork(true, true, true);
+        smartKitchen.setKitchenState(true, true, true);
+        result = smartKitchen.doKitchenWork();
         Assertions.assertEquals(expected, result);
     }
 }

@@ -48,10 +48,7 @@ public class SmartKitchen {
         if (dishWasherState) loadDishWasher();
     }
 
-    public String doKitchenWork(
-            boolean coffeeMakerState, boolean refrigeratorState, boolean dishWasherState
-    ) {
-        setKitchenState(coffeeMakerState, refrigeratorState, dishWasherState);
+    public String doKitchenWork() {
         return String.join(" ",
                 this.getCoffeeMaker().brewCoffee(),
                 this.getRefrigerator().orderFood(),
