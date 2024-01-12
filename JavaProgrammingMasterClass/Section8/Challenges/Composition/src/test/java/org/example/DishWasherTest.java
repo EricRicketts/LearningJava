@@ -14,7 +14,7 @@ public class DishWasherTest {
     }
 
     @Test
-    public void testDoDishes() {
+    public void testWorkForDishWasher() {
         String expected, result;
         expected = "";
         result = dishWasher.doDishes();

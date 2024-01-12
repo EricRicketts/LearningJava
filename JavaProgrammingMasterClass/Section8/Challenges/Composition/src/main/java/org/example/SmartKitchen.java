@@ -38,8 +38,14 @@ public class SmartKitchen {
         this.getRefrigerator().setHasWorkToDo(true);
     }
 
-    public void loadDishWasher() {
-        this.getDishWasher().setHasWorkToDo(true);
+    public void loadDishWasher() { this.getDishWasher().setHasWorkToDo(true); }
+
+    public void setKitchenState(
+            boolean coffeeMakerState, boolean refrigeratorState, boolean dishWasherState
+    ) {
+        if (coffeeMakerState) addWater();
+        if (refrigeratorState) loadDishWasher();
+        if (dishWasherState) loadDishWasher();
     }
 
     public SmartKitchen() {
