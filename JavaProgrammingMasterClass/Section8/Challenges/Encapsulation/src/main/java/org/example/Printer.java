@@ -28,7 +28,10 @@ public class Printer {
     }
 
     public int printPages(int pages) {
-        int pagesForDuplex = (pages % 2 == 0) ? (pages / 2) : (pages / 2) + 1;
+        // I used a ternary before seeing the instructor solution below is a
+        // better way to calculate duplex printer pages, in one statement
+        // it factors in even or odd number of pages
+        int pagesForDuplex = (pages / 2) + (pages % 2);
         int pagesForThisPrintJob = this.isDuplex() ? pagesForDuplex : pages;
         this.pagesPrinted += pagesForThisPrintJob;
 
