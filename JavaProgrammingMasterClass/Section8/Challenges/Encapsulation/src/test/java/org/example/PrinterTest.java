@@ -59,4 +59,20 @@ public class PrinterTest {
         Assertions.assertEquals(116, printerDuplex.getPagesPrinted());
         Assertions.assertEquals("Duplex printer.", text.trim());
     }
+
+    @Test
+    public void testReturnValueForPrintPagesDuplexEvenPages() throws Exception {
+        String text = tapSystemOut(() -> {
+            Assertions.assertEquals(15, printerDuplex.printPages(30));
+        });
+        Assertions.assertEquals("Duplex printer.", text.trim());
+    }
+
+    @Test
+    public void testReturnValueForPrintPagesDuplexOddPages() throws Exception {
+        String text = tapSystemOut(() -> {
+            Assertions.assertEquals(21, printerDuplex.printPages(41));
+        });
+        Assertions.assertEquals("Duplex printer.", text.trim());
+    }
 }
