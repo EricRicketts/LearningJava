@@ -3,28 +3,21 @@ package org.example;
 public class Printer {
 
     private int tonerLevel, pagesPrinted;
-    private boolean duplex;
-
-    private boolean checkTonerAmount(int tonerAmount) {
-        return tonerAmount > 0 && tonerAmount <= 100;
-    }
-
-    private int checkTonerLevel(int tonerLevel) {
-        return (tonerLevel > -1 && tonerLevel <= 100) ? tonerLevel : -1;
-    }
+    private final boolean duplex;
 
     public int getPagesPrinted() {
         return pagesPrinted;
     }
 
     public int addToner(int tonerAmount) {
-        if (checkTonerAmount(tonerAmount) && checkTonerLevel(this.tonerLevel + tonerAmount) != -1) {
-            this.tonerLevel += tonerAmount;
+        int totalTonerAmount = this.tonerLevel + tonerAmount;
+        totalTonerAmount = (totalTonerAmount > -1 && totalTonerAmount <= 100) ? totalTonerAmount : -1;
+        if ((tonerAmount > 0 && tonerAmount <= 100) && (totalTonerAmount != -1) ) {
+            this.tonerLevel = totalTonerAmount;
             return this.tonerLevel;
         } else {
             return -1;
         }
-
     }
 
     public int printPages(int pages) {
@@ -36,7 +29,7 @@ public class Printer {
     }
 
     public Printer(int tonerLevel, boolean duplex) {
-        this.tonerLevel = checkTonerLevel(tonerLevel);
+        this.tonerLevel = (tonerLevel > -1 && tonerLevel <= 100) ? tonerLevel : -1;
         this.duplex = duplex;
         this.pagesPrinted = 0;
     }

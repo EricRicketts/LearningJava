@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrinterTest {
 
     Printer printer, printerDuplex;
@@ -55,4 +58,29 @@ public class PrinterTest {
         Assertions.assertEquals(7, printerDuplex.printPages(13));
         Assertions.assertEquals(7, printerDuplex.getPagesPrinted());
     }
+
+    @Test
+    public void testCourseExampleDataDuplexPrinterFourPages() {
+        Assertions.assertEquals(2, printerDuplex.printPages(4));
+        Assertions.assertEquals(2, printerDuplex.getPagesPrinted());
+        Assertions.assertEquals(1, printerDuplex.printPages(2));
+        Assertions.assertEquals(3, printerDuplex.getPagesPrinted());
+    }
+
+    @Test
+    public void testCourseData() {
+        Object[][] inputs = {
+           {0, false}, {50, true}, {-10, false},
+           {100, true}, {105, false}, {75, false},
+           {25, true}
+        };
+        for (int row = 0; row < inputs.length; row++) {
+            Object[] tonerLevelAndDuplexSetting = inputs[row];
+            Integer tonerLevel = (Integer) tonerLevelAndDuplexSetting[0];
+            Boolean duplexSetting = (Boolean) tonerLevelAndDuplexSetting[1];
+            printer = new Printer(tonerLevel, duplexSetting);
+            Assertions.assertEquals(0, printer.getPagesPrinted());
+        }
+    }
+
 }
