@@ -17,9 +17,13 @@ public class Printer {
         return duplex;
     }
 
+    private int checkTonerLevel(int tonerLevel) {
+        return tonerLevel < 0 ? -1 : Math.min(100, tonerLevel);
+    }
+
     public int addToner(int tonerAmount) {
         this.tonerLevel += tonerAmount;
-        this.tonerLevel =  this.tonerLevel < 0 ? -1 : Math.min(100, this.tonerLevel);
+        this.tonerLevel =  checkTonerLevel(this.tonerLevel);
         return this.tonerLevel;
     }
 
@@ -33,7 +37,7 @@ public class Printer {
     }
 
     public Printer(int tonerLevel, int pagesPrinted, boolean duplex) {
-        this.tonerLevel = tonerLevel;
+        this.tonerLevel = checkTonerLevel(tonerLevel);
         this.pagesPrinted = pagesPrinted;
         this.duplex = duplex;
     }
