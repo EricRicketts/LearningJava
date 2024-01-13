@@ -43,4 +43,16 @@ public class PrinterTest {
     public void testRemoveTooMuchToner() {
         Assertions.assertEquals(-1, printer.addToner(-60));
     }
+
+    @Test
+    public void testPrintPagesNonDuplex() {
+        Assertions.assertEquals(13, printer.printPages(13));
+        Assertions.assertEquals(13, printer.getPagesPrinted());
+    }
+
+    @Test
+    public void testPrintPagesDuplex() {
+        Assertions.assertEquals(7, printerDuplex.printPages(13));
+        Assertions.assertEquals(7, printerDuplex.getPagesPrinted());
+    }
 }
