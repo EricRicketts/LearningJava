@@ -16,7 +16,7 @@ public class MovieTest {
 
     @Test
     public void testWatchMovie() {
-        String expected = "Pee Wee's Big Adventure is a Movie film.";
+        String expected = "Pee Wee's Big Adventure is a Movie film.\n";
         String result = movie.watchMovie();
         Assertions.assertEquals(expected, result);
     }

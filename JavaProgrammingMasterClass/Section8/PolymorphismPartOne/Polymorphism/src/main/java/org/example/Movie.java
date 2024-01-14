@@ -10,7 +10,7 @@ public class Movie {
 
     public String watchMovie() {
         String instanceType = this.getClass().getSimpleName();
-        return this.getTitle() + " is a " + instanceType + " film.";
+        return this.getTitle() + " is a " + instanceType + " film.\n";
     }
 
     public Movie(String title) {
