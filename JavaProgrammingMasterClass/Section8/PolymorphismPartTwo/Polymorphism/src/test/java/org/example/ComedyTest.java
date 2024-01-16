@@ -21,4 +21,15 @@ public class ComedyTest {
         String result = comedy.watchMovie();
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testGetMovieTypeComedy() {
+        Movie comedy = Movie.getMovie("Comedy", "Young Frankenstein");
+        Assertions.assertEquals("Comedy", comedy.getClass().getSimpleName());
+        String expected = String.join("", "Young Frankenstein is a Comedy film.\n",
+                "... Something funny happens\n", "... Something even funnier happens\n", "... Happy ending.\n"
+        );
+        String result = comedy.watchMovie();
+        Assertions.assertEquals(expected, result);
+    }
 }

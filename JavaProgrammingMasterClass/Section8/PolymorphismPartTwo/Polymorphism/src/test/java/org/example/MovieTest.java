@@ -20,4 +20,11 @@ public class MovieTest {
         String result = movie.watchMovie();
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testGetMovieTypeGeneric() {
+        Movie movie = Movie.getMovie("Horror", "Halloween");
+        Assertions.assertEquals("Movie", movie.getClass().getSimpleName());
+        Assertions.assertEquals("Halloween is a Movie film.\n", movie.watchMovie());
+    }
 }

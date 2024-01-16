@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 public class AdventureTest {
 
     private Adventure adventure;
+    private String expected, result;
 
     @BeforeEach
     public void setUp() {
@@ -15,9 +16,19 @@ public class AdventureTest {
 
     @Test
     public void testWatchMovie() {
-        String expected = String.join("", "Indiana Jones is a Adventure film.\n",
+        expected = String.join("", "Indiana Jones is a Adventure film.\n",
                 " ... Pleasant Scene\n", "... Scary Music\n", "... Something Bad Happens.\n");
-        String result = adventure.watchMovie();
+        result = adventure.watchMovie();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetMovieTypeAdventure() {
+        Movie adventure = Movie.getMovie("Adventure", "The Three Musketeers");
+        Assertions.assertEquals("Adventure", adventure.getClass().getSimpleName());
+        expected = String.join("", "The Three Musketeers is a Adventure film.\n",
+                " ... Pleasant Scene\n", "... Scary Music\n", "... Something Bad Happens.\n");
+        result = adventure.watchMovie();
         Assertions.assertEquals(expected, result);
     }
 }

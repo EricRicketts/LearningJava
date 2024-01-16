@@ -21,4 +21,15 @@ public class ScienceFictionTest {
         String result = scienceFiction.watchMovie();
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testGetMovieTypeScienceFiction() {
+        Movie scienceFiction = Movie.getMovie("ScienceFiction", "District 9");
+        Assertions.assertEquals("ScienceFiction", scienceFiction.getClass().getSimpleName());
+        String expected = String.join("", "District 9 is a ScienceFiction film.\n",
+                "... Bad Aliens do Bad Stuff\n", "... Space Guys Chase Aliens\n", "... Planet Blows Up.\n"
+        );
+        String result = scienceFiction.watchMovie();
+        Assertions.assertEquals(expected, result);
+    }
 }
