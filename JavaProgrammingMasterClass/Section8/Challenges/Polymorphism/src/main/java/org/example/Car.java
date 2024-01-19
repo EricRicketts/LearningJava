@@ -4,17 +4,32 @@ package org.example;
 public class Car {
 
     private final String description;
+    private int horsepower;
 
-    public static Car getType(String description, double avgKmPerLitre, int cylinders, int octane) {
+    public static Car getType(
+        String description, int horsepower, double avgKmPerLitre,
+        int cylinders, int octane, double avgKmPerCharge,
+        int batterySize
+    ) {
         return switch (description) {
             case "GasPoweredCar" ->
-                    new GasPoweredCar("GasPoweredCar", avgKmPerLitre, cylinders, octane);
-            default -> new Car(description);
+                    new GasPoweredCar("GasPoweredCar", horsepower, avgKmPerLitre, cylinders, octane);
+            case "ElectricCar" ->
+                    new ElectricCar("ElectricCar", horsepower, avgKmPerCharge, batterySize);
+            default -> new Car(description, horsepower);
         };
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public int getHorsepower() {
+        return horsepower;
+    }
+
+    public void setHorsepower(int horsepower) {
+        this.horsepower = horsepower;
     }
 
     public String startEngine() {
@@ -30,7 +45,8 @@ public class Car {
         return "A " + this.getClass().getSimpleName() + " is now at idle.";
     }
 
-    public Car(String description) {
+    public Car(String description, int horsepower) {
         this.description = description;
+        this.horsepower = horsepower;
     }
 }

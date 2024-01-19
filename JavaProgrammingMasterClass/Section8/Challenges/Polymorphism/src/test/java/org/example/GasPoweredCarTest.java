@@ -12,8 +12,19 @@ public class GasPoweredCarTest {
 
     @BeforeEach
     public void setUp() {
+        String description = "GasPoweredCar";
+        int horsepower = 300;
+        double avgKmPerLitre = 17.88;
+        int cylinders = 4;
+        int octane = 87;
+        double avgKmPerCharge = 250;
+        int batterySize = 91;
         gasPoweredCar =
-       (GasPoweredCar) Car.getType("GasPoweredCar", 17.88, 4, 87);
+       (GasPoweredCar) Car.getType(
+               description, horsepower, avgKmPerLitre,
+               cylinders, octane, avgKmPerCharge,
+               batterySize
+       );
     }
 
     @Test

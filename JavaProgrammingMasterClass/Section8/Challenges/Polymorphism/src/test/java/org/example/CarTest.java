@@ -12,13 +12,20 @@ public class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car("GasPoweredCar");
+        car = new Car("Generic", 300);
     }
 
     @Test
     public void testGetDescription() {
-        expected = "GasPoweredCar";
+        expected = "Generic";
         result = car.getDescription();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testHorsepower() {
+        int expected = 300;
+        int result = car.getHorsepower();
         Assertions.assertEquals(expected, result);
     }
 

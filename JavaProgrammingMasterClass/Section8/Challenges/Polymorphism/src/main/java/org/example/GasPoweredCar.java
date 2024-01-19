@@ -36,7 +36,7 @@ public class GasPoweredCar extends Car {
             String.join(
             " ", "This",
                     this.getClass().getSimpleName(), "needs an octane rating of at least",
-                    String.valueOf(this.getOctane() + ".")
+                    this.getOctane() + "."
             );
         return String.join("\n", super.drive(), extraInformation);
     }
@@ -47,10 +47,10 @@ public class GasPoweredCar extends Car {
     }
 
     public GasPoweredCar(
-        String description, double avgKmPerLitre,
+        String description, int horsepower, double avgKmPerLitre,
         int cylinders, int octane
     ) {
-        super(description);
+        super(description, horsepower);
         this.avgKmPerLitre = avgKmPerLitre;
         this.cylinders = cylinders;
         this.octane = octane;
