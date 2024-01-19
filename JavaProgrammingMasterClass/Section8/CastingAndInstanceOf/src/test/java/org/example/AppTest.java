@@ -89,4 +89,38 @@ public class AppTest {
         result = indianaJones.watchAdventure();
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testFirstWayToDetermineRuntimeValue() {
+        Object unknownObject = Movie.getMovie("ScienceFiction", "War of the Worlds");
+        if (unknownObject.getClass().getSimpleName().equals("ScienceFiction")) {
+            var scienceFictionMovie = (ScienceFiction) unknownObject;
+            expected = "Watching a Science Fiction movie.";
+            result = scienceFictionMovie.watchScienceFiction();
+            Assertions.assertEquals(expected, result);
+        }
+    }
+
+    @Test
+    public void testSecondWayToDetermineRunTimeValue() {
+        Object unknownObject = Movie.getMovie("Comedy", "Caddyshack");
+        // instanceof operator returns true if the arguments is an instance of the specified class
+        if (unknownObject instanceof Comedy) {
+            expected = "Watching a Comedy movie.";
+            result = ((Comedy) unknownObject).watchComedy();
+            Assertions.assertEquals(expected, result);
+        }
+    }
+
+    @Test
+    public void testThirdWayToDetermineRunTimeValue() {
+        Object unknownObject = Movie.getMovie("Adventure", "North by Northwest");
+        // instanceof operator returns true if the arguments is an instance of the specified class
+        // this enhancement allows a variable to be declared with the specified class
+        if (unknownObject instanceof Adventure adventure) {
+            expected = "Watching an Adventure movie.";
+            result = adventure.watchAdventure();
+            Assertions.assertEquals(expected, result);
+        }
+    }
 }
