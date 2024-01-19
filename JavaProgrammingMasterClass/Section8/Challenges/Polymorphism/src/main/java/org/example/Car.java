@@ -16,6 +16,8 @@ public class Car {
                     new GasPoweredCar("GasPoweredCar", horsepower, avgKmPerLitre, cylinders, octane);
             case "ElectricCar" ->
                     new ElectricCar("ElectricCar", horsepower, avgKmPerCharge, batterySize);
+            case "HybridCar" ->
+                    new HybridCar(description, horsepower, batterySize, cylinders, avgKmPerLitre);
             default -> new Car(description, horsepower);
         };
     }
