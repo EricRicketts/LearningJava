@@ -5,6 +5,14 @@ public class Car {
 
     private final String description;
 
+    public static Car getType(String description, double avgKmPerLitre, int cylinders, int octane) {
+        return switch (description) {
+            case "GasPoweredCar" ->
+                    new GasPoweredCar("GasPoweredCar", avgKmPerLitre, cylinders, octane);
+            default -> new Car(description);
+        };
+    }
+
     public String getDescription() {
         return description;
     }
@@ -15,7 +23,7 @@ public class Car {
 
     public String drive() {
         String driveStatement = "A " + this.getClass().getSimpleName() + " is now being driven.";
-        return String.join("  ", this.runEngine(), driveStatement);
+        return String.join("\n", this.runEngine(), driveStatement);
     }
 
     protected String runEngine() {

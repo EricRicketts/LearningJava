@@ -31,7 +31,8 @@ public class CarTest {
 
     @Test
     public void testDrive() {
-        expected = "A Car is now at idle.  A Car is now being driven.";
+        expected = "A Car is now at idle.\n" +
+            "A Car is now being driven.";
         result = car.drive();
         Assertions.assertEquals(expected, result);
     }
