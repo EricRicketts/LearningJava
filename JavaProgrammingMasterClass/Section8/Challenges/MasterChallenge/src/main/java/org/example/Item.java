@@ -1,7 +1,6 @@
 package org.example;
 
-public class GenericItem {
-
+public class Item {
     private String type;
     private double price;
 
@@ -21,7 +20,7 @@ public class GenericItem {
         this.price = price;
     }
 
-    public GenericItem(String type, double price) {
+    public Item(String type, double price) {
         this.type = type;
         this.price = price;
     }
