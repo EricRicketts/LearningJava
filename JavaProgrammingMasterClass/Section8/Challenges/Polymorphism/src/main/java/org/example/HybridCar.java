@@ -42,11 +42,6 @@ public class HybridCar extends Car {
         return String.join("\n", super.drive(), firstStatement, secondStatement, thirdStatement);
     }
 
-    @Override
-    protected String runEngine() {
-        return super.runEngine();
-    }
-
     public HybridCar(String description, int horsepower, int batterySize,
                      int cylinders, double avgKmPerLitre
     ) {

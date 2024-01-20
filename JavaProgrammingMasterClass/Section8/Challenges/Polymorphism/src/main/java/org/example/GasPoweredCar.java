@@ -41,11 +41,6 @@ public class GasPoweredCar extends Car {
         return String.join("\n", super.drive(), extraInformation);
     }
 
-    @Override
-    protected String runEngine() {
-        return super.runEngine();
-    }
-
     public GasPoweredCar(
         String description, int horsepower, double avgKmPerLitre,
         int cylinders, int octane

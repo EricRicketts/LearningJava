@@ -38,11 +38,6 @@ public class ElectricCar extends Car {
         return String.join("\n", super.drive(), firstStatement, secondStatement, thirdStatement);
     }
 
-    @Override
-    protected String runEngine() {
-        return super.runEngine();
-    }
-
     public ElectricCar(
             String description, int horsepower,
             double avgKmPerCharge, int batterySize
