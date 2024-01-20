@@ -11,19 +11,19 @@ public class HoldenTest {
 
     @BeforeEach
     public void setUp() {
-        holden = new Holden(8, "Commodore");
+        holden = new Holden(6, "Holden Commodore");
     }
 
     @Test
     public void testCylindersGetter() {
-        int expected = 8;
+        int expected = 6;
         int result = holden.getCylinders();
         Assertions.assertEquals(expected, result);
     }
 
     @Test
     public void testNameGetter() {
-        expected = "Commodore";
+        expected = "Holden Commodore";
         result = holden.getName();
         Assertions.assertEquals(expected, result);
     }

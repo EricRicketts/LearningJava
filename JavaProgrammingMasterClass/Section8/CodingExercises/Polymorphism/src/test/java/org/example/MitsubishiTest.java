@@ -11,19 +11,19 @@ public class MitsubishiTest {
 
     @BeforeEach
     public void setUp() {
-        mitsubishi = new Mitsubishi(3, "Mirage");
+        mitsubishi = new Mitsubishi(6, "Outlander VRX 4WD");
     }
 
     @Test
     public void testCylindersGetter() {
-        int expected = 3;
+        int expected = 6;
         int result = mitsubishi.getCylinders();
         Assertions.assertEquals(expected, result);
     }
 
     @Test
     public void testNameGetter() {
-        expected = "Mirage";
+        expected = "Outlander VRX 4WD";
         result = mitsubishi.getName();
         Assertions.assertEquals(expected, result);
     }

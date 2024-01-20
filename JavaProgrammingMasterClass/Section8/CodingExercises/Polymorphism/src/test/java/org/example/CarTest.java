@@ -11,19 +11,19 @@ public class CarTest {
 
     @BeforeEach
     public void setUp() {
-        car = new Car(6, "Generic Car");
+        car = new Car(8, "Base Car");
     }
 
     @Test
     public void testCylindersGetter() {
-        int expected = 6;
+        int expected = 8;
         int result = car.getCylinders();
         Assertions.assertEquals(expected, result);
     }
 
     @Test
     public void testNameGetter() {
-        expected = "Generic Car";
+        expected = "Base Car";
         result = car.getName();
         Assertions.assertEquals(expected, result);
     }
