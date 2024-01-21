@@ -14,12 +14,28 @@ public class ItemTest {
     }
 
     @Test
-    public void testSideItemType() {
+    public void testItemGetType() {
         Assertions.assertEquals("Fries", item.getType());
     }
 
     @Test
-    public void testSideItemPrice() {
+    public void testItemGetPrice() {
         Assertions.assertEquals(6.99, item.getPrice());
+    }
+
+    @Test
+    public void testItemSetType() {
+        String expected = "Tater Tots";
+        item.setType(expected);
+        String result = item.getType();
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testItemSetPrice() {
+        double expected = 12.99;
+        item.setPrice(expected);
+        double result = item.getPrice();
+        Assertions.assertEquals(expected, result);
     }
 }
