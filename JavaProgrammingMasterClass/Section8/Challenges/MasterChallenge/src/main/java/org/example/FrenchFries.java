@@ -1,6 +1,6 @@
 package org.example;
 
-public class Drink extends Item {
+public class FrenchFries extends Item {
 
     private final String size;
 
@@ -8,7 +8,7 @@ public class Drink extends Item {
         return size;
     }
 
-    public Drink(String type, double price, String size) {
+    public FrenchFries(String type, double price, String size) {
         super(type, price);
         this.size = size;
     }
