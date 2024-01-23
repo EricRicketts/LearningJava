@@ -1,8 +1,8 @@
 package org.example;
 
 public class Item {
-    private String type;
-    private double price;
+    private final String type;
+    private final double price;
 
     public String getType() {
         return type;
