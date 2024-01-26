@@ -64,4 +64,20 @@ public class TestBasicMeal {
         };
         Assertions.assertArrayEquals(expectedPrices, resultantPrices);
     }
+
+    @Test
+    public void testToppings() {
+        String[][] expectedToppings = new String[][]{
+                {"Cheese"}, {"Cheese", "Ketchup"}, {"Cheese", "Ketchup", "Mustard"}
+        };
+        String[][] resultantToppings = new String[][]{
+                {secondBasicMeal.getFirstTopping().getType()},
+                {thirdBasicMeal.getFirstTopping().getType(), thirdBasicMeal.getSecondTopping().getType()},
+                {
+                    fourthBasicMeal.getFirstTopping().getType(), fourthBasicMeal.getSecondTopping().getType(),
+                    fourthBasicMeal.getThirdTopping().getType()
+                }
+        };
+        Assertions.assertArrayEquals(expectedToppings, resultantToppings);
+    }
 }
