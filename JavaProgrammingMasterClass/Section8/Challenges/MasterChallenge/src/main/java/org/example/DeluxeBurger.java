@@ -2,7 +2,7 @@ package org.example;
 
 public class DeluxeBurger extends Hamburger {
 
-    public DeluxeBurger(String type, double price) {
-        super(type, price);
+    public DeluxeBurger() {
+        super("Deluxe", 10.99);
     }
 }
