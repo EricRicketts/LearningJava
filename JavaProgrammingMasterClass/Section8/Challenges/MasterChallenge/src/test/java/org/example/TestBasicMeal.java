@@ -50,4 +50,18 @@ public class TestBasicMeal {
             );
         }
     }
+
+    @Test
+    public void testAllPrices() {
+        double burgerAndDrink = (9.99 + 6.99);
+        double[] expectedPrices = new double[]{
+                burgerAndDrink, (burgerAndDrink + 1.50),
+                (burgerAndDrink + 1.50 + 1.00), (burgerAndDrink + 1.50 + 1.00 + 1.00)
+        };
+        double[] resultantPrices = new double[]{
+                firstBasicMeal.getPrice(), secondBasicMeal.getPrice(),
+                thirdBasicMeal.getPrice(), fourthBasicMeal.getPrice()
+        };
+        Assertions.assertArrayEquals(expectedPrices, resultantPrices);
+    }
 }
