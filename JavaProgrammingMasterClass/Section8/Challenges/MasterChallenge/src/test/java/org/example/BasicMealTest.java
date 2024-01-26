@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TestBasicMeal {
+public class BasicMealTest {
 
     private BasicMeal firstBasicMeal;
     private BasicMeal secondBasicMeal;
@@ -17,12 +17,11 @@ public class TestBasicMeal {
         mediumCoke = new SideItem("Coke", 6.99, "Medium");
         firstBasicMeal = new BasicMeal();
         secondBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                new Item("Cheese", 1.50));
+                "Cheese");
         thirdBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                new Item("Cheese", 1.50), new Item("Ketchup", 1.00));
+                "Cheese","Ketchup");
         fourthBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                new Item("Cheese", 1.50), new Item("Ketchup", 1.00),
-                new Item("Mustard", 1.00));
+                "Cheese", "Ketchup", "Mustard");
     }
 
     @Test

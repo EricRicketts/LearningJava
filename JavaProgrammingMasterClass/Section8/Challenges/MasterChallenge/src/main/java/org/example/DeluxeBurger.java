@@ -3,6 +3,6 @@ package org.example;
 public class DeluxeBurger extends Hamburger {
 
     public DeluxeBurger() {
-        super("Deluxe", 10.99);
+        super("Deluxe Hamburger", 10.99);
     }
 }
