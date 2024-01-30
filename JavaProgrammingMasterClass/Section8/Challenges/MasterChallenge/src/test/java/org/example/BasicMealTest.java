@@ -2,81 +2,102 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.util.Objects;
 
 public class BasicMealTest {
 
-    private BasicMeal firstBasicMeal;
-    private BasicMeal secondBasicMeal;
-    private BasicMeal thirdBasicMeal;
-    private BasicMeal fourthBasicMeal;
-    private SideItem mediumCoke;
+    private BasicMeal firstBasicMeal, secondBasicMeal, thirdBasicMeal, fourthBasicMeal;
+    private Hamburger expectedBurger, resultantBurger;
+    private SideItem expectedDrink, resultantDrink;
+    private Item expectedFirstTopping, expectedSecondTopping, expectedThirdTopping,
+        resultantFirstTopping, resultantSecondTopping, resultantThirdTopping;
+    private Object[] expected, result;
 
     @BeforeEach
     public void setUp() {
-        mediumCoke = new SideItem("Coke", 6.99, "Medium");
         firstBasicMeal = new BasicMeal();
-        secondBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                "Cheese");
-        thirdBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                "Cheese","Ketchup");
-        fourthBasicMeal = new BasicMeal(new BasicHamburger(), mediumCoke,
-                "Cheese", "Ketchup", "Mustard");
+        secondBasicMeal = new BasicMeal(
+                "Small", "Small",
+                "Coke", "Cheese"
+        );
+        thirdBasicMeal = new BasicMeal(
+                "Medium", "Medium", "Coke",
+                "Cheese", "Ketchup"
+        );
+        fourthBasicMeal = new BasicMeal(
+                "Large", "Large", "Coke",
+                "Cheese", "Ketchup", "Mustard"
+        );
     }
 
     @Test
-    public void testAllHamburgersAndDrinks() {
-        Item expectedHamburger = new BasicHamburger();
-        Item expectedDrink = mediumCoke;
-        Object[][] allResults = new Object[][]{
-                {firstBasicMeal.getBurger(), firstBasicMeal.getDrink()},
-                {secondBasicMeal.getBurger(), secondBasicMeal.getDrink()},
-                {thirdBasicMeal.getBurger(), thirdBasicMeal.getDrink()},
-                {fourthBasicMeal.getBurger(), fourthBasicMeal.getDrink()},
-        };
-        for (Object[] hamburgerAndDrink : allResults) {
-            Hamburger resultHamburger = (Hamburger) hamburgerAndDrink[0];
-            SideItem resultDrink = (SideItem) hamburgerAndDrink[1];
-            Assertions.assertArrayEquals(
-                    new Object[]{
-                            expectedHamburger.getType(), expectedHamburger.getPrice(),
-                            expectedDrink.getType(), expectedDrink.getPrice()
-                    },
-                    new Object[]{
-                            resultHamburger.getType(), resultHamburger.getPrice(),
-                            resultDrink.getType(), resultDrink.getPrice()
-                    }
-            );
-        }
+    public void testFirstBasicMeal() {
+        expectedBurger = new Hamburger("Medium", 9.99);
+        expectedDrink = new SideItem("Coke", 6.99, "Medium");
+
+        resultantBurger = firstBasicMeal.getBurger();
+        resultantDrink = firstBasicMeal.getDrink();
+
+        expected = new Object[]{expectedBurger, expectedDrink};
+        result = new Object[]{resultantBurger, resultantDrink};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
-    public void testAllPrices() {
-        double burgerAndDrink = (9.99 + 6.99);
-        double[] expectedPrices = new double[]{
-                burgerAndDrink, (burgerAndDrink + 1.50),
-                (burgerAndDrink + 1.50 + 1.00), (burgerAndDrink + 1.50 + 1.00 + 1.00)
-        };
-        double[] resultantPrices = new double[]{
-                firstBasicMeal.getPrice(), secondBasicMeal.getPrice(),
-                thirdBasicMeal.getPrice(), fourthBasicMeal.getPrice()
-        };
-        Assertions.assertArrayEquals(expectedPrices, resultantPrices);
+    public void testSecondBasicMeal() {
+        expectedBurger = new Hamburger("Small", 7.99);
+        expectedDrink = new SideItem("Coke", 4.99, "Small");
+        expectedFirstTopping = new Item("Cheese", 1.50);
+
+        resultantBurger = secondBasicMeal.getBurger();
+        resultantDrink = secondBasicMeal.getDrink();
+        resultantFirstTopping = secondBasicMeal.getFirstTopping();
+
+        expected = new Object[]{expectedBurger, expectedDrink, expectedFirstTopping};
+        result = new Object[]{resultantBurger, resultantDrink, resultantFirstTopping};
+        Assertions.assertArrayEquals(expected, result);
     }
 
     @Test
-    public void testToppings() {
-        String[][] expectedToppings = new String[][]{
-                {"Cheese"}, {"Cheese", "Ketchup"}, {"Cheese", "Ketchup", "Mustard"}
-        };
-        String[][] resultantToppings = new String[][]{
-                {secondBasicMeal.getFirstTopping().getType()},
-                {thirdBasicMeal.getFirstTopping().getType(), thirdBasicMeal.getSecondTopping().getType()},
-                {
-                    fourthBasicMeal.getFirstTopping().getType(), fourthBasicMeal.getSecondTopping().getType(),
-                    fourthBasicMeal.getThirdTopping().getType()
-                }
-        };
-        Assertions.assertArrayEquals(expectedToppings, resultantToppings);
+    public void testThirdBasicMeal() {
+        expectedBurger = new Hamburger("Medium", 9.99);
+        expectedDrink = new SideItem("Coke", 6.99, "Medium");
+        expectedFirstTopping = new Item("Cheese", 1.50);
+        expectedSecondTopping = new Item("Ketchup", 1.00);
+
+        resultantBurger = thirdBasicMeal.getBurger();
+        resultantDrink = thirdBasicMeal.getDrink();
+        resultantFirstTopping = thirdBasicMeal.getFirstTopping();
+        resultantSecondTopping = thirdBasicMeal.getSecondTopping();
+
+        expected = new Object[]{expectedBurger, expectedDrink,
+                expectedFirstTopping, expectedSecondTopping};
+        result = new Object[]{resultantBurger, resultantDrink,
+                resultantFirstTopping, resultantSecondTopping};
+        Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testFourthBasicMeal() {
+        expectedBurger = new Hamburger("Large", 10.99);
+        expectedDrink = new SideItem("Coke", 7.99, "Large");
+        expectedFirstTopping = new Item("Cheese", 1.50);
+        expectedSecondTopping = new Item("Ketchup", 1.00);
+        expectedThirdTopping = new Item("Mustard", 1.00);
+
+        resultantBurger = fourthBasicMeal.getBurger();
+        resultantDrink = fourthBasicMeal.getDrink();
+        resultantFirstTopping = fourthBasicMeal.getFirstTopping();
+        resultantSecondTopping = fourthBasicMeal.getSecondTopping();
+        resultantThirdTopping = fourthBasicMeal.getThirdTopping();
+
+        expected = new Object[]{expectedBurger, expectedDrink,
+                expectedFirstTopping, expectedSecondTopping, expectedThirdTopping};
+        result = new Object[]{resultantBurger, resultantDrink,
+                resultantFirstTopping, resultantSecondTopping, resultantThirdTopping};
+        Assertions.assertArrayEquals(expected, result);
     }
 }

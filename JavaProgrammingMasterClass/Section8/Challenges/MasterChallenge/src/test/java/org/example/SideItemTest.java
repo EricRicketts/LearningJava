@@ -17,6 +17,12 @@ public class SideItemTest {
     public void testGetSize() {
         Assertions.assertEquals("Regular", sideItem.getSize());
     }
+
+    @Test
+    public void testEquals() {
+        SideItem otherSideItem = new SideItem("Generic", 1.99, "Regular");
+        Assertions.assertEquals(sideItem, otherSideItem);
+    }
 }
 /*
     Since SideItem extends Item there is no need to test getType or getPrice as those

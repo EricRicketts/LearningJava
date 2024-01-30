@@ -22,6 +22,12 @@ public class ItemTest {
     public void testGetPrice() {
         Assertions.assertEquals(1.99, item.getPrice());
     }
+
+    @Test
+    public void testEquals() {
+        Item otherItem = new Item("Generic", 1.99);
+        Assertions.assertEquals(item, otherItem);
+    }
 }
 /*
     If Item and SideItem classes are tested there is no need to test the individual food items

@@ -53,42 +53,27 @@ public class DeluxeMeal extends Meal {
         return fifthTopping;
     }
 
-    public DeluxeMeal(String firstTopping) {
-        super(new Hamburger("Deluxe", 0.00), new SideItem("Coke", 0.00, "Large"));
-        this.firstTopping = this.convertToNoCostBurgerOrTopping(firstTopping);
+    public DeluxeMeal(String firstToppingType) {
+        super(new Hamburger("Large", 0.00), new SideItem("Coke", 0.00, "Large"));
     }
 
-    public DeluxeMeal(String firstTopping, String secondTopping) {
-        super(new Hamburger("Deluxe", 0.00), new SideItem("Coke", 0.00, "Large"));
-        this.firstTopping = this.convertToNoCostBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToNoCostBurgerOrTopping(secondTopping);
+    public DeluxeMeal(String firstToppingType, String secondToppingType) {
+        super(new Hamburger("Large", 0.00), new SideItem("Coke", 0.00, "Large"));
     }
 
-    public DeluxeMeal(String firstTopping, String secondTopping, String thirdTopping) {
-        super(new Hamburger("Deluxe", 0.00), new SideItem("Coke", 0.00, "Large"));
-        this.firstTopping = this.convertToNoCostBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToNoCostBurgerOrTopping(secondTopping);
-        this.thirdTopping = this.convertToNoCostBurgerOrTopping(thirdTopping);
+    public DeluxeMeal(String firstToppingType, String secondToppingType, String thirdToppingType) {
+        super(new Hamburger("Large", 0.00), new SideItem("Coke", 0.00, "Large"));
     }
 
-    public DeluxeMeal(String firstTopping, String secondTopping,
-                      String thirdTopping, String fourthTopping
+    public DeluxeMeal(String firstToppingType, String secondToppingType,
+                      String thirdToppingType, String fourthToppingType
     ) {
-        super(new Hamburger("Deluxe", 0.00), new SideItem("Coke", 0.00, "Large"));
-        this.firstTopping = this.convertToNoCostBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToNoCostBurgerOrTopping(secondTopping);
-        this.thirdTopping = this.convertToNoCostBurgerOrTopping(thirdTopping);
-        this.fourthTopping = this.convertToNoCostBurgerOrTopping(fourthTopping);
+        super(new Hamburger("Large", 0.00), new SideItem("Coke", 0.00, "Large"));
     }
 
-    public DeluxeMeal(String firstTopping, String secondTopping, String thirdTopping,
-                      String fourthTopping, String fifthTopping
+    public DeluxeMeal(String firstToppingType, String secondToppingType, String thirdToppingType,
+                      String fourthToppingType, String fifthToppingType
     ) {
-        super(new Hamburger("Deluxe", 0.00), new SideItem("Coke", 0.00, "Large"));
-        this.firstTopping = this.convertToNoCostBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToNoCostBurgerOrTopping(secondTopping);
-        this.thirdTopping = this.convertToNoCostBurgerOrTopping(thirdTopping);
-        this.fourthTopping = this.convertToNoCostBurgerOrTopping(fourthTopping);
-        this.fifthTopping = this.convertToNoCostBurgerOrTopping(fifthTopping);
+        super(new Hamburger("Large", 0.00), new SideItem("Coke", 0.00, "Large"));
     }
 }

@@ -1,16 +1,33 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Meal {
 
-    private final Hamburger burger;
-    private final SideItem drink;
+    private Hamburger burger;
+    private SideItem drink;
     private final double price;
-    protected HashMap<String, Double> burgersAndToppingsTypeAndPrice = new HashMap<>();
+    protected HashMap<String, Double> burgersSizeAndPrice = new HashMap<>(Map.of(
+            "Small", 7.99, "Medium", 9.99, "Large", 10.99
+            )
+    );
+    protected HashMap<String, Double> drinksTypeAndPrice = new HashMap<>(Map.of(
+            "SmallCoke", 4.99, "MediumCoke", 6.99, "LargeCoke", 7.99,
+            "SmallPepsi", 4.99, "MediumPepsi", 6.99, "LargePepsi", 7.99
+        )
+    );
 
     public double getPrice() {
         return price;
+    }
+
+    public void setBurger(Hamburger burger) {
+        this.burger = burger;
+    }
+
+    public void setDrink(SideItem drink) {
+        this.drink = drink;
     }
 
     public Hamburger getBurger() {
@@ -21,36 +38,21 @@ public class Meal {
         return drink;
     }
 
-    private void setBurgersAndToppingsTypeAndPrice() {
-        Object[][] typesAndPrices = new Object[][]{
-                {"Basic Hamburger", 9.99}, {"Deluxe Hamburger", 10.99}, {"Cheese", 1.50},
-                {"Lettuce", 1.00}, {"Tomatoes", 1.00}, {"Ketchup", 1.00}, {"Mustard", 1.00},
-                {"Mayonnaise", 1.00}, {"Onion", 1.00}, {"Relish", 1.00}, {"Pickles", 1.00}
-        };
-        for (Object[] item : typesAndPrices) {
-            String itemType = (String) item[0];
-            Double itemPrice = (Double) item[1];
-            burgersAndToppingsTypeAndPrice.put(itemType, itemPrice);
-        }
-    }
 
-    public HashMap<String, Double> getBurgersAndToppingsTypeAndPrice() {
-        return burgersAndToppingsTypeAndPrice;
-    }
-
-    protected Item convertToNoCostBurgerOrTopping(String itemName) {
-        return new Item(itemName, 0.00);
-    }
-
-    protected Item convertToBurgerOrTopping(String burgerOrToppingName) {
-        double burgerOrToppingPrice = this.getBurgersAndToppingsTypeAndPrice().get(burgerOrToppingName);
-        return new Item(burgerOrToppingName, burgerOrToppingPrice);
+    public Meal(String burgerSize, String drinkSize, String drinkType) {
+        this.setBurger(new Hamburger(burgerSize, burgersSizeAndPrice.get(burgerSize)));
+        this.setDrink(new SideItem(
+                drinkType,
+                drinksTypeAndPrice.get(String.join("", drinkSize, drinkType)),
+                drinkSize
+            )
+        );
+        this.price = this.burger.getPrice() + this.drink.getPrice();
     }
 
     public Meal(Hamburger burger, SideItem drink) {
-        this.burger = burger;
-        this.drink = drink;
-        this.price = burger.getPrice() + drink.getPrice();
-        this.setBurgersAndToppingsTypeAndPrice();
+        this.setBurger(burger);
+        this.setDrink(drink);
+        this.price = this.burger.getPrice() + this.drink.getPrice();
     }
 }

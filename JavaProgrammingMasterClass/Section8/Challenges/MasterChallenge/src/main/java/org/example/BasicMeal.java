@@ -1,23 +1,21 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BasicMeal extends Meal {
 
-    private Item firstTopping;
-    private Item secondTopping = new Item("Nothing", 0.00);
-    private Item thirdTopping = new Item("Nothing", 0.00);
+    private final Item genericItem = new Item("Generic", 0.00);
+    private Item firstTopping = genericItem;
+    private Item secondTopping = genericItem;
+    private Item thirdTopping = genericItem;
     private final double price;
-
-    public void setFirstTopping(Item firstTopping) {
-        this.firstTopping = firstTopping;
-    }
-
-    public void setSecondTopping(Item secondTopping) {
-        this.secondTopping = secondTopping;
-    }
-
-    public void setThirdTopping(Item thirdTopping) {
-        this.thirdTopping = thirdTopping;
-    }
+    protected HashMap<String, Double> toppingsTypeAndPrice = new HashMap<>(Map.of(
+            "Lettuce", 1.00, "Tomatoes", 1.00, "Ketchup", 1.00, "Mustard", 1.00,
+            "Mayonnaise", 1.00, "Onion", 1.00, "Relish", 1.00, "Pickles", 1.00,
+            "Cheese", 1.50
+        )
+    );
 
     public Item getFirstTopping() {
         return firstTopping;
@@ -36,30 +34,49 @@ public class BasicMeal extends Meal {
         return price;
     }
 
+    protected Item[] setToppings(String[] chosenToppingTypes, Item[] toppings) {
+        for (int index = 0; index < chosenToppingTypes.length; index++) {
+            String chosenToppingType = chosenToppingTypes[index];
+            Double chosenToppingPrice = toppingsTypeAndPrice.get(chosenToppingType);
+            toppings[index] = new Item(chosenToppingType, chosenToppingPrice);
+        }
+        return toppings;
+    }
+
     public BasicMeal() {
-        super(new BasicHamburger(), new SideItem("Coke", 6.99, "Medium"));
+        super("Medium", "Medium", "Coke");
         this.price = super.getPrice();
     }
-    public BasicMeal(Hamburger burger, SideItem drink, String firstTopping) {
-        super(burger, drink);
-        this.firstTopping = this.convertToBurgerOrTopping(firstTopping);
+    public BasicMeal(String burgerSize, String drinkSize, String drinkType, String firstToppingType) {
+        super(burgerSize, drinkSize, drinkType);
+        this.firstTopping = setToppings(new String[]{firstToppingType}, new Item[]{this.firstTopping})[0];
         this.price = super.getPrice() + this.firstTopping.getPrice();
     }
 
-    public BasicMeal(Hamburger burger, SideItem drink, String firstTopping, String secondTopping) {
-        super(burger, drink);
-        this.firstTopping = this.convertToBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToBurgerOrTopping(secondTopping);
+    public BasicMeal(String burgerType, String drinkSize, String drinkType,
+                     String firstToppingType, String secondToppingType
+    ) {
+        super(burgerType, drinkSize, drinkType);
+        Item[] toppings = setToppings(
+                new String[]{firstToppingType, secondToppingType},
+                new Item[]{this.firstTopping, this.secondTopping}
+        );
+        this.firstTopping = toppings[0];
+        this.secondTopping = toppings[1];
         this.price = super.getPrice() + this.firstTopping.getPrice() + this.secondTopping.getPrice();
     }
 
-    public BasicMeal(Hamburger burger, SideItem drink, String firstTopping,
-                     String secondTopping, String thirdTopping
+    public BasicMeal(String burgerType, String drinkSize, String drinkType,
+                     String firstToppingType, String secondToppingType, String thirdToppingType
     ) {
-        super(burger, drink);
-        this.firstTopping = this.convertToBurgerOrTopping(firstTopping);
-        this.secondTopping = this.convertToBurgerOrTopping(secondTopping);
-        this.thirdTopping = this.convertToBurgerOrTopping(thirdTopping);
+        super(burgerType, drinkSize, drinkType);
+        Item[] toppings = setToppings(
+                new String[]{firstToppingType, secondToppingType, thirdToppingType},
+                new Item[]{this.firstTopping, this.secondTopping, this.thirdTopping}
+        );
+        this.firstTopping = toppings[0];
+        this.secondTopping = toppings[1];
+        this.thirdTopping = toppings[2];
         this.price = super.getPrice() + this.firstTopping.getPrice() +
                 this.secondTopping.getPrice() + this.thirdTopping.getPrice();
     }
