@@ -10,26 +10,22 @@ public class ItemTest {
 
     @BeforeEach
     public void setUp() {
-        item = new Item("Generic", 1.99);
+        item = new Item("Cheese", 1.50);
     }
 
     @Test
     public void testGetType() {
-        Assertions.assertEquals("Generic", item.getType());
+        Assertions.assertEquals("Cheese", item.getType());
     }
 
     @Test
     public void testGetPrice() {
-        Assertions.assertEquals(1.99, item.getPrice());
+        Assertions.assertEquals(1.50, item.getPrice());
     }
 
     @Test
     public void testEquals() {
-        Item otherItem = new Item("Generic", 1.99);
-        Assertions.assertEquals(item, otherItem);
+       Item otherItem = new Item("Cheese", 1.50);
+       Assertions.assertEquals(item, otherItem);
     }
 }
-/*
-    If Item and SideItem classes are tested there is no need to test the individual food items
-    because all food items extend either the Item or SideItem classes.
-*/

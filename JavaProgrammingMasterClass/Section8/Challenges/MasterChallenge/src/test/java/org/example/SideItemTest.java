@@ -10,22 +10,25 @@ public class SideItemTest {
 
     @BeforeEach
     public void setUp() {
-        sideItem = new SideItem("Generic", 1.99, "Regular");
+        sideItem = new SideItem("Medium", "Onion Rings", 4.99);
     }
 
     @Test
-    public void testGetSize() {
-        Assertions.assertEquals("Regular", sideItem.getSize());
+    public void testGetSize() { Assertions.assertEquals("Medium", sideItem.getSize()); }
+
+    @Test
+    public void testGetType() {
+        Assertions.assertEquals("Onion Rings", sideItem.getType());
+    }
+
+    @Test
+    public void testGetPrice() {
+        Assertions.assertEquals(4.99, sideItem.getPrice());
     }
 
     @Test
     public void testEquals() {
-        SideItem otherSideItem = new SideItem("Generic", 1.99, "Regular");
+        SideItem otherSideItem = new SideItem("Medium", "Onion Rings", 4.99);
         Assertions.assertEquals(sideItem, otherSideItem);
     }
 }
-/*
-    Since SideItem extends Item there is no need to test getType or getPrice as those
-    have been tested in the ItemTest file.  The only field that needs to be tested
-    in SideItem is the size field as that is unique to SideItem.
-*/

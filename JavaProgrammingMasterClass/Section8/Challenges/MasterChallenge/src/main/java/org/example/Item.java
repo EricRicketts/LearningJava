@@ -1,6 +1,7 @@
 package org.example;
 
 public class Item {
+
     private final String type;
     private final double price;
 

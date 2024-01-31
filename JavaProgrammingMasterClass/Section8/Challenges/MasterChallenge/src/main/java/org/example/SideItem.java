@@ -1,11 +1,17 @@
 package org.example;
 
-public class SideItem extends Item {
+public class SideItem {
+    private final String size, type;
+    protected double price;
 
-    private final String size;
+    public String getSize() { return size; }
 
-    public String getSize() {
-        return size;
+    public String getType() {
+        return type;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     @Override
@@ -13,13 +19,14 @@ public class SideItem extends Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SideItem that = (SideItem) o;
-        return  this.getType().equals(that.getType()) &&
-                this.getSize().equals(that.getSize()) &&
+        return  this.getSize().equals(that.getSize()) &&
+                this.getType().equals(that.getType()) &&
                 this.getPrice() == that.getPrice();
     }
 
-    public SideItem(String type, double price, String size) {
-        super(type, price);
+    public SideItem(String size, String type, double price) {
         this.size = size;
+        this.type = type;
+        this.price = price;
     }
 }
