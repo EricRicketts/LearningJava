@@ -10,7 +10,7 @@ public class ItemTest {
 
     @BeforeEach
     public void setUp() {
-        item = new Item("Cheese", 1.50);
+        item = new Item("Cheese");
     }
 
     @Test
@@ -25,7 +25,7 @@ public class ItemTest {
 
     @Test
     public void testEquals() {
-       Item otherItem = new Item("Cheese", 1.50);
+       Item otherItem = new Item("Cheese");
        Assertions.assertEquals(item, otherItem);
     }
 }

@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Hamburger {
 
     private final String size;
@@ -22,8 +25,11 @@ public class Hamburger {
                 this.getPrice() == that.getPrice();
     }
 
-    public Hamburger(String size, double price) {
+    public Hamburger(String size) {
+        Map<String, Double> hamburgerPrices = new HashMap<>() {{
+            put("Small", 7.99); put("Medium", 9.99); put("Large", 10.99);
+        }};
         this.size = size;
-        this.price = price;
+        this.price = hamburgerPrices.get(size);
     }
 }

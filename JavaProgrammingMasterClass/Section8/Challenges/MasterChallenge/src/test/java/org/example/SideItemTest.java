@@ -10,7 +10,7 @@ public class SideItemTest {
 
     @BeforeEach
     public void setUp() {
-        sideItem = new SideItem("Medium", "Onion Rings", 4.99);
+        sideItem = new SideItem("Medium", "Onion Rings");
     }
 
     @Test
@@ -28,7 +28,7 @@ public class SideItemTest {
 
     @Test
     public void testEquals() {
-        SideItem otherSideItem = new SideItem("Medium", "Onion Rings", 4.99);
+        SideItem otherSideItem = new SideItem("Medium", "Onion Rings");
         Assertions.assertEquals(sideItem, otherSideItem);
     }
 }

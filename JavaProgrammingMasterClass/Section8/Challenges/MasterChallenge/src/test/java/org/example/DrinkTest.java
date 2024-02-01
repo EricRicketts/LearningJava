@@ -10,7 +10,7 @@ public class DrinkTest {
 
     @BeforeEach
     public void setUp() {
-        drink = new Drink("Medium", "Coke", 3.99);
+        drink = new Drink("Medium", "Coke");
     }
 
     @Test
@@ -20,7 +20,7 @@ public class DrinkTest {
 
     @Test
     public void testDrinkPrice() {
-        Assertions.assertEquals(3.99, drink.getPrice());
+        Assertions.assertEquals(4.99, drink.getPrice());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class DrinkTest {
 
     @Test
     public void testEquals() {
-        Drink otherDrink = new Drink("Medium", "Coke", 3.99);
+        Drink otherDrink = new Drink("Medium", "Coke");
         Assertions.assertEquals(drink, otherDrink);
     }
 }
