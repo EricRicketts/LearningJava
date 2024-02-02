@@ -2,11 +2,11 @@ package org.example;
 
 public class Meal {
 
-    private Hamburger burger;
-    private Drink drink;
-    private SideItem sideItem;
+    private final HamburgerWithToppings burger;
+    private final Drink drink;
+    private final SideItem sideItem;
 
-    public Hamburger getBurger() {
+    public HamburgerWithToppings getBurger() {
         return burger;
     }
 
@@ -19,15 +19,35 @@ public class Meal {
     }
 
     public Meal() {
-        this.burger = new Hamburger("Medium");
+        this.burger = new HamburgerWithToppings("Medium", "Cheese",
+                "Ketchup", "Mustard");
         this.drink = new Drink("Small", "Coke");
         this.sideItem = new SideItem("Small", "Fries");
     }
 
     public Meal(String burgerSize, String drinkSize, String drinkType,
-                String sideItemSize, String sideItemType
+                String sideItemSize, String sideItemType, String firstToppingType
     ) {
-        this.burger = new Hamburger(burgerSize);
+        this.burger = new HamburgerWithToppings(burgerSize, firstToppingType);
+        this.drink = new Drink(drinkSize, drinkType);
+        this.sideItem = new SideItem(sideItemSize, sideItemType);
+    }
+
+    public Meal(String burgerSize, String drinkSize, String drinkType,
+                String sideItemSize, String sideItemType, String firstToppingType,
+                String secondToppingType
+    ) {
+        this.burger = new HamburgerWithToppings(burgerSize, firstToppingType, secondToppingType);
+        this.drink = new Drink(drinkSize, drinkType);
+        this.sideItem = new SideItem(sideItemSize, sideItemType);
+    }
+
+    public Meal(String burgerSize, String drinkSize, String drinkType,
+                String sideItemSize, String sideItemType, String firstToppingType,
+                String secondToppingType, String thirdToppingType
+    ) {
+        this.burger = new HamburgerWithToppings(burgerSize, firstToppingType,
+                secondToppingType, thirdToppingType);
         this.drink = new Drink(drinkSize, drinkType);
         this.sideItem = new SideItem(sideItemSize, sideItemType);
     }
