@@ -6,9 +6,11 @@ public class Meal {
     private final Drink drink;
     private final SideItem sideItem;
 
-    public HamburgerWithToppings getBurger() {
-        return burger;
+    public Hamburger getBurgerOnly() {
+        return burger.getBurger();
     }
+
+    public HamburgerWithToppings getBurger() { return burger; }
 
     public Drink getDrink() {
         return drink;

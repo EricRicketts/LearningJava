@@ -1,11 +1,23 @@
 package org.example;
 
-public class HamburgerWithToppings extends Hamburger {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-    private final Item firstTopping;
+public class HamburgerWithToppings {
+
+    Hamburger burger;
+    private Item firstTopping;
     private Item secondTopping;
     private Item thirdTopping;
-    private final double totalPrice;
+
+    public void setFirstTopping(Item firstTopping) { this.firstTopping = firstTopping; }
+
+    public void setSecondTopping(Item secondTopping) { this.secondTopping = secondTopping; }
+
+    public void setThirdTopping(Item thirdTopping) { this.thirdTopping = thirdTopping; }
+
+    public Hamburger getBurger() { return burger; }
 
     public Item getFirstTopping() {
         return firstTopping;
@@ -19,31 +31,44 @@ public class HamburgerWithToppings extends Hamburger {
         return thirdTopping;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getTotalPriceForToppings() {
+        double totalPriceForToppings = 0.00;
+        List<Item> toppings = new ArrayList<>();
+        toppings.add(this.getFirstTopping());
+        toppings.add(this.getSecondTopping());
+        toppings.add(this.getThirdTopping());
+
+        for (Item topping : toppings) {
+            if (!Objects.isNull(topping)) totalPriceForToppings += topping.getPrice();
+        }
+        return totalPriceForToppings;
+    }
+
+    public double getPrice() {
+        return this.getBurger().getPrice() + getTotalPriceForToppings();
+    }
+
+    public HamburgerWithToppings(String size) {
+        this.burger = new Hamburger(size);
     }
 
     public HamburgerWithToppings(String size, String firstToppingType) {
-        super(size);
-        this.firstTopping = new Item(firstToppingType);
-        this.totalPrice = super.getPrice() + this.firstTopping.getPrice();
+        this.burger = new Hamburger(size);
+        this.setFirstTopping(new Item(firstToppingType));
     }
 
     public HamburgerWithToppings(String size, String firstToppingType, String secondToppingType) {
-        super(size);
-        this.firstTopping = new Item(firstToppingType);
-        this.secondTopping = new Item(secondToppingType);
-        this.totalPrice = super.getPrice() + this.firstTopping.getPrice() + this.secondTopping.getPrice();
+        this.burger = new Hamburger(size);
+        this.setFirstTopping(new Item(firstToppingType));
+        this.setSecondTopping(new Item(secondToppingType));
     }
 
     public HamburgerWithToppings(String size, String firstToppingType,
                                  String secondToppingType, String thirdToppingType
     ) {
-        super(size);
-        this.firstTopping = new Item(firstToppingType);
-        this.secondTopping = new Item(secondToppingType);
-        this.thirdTopping = new Item(thirdToppingType);
-        this.totalPrice = super.getPrice() + this.firstTopping.getPrice()
-                + this.secondTopping.getPrice() + this.thirdTopping.getPrice();
+        this.burger = new Hamburger(size);
+        this.setFirstTopping(new Item(firstToppingType));
+        this.setSecondTopping(new Item(secondToppingType));
+        this.setThirdTopping(new Item(thirdToppingType));
     }
 }
