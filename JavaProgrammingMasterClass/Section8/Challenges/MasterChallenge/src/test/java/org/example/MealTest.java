@@ -61,8 +61,7 @@ public class MealTest {
     @Test
     public void testDefaultMealPrice() {
         expectedPrice = (9.99 + 1.50 + 1.00 + 1.00) + 2.99 + 2.99;
-        resultantPrice = defaultMeal.getBurger().getPrice() + defaultMeal.getDrink().getPrice() +
-                defaultMeal.getSideItem().getPrice();
+        resultantPrice = defaultMeal.getPrice();
         Assertions.assertEquals(expectedPrice, resultantPrice);
     }
 
@@ -86,8 +85,7 @@ public class MealTest {
     @Test
     public void testMealWithOneToppingPrice() {
         expectedPrice = (10.99 + 1.50) + 5.99 + 5.99;
-        resultantPrice = mealWithOneTopping.getBurger().getPrice() + mealWithOneTopping.getDrink().getPrice() +
-                mealWithOneTopping.getSideItem().getPrice();
+        resultantPrice = mealWithOneTopping.getPrice();
         Assertions.assertEquals(expectedPrice, resultantPrice);
     }
     @Test
@@ -114,8 +112,7 @@ public class MealTest {
     @Test
     public void testMealWithTwoToppingsPrice() {
         expectedPrice = (9.99 + 1.50 + 1.00) + 4.99 + 4.99;
-        resultantPrice = mealWithTwoToppings.getBurger().getPrice() + mealWithTwoToppings.getDrink().getPrice() +
-                mealWithTwoToppings.getSideItem().getPrice();
+        resultantPrice = mealWithTwoToppings.getPrice();
         Assertions.assertEquals(expectedPrice, resultantPrice);
     }
 
@@ -145,5 +142,7 @@ public class MealTest {
     @Test
     public void testMealWithThreeToppingsPrice() {
         expectedPrice = (7.99 + 1.50 + 1.00 + 1.00) + 2.99 + 2.99;
+        resultantPrice = mealWithThreeToppings.getPrice();
+        Assertions.assertEquals(expectedPrice, resultantPrice);
     }
 }

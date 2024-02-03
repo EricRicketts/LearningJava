@@ -20,6 +20,10 @@ public class Meal {
         return sideItem;
     }
 
+    public double getPrice() {
+        return this.getBurger().getPrice() + this.getDrink().getPrice() + this.getSideItem().getPrice();
+    }
+
     public Meal() {
         this.burger = new HamburgerWithToppings("Medium", "Cheese",
                 "Ketchup", "Mustard");
