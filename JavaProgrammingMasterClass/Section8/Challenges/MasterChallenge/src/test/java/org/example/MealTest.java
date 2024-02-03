@@ -39,13 +39,14 @@ public class MealTest {
         expectedDrink = new Drink("Small", "Coke");
         expectedSideItem = new SideItem("Small", "Fries");
 
-        resultantHamburger = defaultMeal.getBurgerOnly();
+        resultantHamburger = defaultMeal.getHamburgerWithToppings().getBurger();
+        resultantHamburger = defaultMeal.getHamburgerWithToppings().getBurger();
         resultantDrink = defaultMeal.getDrink();
         resultantSideItem = defaultMeal.getSideItem();
 
-        resultantFirstTopping = defaultMeal.getBurger().getFirstTopping();
-        resultantSecondTopping = defaultMeal.getBurger().getSecondTopping();
-        resultantThirdTopping = defaultMeal.getBurger().getThirdTopping();
+        resultantFirstTopping = defaultMeal.getHamburgerWithToppings().getFirstTopping();
+        resultantSecondTopping = defaultMeal.getHamburgerWithToppings().getSecondTopping();
+        resultantThirdTopping = defaultMeal.getHamburgerWithToppings().getThirdTopping();
 
         expected = new Object[]{
                 expectedHamburger, expectedDrink, expectedSideItem,
@@ -72,10 +73,10 @@ public class MealTest {
         expectedSideItem = new SideItem("Large", "Onion Rings");
         expectedFirstTopping = new Item("Cheese");
 
-        resultantHamburger = mealWithOneTopping.getBurgerOnly();
+        resultantHamburger = mealWithOneTopping.getHamburgerWithToppings().getBurger();
         resultantDrink = mealWithOneTopping.getDrink();
         resultantSideItem = mealWithOneTopping.getSideItem();
-        resultantFirstTopping = mealWithOneTopping.getBurger().getFirstTopping();
+        resultantFirstTopping = mealWithOneTopping.getHamburgerWithToppings().getFirstTopping();
 
         expected = new Object[]{expectedHamburger, expectedDrink, expectedSideItem, expectedFirstTopping};
         result = new Object[]{resultantHamburger, resultantDrink, resultantSideItem, resultantFirstTopping};
@@ -96,11 +97,11 @@ public class MealTest {
         expectedFirstTopping = new Item("Cheese");
         expectedSecondTopping = new Item("Ketchup");
 
-        resultantHamburger = mealWithTwoToppings.getBurgerOnly();
+        resultantHamburger = mealWithTwoToppings.getHamburgerWithToppings().getBurger();
         resultantDrink = mealWithTwoToppings.getDrink();
         resultantSideItem = mealWithTwoToppings.getSideItem();
-        resultantFirstTopping = mealWithTwoToppings.getBurger().getFirstTopping();
-        resultantSecondTopping = mealWithTwoToppings.getBurger().getSecondTopping();
+        resultantFirstTopping = mealWithTwoToppings.getHamburgerWithToppings().getFirstTopping();
+        resultantSecondTopping = mealWithTwoToppings.getHamburgerWithToppings().getSecondTopping();
 
         expected = new Object[]{expectedHamburger, expectedDrink, expectedSideItem,
                         expectedFirstTopping, expectedSecondTopping};
@@ -125,12 +126,12 @@ public class MealTest {
         expectedSecondTopping = new Item("Ketchup");
         expectedThirdTopping = new Item("Mustard");
 
-        resultantHamburger = mealWithThreeToppings.getBurgerOnly();
+        resultantHamburger = mealWithThreeToppings.getHamburgerWithToppings().getBurger();
         resultantDrink = mealWithThreeToppings.getDrink();
         resultantSideItem = mealWithThreeToppings.getSideItem();
-        resultantFirstTopping = mealWithThreeToppings.getBurger().getFirstTopping();
-        resultantSecondTopping = mealWithThreeToppings.getBurger().getSecondTopping();
-        resultantThirdTopping = mealWithThreeToppings.getBurger().getThirdTopping();
+        resultantFirstTopping = mealWithThreeToppings.getHamburgerWithToppings().getFirstTopping();
+        resultantSecondTopping = mealWithThreeToppings.getHamburgerWithToppings().getSecondTopping();
+        resultantThirdTopping = mealWithThreeToppings.getHamburgerWithToppings().getThirdTopping();
 
         expected = new Object[]{expectedHamburger, expectedDrink, expectedSideItem,
                         expectedFirstTopping, expectedSecondTopping, expectedThirdTopping};
