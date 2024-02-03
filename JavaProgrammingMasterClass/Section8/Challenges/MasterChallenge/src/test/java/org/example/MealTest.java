@@ -145,4 +145,17 @@ public class MealTest {
         resultantPrice = mealWithThreeToppings.getPrice();
         Assertions.assertEquals(expectedPrice, resultantPrice);
     }
+
+    @Test
+    public void testChangeDrinkSize() {
+        expectedDrink = new Drink("Small", "Coke");
+        resultantDrink = mealWithThreeToppings.getDrink();
+        Assertions.assertEquals(expectedDrink, resultantDrink);
+
+        expectedDrink = new Drink("Large", "Coke");
+        mealWithThreeToppings.changeDrinkSize("Large");
+        resultantDrink = mealWithThreeToppings.getDrink();
+
+        Assertions.assertEquals(expectedDrink, resultantDrink);
+    }
 }

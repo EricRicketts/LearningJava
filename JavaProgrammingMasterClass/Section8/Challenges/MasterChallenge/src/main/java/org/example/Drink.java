@@ -5,8 +5,9 @@ import java.util.Map;
 
 public class Drink {
 
-    private final String size, type;
-    private final double price;
+    private String size;
+    private final String type;
+    private double price;
 
     public String getSize() {
         return size;
