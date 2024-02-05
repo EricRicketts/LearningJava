@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 public class DefaultMealTest {
 
     private Meal defaultMeal;
-    private Object[] expected, results;
 
     @BeforeEach
     public void setUp() {
@@ -16,11 +15,11 @@ public class DefaultMealTest {
 
     @Test
     public void testMealComponents() {
-        expected = new Object[]{
+        Object[] expected = new Object[]{
                 new HamburgerWithToppings("Medium").getBurger(), new Drink("Small", "Coke"),
                 new SideItem("Small", "Fries")
         };
-        results = new Object[]{
+        Object[] results = new Object[]{
                 defaultMeal.getHamburgerWithToppings().getBurger(), defaultMeal.getDrink(),
                 defaultMeal.getSideItem()
         };
