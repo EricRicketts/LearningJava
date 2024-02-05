@@ -2,7 +2,6 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class HamburgerWithToppingsTest {
@@ -40,7 +39,7 @@ public class HamburgerWithToppingsTest {
     public void testFirstBurgerSizeAndToppingTypes() {
         expectedSizeAndToppingTypes = new String[]{"Small", "Cheese"};
         resultantSizeAndToppingTypes = new String[]{
-                firstBurgerWithToppings.getBurger().getSize(), firstBurgerWithToppings.getFirstTopping().getType()
+                firstBurgerWithToppings.getBurger().getSize(), firstBurgerWithToppings.getFirstTopping().type()
         };
 
         Assertions.assertArrayEquals(expectedSizeAndToppingTypes, resultantSizeAndToppingTypes);
@@ -55,8 +54,8 @@ public class HamburgerWithToppingsTest {
     public void testSecondBurgerSizeAndToppingTypes() {
         expectedSizeAndToppingTypes = new String[]{"Medium", "Cheese", "Ketchup"};
         resultantSizeAndToppingTypes = new String[]{
-                secondBurgerWithToppings.getBurger().getSize(), secondBurgerWithToppings.getFirstTopping().getType(),
-                secondBurgerWithToppings.getSecondTopping().getType()
+                secondBurgerWithToppings.getBurger().getSize(), secondBurgerWithToppings.getFirstTopping().type(),
+                secondBurgerWithToppings.getSecondTopping().type()
         };
         Assertions.assertArrayEquals(expectedSizeAndToppingTypes, resultantSizeAndToppingTypes);
     }
@@ -70,9 +69,9 @@ public class HamburgerWithToppingsTest {
     public void testThirdBurgerSizeAndToppingTypes() {
         expectedSizeAndToppingTypes = new String[]{"Large", "Cheese", "Ketchup", "Mustard"};
         resultantSizeAndToppingTypes = new String[]{
-                thirdBurgerWithToppings.getBurger().getSize(), thirdBurgerWithToppings.getFirstTopping().getType(),
-                thirdBurgerWithToppings.getSecondTopping().getType(),
-                thirdBurgerWithToppings.getThirdTopping().getType()
+                thirdBurgerWithToppings.getBurger().getSize(), thirdBurgerWithToppings.getFirstTopping().type(),
+                thirdBurgerWithToppings.getSecondTopping().type(),
+                thirdBurgerWithToppings.getThirdTopping().type()
         };
         Assertions.assertArrayEquals(expectedSizeAndToppingTypes, resultantSizeAndToppingTypes);
     }
@@ -88,7 +87,7 @@ public class HamburgerWithToppingsTest {
         expected = new Object[]{"Medium", "Cheese", (9.99 + 1.50)};
         result = new Object[]{
                 burgerWithNoToppings.getBurger().getSize(),
-                burgerWithNoToppings.getFirstTopping().getType(),
+                burgerWithNoToppings.getFirstTopping().type(),
                 burgerWithNoToppings.getPrice()
         };
         Assertions.assertArrayEquals(expected, result);

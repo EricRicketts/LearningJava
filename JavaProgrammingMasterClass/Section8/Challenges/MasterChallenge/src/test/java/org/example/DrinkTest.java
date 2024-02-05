@@ -15,7 +15,7 @@ public class DrinkTest {
 
     @Test
     public void testDrinkType() {
-        Assertions.assertEquals("Coke", drink.getType());
+        Assertions.assertEquals("Coke", drink.type());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class DrinkTest {
 
     @Test
     public void testDrinkSize() {
-        Assertions.assertEquals("Medium", drink.getSize());
+        Assertions.assertEquals("Medium", drink.size());
     }
 
     @Test

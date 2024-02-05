@@ -14,11 +14,11 @@ public class SideItemTest {
     }
 
     @Test
-    public void testGetSize() { Assertions.assertEquals("Medium", sideItem.getSize()); }
+    public void testGetSize() { Assertions.assertEquals("Medium", sideItem.size()); }
 
     @Test
     public void testGetType() {
-        Assertions.assertEquals("Onion Rings", sideItem.getType());
+        Assertions.assertEquals("Onion Rings", sideItem.type());
     }
 
     @Test

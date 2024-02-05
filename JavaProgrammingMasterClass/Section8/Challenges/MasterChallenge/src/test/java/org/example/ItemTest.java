@@ -15,7 +15,7 @@ public class ItemTest {
 
     @Test
     public void testGetType() {
-        Assertions.assertEquals("Cheese", item.getType());
+        Assertions.assertEquals("Cheese", item.type());
     }
 
     @Test
