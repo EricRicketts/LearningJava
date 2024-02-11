@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public record Item(String type) {
                 put("Mayonnaise", 1.00);
                 put("Pickles", 1.50);
                 put("Onions", 1.50);
-                put("Lettuce", 1.00);
+                put("Lettuce", 1.50);
                 put("Tomatoes", 1.50);
             }
         };

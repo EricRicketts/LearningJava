@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,14 +32,15 @@ public class HamburgerWithToppings {
         return thirdTopping;
     }
 
+    public List<Item> getAllToppings() {
+        return Arrays.stream(new Item[]{
+                this.getFirstTopping(), this.getSecondTopping(), this.getThirdTopping()
+        }).toList();
+    }
+
     public double getTotalPriceForToppings() {
         double totalPriceForToppings = 0.00;
-        List<Item> toppings = new ArrayList<>();
-        toppings.add(this.getFirstTopping());
-        toppings.add(this.getSecondTopping());
-        toppings.add(this.getThirdTopping());
-
-        for (Item topping : toppings) {
+        for (Item topping : this.getAllToppings()) {
             if (!Objects.isNull(topping)) totalPriceForToppings += topping.getPrice();
         }
         return totalPriceForToppings;
