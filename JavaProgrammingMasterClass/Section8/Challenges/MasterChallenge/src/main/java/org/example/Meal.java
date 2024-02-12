@@ -1,17 +1,55 @@
 package org.example;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Meal {
 
+    private Item firstTopping;
+    private Item secondTopping;
+    private Item thirdTopping;
     private final DecimalFormat decimalFormat = new DecimalFormat("#.00");
-    private final HamburgerWithToppings hamburgerWithToppings;
+    private final Hamburger hamburger;
     private Drink drink;
     private final SideItem sideItem;
 
-    public HamburgerWithToppings getHamburgerWithToppings() {
-        return hamburgerWithToppings;
+    public Item getFirstTopping() {
+        return firstTopping;
+    }
+
+    public void setFirstTopping(Item firstTopping) {
+        this.firstTopping = firstTopping;
+    }
+
+    public Item getSecondTopping() {
+        return secondTopping;
+    }
+
+    public void setSecondTopping(Item secondTopping) {
+        this.secondTopping = secondTopping;
+    }
+
+    public Item getThirdTopping() {
+        return thirdTopping;
+    }
+
+    public void setThirdTopping(Item thirdTopping) {
+        this.thirdTopping = thirdTopping;
+    }
+
+    private Item[] getAllToppings() {
+        List<Item> toppingList = new ArrayList<>();
+        if (!Objects.isNull(this.getFirstTopping())) toppingList.add(this.getFirstTopping());
+        if (!Objects.isNull(this.getSecondTopping())) toppingList.add(this.getSecondTopping());
+        if (!Objects.isNull(this.getThirdTopping())) toppingList.add(this.getThirdTopping());
+
+        return (Item[]) toppingList.toArray();
+    }
+
+    public Hamburger getHamburger() {
+        return hamburger;
     }
 
     public Drink getDrink() {
@@ -23,7 +61,9 @@ public class Meal {
     }
 
     public double getPrice() {
-        return this.getHamburgerWithToppings().getPrice() + this.getDrink().getPrice()
+        double toppingsPrice = 0.00;
+        for (Item topping : this.getAllToppings()) toppingsPrice += topping.getPrice();
+        return this.getHamburger().getPrice() + toppingsPrice + this.getDrink().getPrice()
                 + this.getSideItem().getPrice();
     }
 
@@ -37,8 +77,8 @@ public class Meal {
     }
 
     private String printEntree() {
-        return this.getHamburgerWithToppings().getBurger().getSize() + " Hamburger " +
-                "$" + decimalFormat.format(this.getHamburgerWithToppings().getBurger().getPrice()) + "\n";
+        return this.getHamburger().size() + " Hamburger " +
+                "$" + decimalFormat.format(this.getHamburger().getPrice()) + "\n";
     }
 
     private String printSideItem() {
@@ -48,12 +88,11 @@ public class Meal {
 
     private String printToppings() {
         String itemizedToppings = "";
-        for (Item topping : this.getHamburgerWithToppings().getAllToppings()) {
-            if (!Objects.isNull(topping)) {
-                itemizedToppings = String.join(itemizedToppings, (topping.type() + " $" +
-                        decimalFormat.format(topping.getPrice()) + "\n"));
-            }
+        for (Item topping : this.getAllToppings()) {
+            itemizedToppings = String.join("", itemizedToppings,
+                    (topping.type() + " $" + decimalFormat.format(topping.getPrice())), "\n");
         }
+
         return itemizedToppings;
     }
 
@@ -67,13 +106,13 @@ public class Meal {
     }
 
     public Meal() {
-        this.hamburgerWithToppings = new HamburgerWithToppings("Medium");
+        this.hamburger = new Hamburger("Medium");
         this.drink = new Drink("Small", "Coke");
         this.sideItem = new SideItem("Small", "Fries");
     }
 
-    public Meal(HamburgerWithToppings hamburgerWithToppings, Drink drink, SideItem sideItem) {
-        this.hamburgerWithToppings = hamburgerWithToppings;
+    public Meal(Hamburger hamburger, Drink drink, SideItem sideItem) {
+        this.hamburger = hamburger;
         this.drink = drink;
         this.sideItem = sideItem;
     }

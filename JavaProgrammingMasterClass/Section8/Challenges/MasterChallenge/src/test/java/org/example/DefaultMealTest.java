@@ -16,11 +16,11 @@ public class DefaultMealTest {
     @Test
     public void testMealComponents() {
         Object[] expected = new Object[]{
-                new HamburgerWithToppings("Medium").getBurger(), new Drink("Small", "Coke"),
+                new Hamburger("Medium"), new Drink("Small", "Coke"),
                 new SideItem("Small", "Fries")
         };
         Object[] results = new Object[]{
-                defaultMeal.getHamburgerWithToppings().getBurger(), defaultMeal.getDrink(),
+                defaultMeal.getHamburger(), defaultMeal.getDrink(),
                 defaultMeal.getSideItem()
         };
         Assertions.assertArrayEquals(expected, results);

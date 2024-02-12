@@ -15,7 +15,7 @@ public class HamburgerTest {
 
     @Test
     public void testHamburgerSize() {
-        Assertions.assertEquals("Large", burger.getSize());
+        Assertions.assertEquals("Large", burger.size());
     }
 
     @Test

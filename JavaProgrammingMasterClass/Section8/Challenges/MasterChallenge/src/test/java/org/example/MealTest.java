@@ -11,25 +11,24 @@ public class MealTest {
 
     @BeforeEach
     public void setUp() {
-        HamburgerWithToppings hamburgerWithToppings =
-                new HamburgerWithToppings("Medium", "Cheese");
+        Hamburger hamburger = new Hamburger("Medium");
         Drink drink = new Drink("Medium", "Coke");
         SideItem sideItem = new SideItem("Medium", "Onion Rings");
-        meal = new Meal(hamburgerWithToppings, drink, sideItem);
+        meal = new Meal(hamburger, drink, sideItem);
     }
 
     @Test
     public void testAddTwoToppings() {
-        meal.getHamburgerWithToppings().setSecondTopping(new Item("Ketchup"));
-        meal.getHamburgerWithToppings().setThirdTopping(new Item("Mustard"));
+        meal.setSecondTopping(new Item("Ketchup"));
+        meal.setThirdTopping(new Item("Mustard"));
         expected = new Object[]{
                 new Item("Ketchup"), 1.00, new Item("Mustard"), 1.00
         };
         results = new Object[]{
-                meal.getHamburgerWithToppings().getSecondTopping(),
-                meal.getHamburgerWithToppings().getSecondTopping().getPrice(),
-                meal.getHamburgerWithToppings().getThirdTopping(),
-                meal.getHamburgerWithToppings().getThirdTopping().getPrice()
+                meal.getSecondTopping(),
+                meal.getSecondTopping().getPrice(),
+                meal.getThirdTopping(),
+                meal.getThirdTopping().getPrice()
         };
 
         Assertions.assertArrayEquals(expected, results);
