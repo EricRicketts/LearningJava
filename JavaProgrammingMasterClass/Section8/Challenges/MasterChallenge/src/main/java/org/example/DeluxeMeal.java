@@ -1,51 +1,11 @@
 package org.example;
 
-public class DeluxeMeal {
+public class DeluxeMeal extends Meal {
 
-    private Item firstTopping;
-    private Item secondTopping;
-    private Item thirdTopping;
     private Item fourthTopping;
     private Item fifthTopping;
-    private final Hamburger hamburger;
-    private final Drink drink;
-    private final SideItem sideItem;
 
-    public Hamburger getHamburger() {
-        return hamburger;
-    }
 
-    public Drink getDrink() {
-        return drink;
-    }
-
-    public SideItem getSideItem() {
-        return sideItem;
-    }
-
-    public Item getFirstTopping() {
-        return firstTopping;
-    }
-
-    public void setFirstTopping(Item firstTopping) {
-        this.firstTopping = firstTopping;
-    }
-
-    public Item getSecondTopping() {
-        return secondTopping;
-    }
-
-    public void setSecondTopping(Item secondTopping) {
-        this.secondTopping = secondTopping;
-    }
-
-    public Item getThirdTopping() {
-        return thirdTopping;
-    }
-
-    public void setThirdTopping(Item thirdTopping) {
-        this.thirdTopping = thirdTopping;
-    }
 
     public Item getFourthTopping() {
         return fourthTopping;
@@ -68,8 +28,7 @@ public class DeluxeMeal {
     }
 
     public DeluxeMeal() {
-        this.hamburger = new Hamburger("Large");
-        this.drink = new Drink("Large", "Coke");
-        this.sideItem = new SideItem("Large", "Fries");
+        super(new Hamburger("Large"), new Drink("Large", "Coke"),
+                new SideItem("Large", "Fries"));
     }
 }
