@@ -39,13 +39,13 @@ public class Meal {
         this.thirdTopping = thirdTopping;
     }
 
-    private Item[] getAllToppings() {
+    private List<Item> getAllToppings() {
         List<Item> toppingList = new ArrayList<>();
         if (!Objects.isNull(this.getFirstTopping())) toppingList.add(this.getFirstTopping());
         if (!Objects.isNull(this.getSecondTopping())) toppingList.add(this.getSecondTopping());
         if (!Objects.isNull(this.getThirdTopping())) toppingList.add(this.getThirdTopping());
 
-        return (Item[]) toppingList.toArray();
+        return toppingList;
     }
 
     public Hamburger getHamburger() {
@@ -97,7 +97,7 @@ public class Meal {
     }
 
     private String printTotal() {
-        return "Total: " + "$" + this.getPrice() + "\n";
+        return "Total: " + "$" + decimalFormat.format(this.getPrice()) + "\n";
     }
 
     public String printItemizedList() {

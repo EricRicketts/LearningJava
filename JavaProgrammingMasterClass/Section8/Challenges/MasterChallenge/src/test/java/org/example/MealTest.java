@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class MealTest {
@@ -49,7 +50,9 @@ public class MealTest {
 
     @Test
     public void testGetTotalPriceForMeal() {
-        double expectedPrice = (9.99 + 1.50) + 4.99 + 4.99;
+        meal.setFirstTopping(new Item("Cheese"));
+        meal.setSecondTopping(new Item("Ketchup"));
+        double expectedPrice = 9.99 + (1.50 + 1.00) + 4.99 + 4.99;
         double resultantPrice = meal.getPrice();
 
         Assertions.assertEquals(expectedPrice, resultantPrice);
@@ -57,13 +60,16 @@ public class MealTest {
 
     @Test
     public void testItemizedMealList() {
+        meal.setFirstTopping(new Item("Cheese"));
+        meal.setSecondTopping(new Item("Ketchup"));
         String expectedMealList =
                 """
                         Medium Hamburger $9.99
                         Cheese $1.50
+                        Ketchup $1.00
                         Medium Coke $4.99
                         Medium Onion Rings $4.99
-                        Total: $21.47
+                        Total: $22.47
                         """;
         String resultantMealList = meal.printItemizedList();
 
