@@ -3,7 +3,12 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public record Item(String size, String type, String name) {
+public class Item {
+
+    private String size;
+    private final String type;
+    private String name;
+    private double price;
 
     final static Map<String, Double> drinkPrices = new HashMap<>(){{
         put("SmallCoke", 2.99);
@@ -34,14 +39,42 @@ public record Item(String size, String type, String name) {
             put("Tomatoes", 1.50);
         }};
 
+    public String getSize() {
+        return size;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     private double getDrinkPrice() {
-        String nameWithNoSpaces = this.name().replaceAll("\\s", "");
+        String nameWithNoSpaces = this.getName().replaceAll("\\s", "");
         String drinkPriceKey = String.join("", size, nameWithNoSpaces);
         return drinkPrices.get(drinkPriceKey);
     }
 
-    public double getPrice() {
-        return switch (this.type().toLowerCase()) {
+    public double getInitialPrice() {
+        return switch (this.getType().toLowerCase()) {
             case "drink" -> this.getDrinkPrice();
             case "side" -> this.getSidePrice();
             case "topping" -> this.getToppingPrice();
@@ -50,13 +83,13 @@ public record Item(String size, String type, String name) {
     }
 
     private double getSidePrice() {
-        String nameWithNoSpaces = this.name().replaceAll("\\s", "");
+        String nameWithNoSpaces = this.getName().replaceAll("\\s", "");
         String sidePriceKey = String.join("", size, nameWithNoSpaces);
         return sidePrices.get(sidePriceKey);
     }
 
     private double getToppingPrice() {
-        String nameWithNoSpaces = this.name().replaceAll("\\s", "");
+        String nameWithNoSpaces = this.getName().replaceAll("\\s", "");
         String toppingPriceKey = String.join("", size, nameWithNoSpaces);
         return toppingPrices.get(toppingPriceKey);
     }
@@ -66,9 +99,16 @@ public record Item(String size, String type, String name) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item that = (Item) o;
-        return this.size().equals(that.size()) &&
-                this.type().equals(that.type()) &&
-                this.name().equals(that.name()) &&
+        return this.getSize().equals(that.getSize()) &&
+                this.getType().equals(that.getType()) &&
+                this.getName().equals(that.getName()) &&
                 this.getPrice() == that.getPrice();
+    }
+
+    public Item(String size, String type, String name) {
+        this.size = size;
+        this.type = type;
+        this.name = name;
+        this.price = this.getInitialPrice();
     }
 }

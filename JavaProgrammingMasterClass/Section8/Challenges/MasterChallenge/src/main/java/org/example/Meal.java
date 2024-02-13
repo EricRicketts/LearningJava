@@ -66,11 +66,11 @@ public class Meal {
     }
 
     public void changeDrinkSizeTo(String newSize) {
-        this.drink = new Item(newSize, "Drink", this.getDrink().name());
+        this.drink = new Item(newSize, "Drink", this.getDrink().getName());
     }
 
     private String printDrink() {
-        return this.getDrink().size() + " " + this.getDrink().type() + " $" +
+        return this.getDrink().getSize() + " " + this.getDrink().getName() + " $" +
                 decimalFormat.format(this.getDrink().getPrice()) + "\n";
     }
 
@@ -80,7 +80,7 @@ public class Meal {
     }
 
     private String printSide() {
-        return this.getSide().size() + " " + this.getSide().type() + " $"
+        return this.getSide().getSize() + " " + this.getSide().getName() + " $"
                 + decimalFormat.format(this.getSide().getPrice()) + "\n";
     }
 
@@ -88,7 +88,7 @@ public class Meal {
         String itemizedToppings = "";
         for (Item topping : this.getAllToppings()) {
             itemizedToppings = String.join("", itemizedToppings,
-                    (topping.type() + " $" + decimalFormat.format(topping.getPrice())), "\n");
+                    (topping.getName() + " $" + decimalFormat.format(topping.getPrice())), "\n");
         }
 
         return itemizedToppings;

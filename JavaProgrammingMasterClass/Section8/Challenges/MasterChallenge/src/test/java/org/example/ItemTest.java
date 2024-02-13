@@ -6,26 +6,27 @@ import org.junit.jupiter.api.Test;
 
 public class ItemTest {
 
-    private Item side;
+    private Item side, drink;
 
     @BeforeEach
     public void setUp() {
         side = new Item("Medium", "Side", "Onion Rings");
+        drink = new Item("Large", "Drink", "Coke");
     }
 
     @Test
     public void testGetSideSize() {
-        Assertions.assertEquals("Medium", side.size());
+        Assertions.assertEquals("Medium", side.getSize());
     }
 
     @Test
     public void testGetSideType() {
-        Assertions.assertEquals("Side", side.type());
+        Assertions.assertEquals("Side", side.getType());
     }
 
     @Test
     public void testGetSideName() {
-        Assertions.assertEquals("Onion Rings", side.name());
+        Assertions.assertEquals("Onion Rings", side.getName());
     }
 
     @Test
@@ -34,8 +35,34 @@ public class ItemTest {
     }
 
     @Test
-    public void testEquals() {
+    public void testEqualsForSide() {
         Item otherSide = new Item("Medium", "Side", "Onion Rings");
         Assertions.assertEquals(side, otherSide);
+    }
+
+    @Test
+    public void testGetDrinkSize() {
+        Assertions.assertEquals("Large", drink.getSize());
+    }
+
+    @Test
+    public void testGetDrinkType() {
+        Assertions.assertEquals("Drink", drink.getType());
+    }
+
+    @Test
+    public void testGetDrinkName() {
+        Assertions.assertEquals("Coke", drink.getName());
+    }
+
+    @Test
+    public void testGetDrinkPrice() {
+        Assertions.assertEquals(5.99, drink.getPrice());
+    }
+
+    @Test
+    public void testEqualsForDrinks() {
+        Item otherDrink = new Item("Large", "Drink", "Coke");
+        Assertions.assertEquals(drink, otherDrink);
     }
 }
