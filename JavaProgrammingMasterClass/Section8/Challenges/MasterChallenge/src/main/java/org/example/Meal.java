@@ -12,8 +12,8 @@ public class Meal {
     private Item thirdTopping;
     private final DecimalFormat decimalFormat = new DecimalFormat("#.00");
     private final Hamburger hamburger;
-    private Drink drink;
-    private final SideItem sideItem;
+    private Item drink;
+    private final Item side;
 
     public Item getFirstTopping() {
         return firstTopping;
@@ -52,23 +52,21 @@ public class Meal {
         return hamburger;
     }
 
-    public Drink getDrink() {
+    public Item getDrink() {
         return drink;
     }
 
-    public SideItem getSideItem() {
-        return sideItem;
-    }
+    public Item getSide() { return side; }
 
     public double getPrice() {
         double toppingsPrice = 0.00;
         for (Item topping : this.getAllToppings()) toppingsPrice += topping.getPrice();
         return this.getHamburger().getPrice() + toppingsPrice + this.getDrink().getPrice()
-                + this.getSideItem().getPrice();
+                + this.getSide().getPrice();
     }
 
     public void changeDrinkSizeTo(String newSize) {
-        this.drink = new Drink(newSize, this.getDrink().type());
+        this.drink = new Item(newSize, "Drink", this.getDrink().name());
     }
 
     private String printDrink() {
@@ -81,9 +79,9 @@ public class Meal {
                 "$" + decimalFormat.format(this.getHamburger().getPrice()) + "\n";
     }
 
-    private String printSideItem() {
-        return this.getSideItem().size() + " " + this.getSideItem().type() + " $"
-                + decimalFormat.format(this.getSideItem().getPrice()) + "\n";
+    private String printSide() {
+        return this.getSide().size() + " " + this.getSide().type() + " $"
+                + decimalFormat.format(this.getSide().getPrice()) + "\n";
     }
 
     private String printToppings() {
@@ -102,18 +100,18 @@ public class Meal {
 
     public String printItemizedList() {
         return this.printEntree() + this.printToppings() + this.printDrink()
-                + this.printSideItem() + this.printTotal();
+                + this.printSide() + this.printTotal();
     }
 
     public Meal() {
         this.hamburger = new Hamburger("Medium");
-        this.drink = new Drink("Small", "Coke");
-        this.sideItem = new SideItem("Small", "Fries");
+        this.drink = new Item("Small", "Drink", "Coke");
+        this.side = new Item("Small", "Side", "Fries");
     }
 
-    public Meal(Hamburger hamburger, Drink drink, SideItem sideItem) {
+    public Meal(Hamburger hamburger, Item drink, Item side) {
         this.hamburger = hamburger;
         this.drink = drink;
-        this.sideItem = sideItem;
+        this.side = side;
     }
 }

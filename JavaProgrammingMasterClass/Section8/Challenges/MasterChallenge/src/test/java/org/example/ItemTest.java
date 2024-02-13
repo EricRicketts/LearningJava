@@ -6,26 +6,36 @@ import org.junit.jupiter.api.Test;
 
 public class ItemTest {
 
-    private Item item;
+    private Item side;
 
     @BeforeEach
     public void setUp() {
-        item = new Item("Cheese");
+        side = new Item("Medium", "Side", "Onion Rings");
     }
 
     @Test
-    public void testGetType() {
-        Assertions.assertEquals("Cheese", item.type());
+    public void testGetSideSize() {
+        Assertions.assertEquals("Medium", side.size());
     }
 
     @Test
-    public void testGetPrice() {
-        Assertions.assertEquals(1.50, item.getPrice());
+    public void testGetSideType() {
+        Assertions.assertEquals("Side", side.type());
+    }
+
+    @Test
+    public void testGetSideName() {
+        Assertions.assertEquals("Onion Rings", side.name());
+    }
+
+    @Test
+    public void testGetSidePrice() {
+        Assertions.assertEquals(4.99, side.getPrice());
     }
 
     @Test
     public void testEquals() {
-       Item otherItem = new Item("Cheese");
-       Assertions.assertEquals(item, otherItem);
+        Item otherSide = new Item("Medium", "Side", "Onion Rings");
+        Assertions.assertEquals(side, otherSide);
     }
 }
