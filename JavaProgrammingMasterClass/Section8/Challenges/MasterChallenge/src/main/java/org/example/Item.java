@@ -89,8 +89,7 @@ public class Item {
     }
 
     private double getToppingPrice() {
-        String nameWithNoSpaces = this.getName().replaceAll("\\s", "");
-        String toppingPriceKey = String.join("", size, nameWithNoSpaces);
+        String toppingPriceKey = this.getName();
         return toppingPrices.get(toppingPriceKey);
     }
 

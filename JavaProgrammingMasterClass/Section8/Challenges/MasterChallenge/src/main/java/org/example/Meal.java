@@ -95,7 +95,7 @@ public class Meal {
     }
 
     private String printTotal() {
-        return "Total: " + "$" + decimalFormat.format(this.getPrice()) + "\n";
+        return "Total " + "$" + decimalFormat.format(this.getPrice()) + "\n";
     }
 
     public String printItemizedList() {

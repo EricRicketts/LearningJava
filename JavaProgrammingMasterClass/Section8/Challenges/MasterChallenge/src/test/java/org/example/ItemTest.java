@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Test;
 
 public class ItemTest {
 
-    private Item side, drink;
+    private Item side, drink, topping;
 
     @BeforeEach
     public void setUp() {
         side = new Item("Medium", "Side", "Onion Rings");
         drink = new Item("Large", "Drink", "Coke");
+        topping = new Item("", "topping", "Cheese");
     }
 
     @Test
@@ -64,5 +65,21 @@ public class ItemTest {
     public void testEqualsForDrinks() {
         Item otherDrink = new Item("Large", "Drink", "Coke");
         Assertions.assertEquals(drink, otherDrink);
+    }
+
+    @Test
+    public void testGetToppingName() {
+        Assertions.assertEquals("Cheese", topping.getName());
+    }
+
+    @Test
+    public void testGetToppingPrice() {
+        Assertions.assertEquals(1.50, topping.getPrice());
+    }
+
+    @Test
+    public void testEqualsForToppings() {
+        Item otherTopping = new Item("", "topping", "Cheese");
+        Assertions.assertEquals(topping, otherTopping);
     }
 }
