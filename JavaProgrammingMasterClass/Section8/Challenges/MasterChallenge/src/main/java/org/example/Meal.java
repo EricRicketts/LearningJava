@@ -10,10 +10,10 @@ public class Meal {
     private Item firstTopping;
     private Item secondTopping;
     private Item thirdTopping;
-    private final DecimalFormat decimalFormat = new DecimalFormat("#.00");
+    private final DecimalFormat decimalFormat = new DecimalFormat("0.00");
     private final Hamburger hamburger;
     private Item drink;
-    private final Item side;
+    private Item side;
 
     public Item getFirstTopping() {
         return firstTopping;
@@ -39,7 +39,7 @@ public class Meal {
         this.thirdTopping = thirdTopping;
     }
 
-    private List<Item> getAllToppings() {
+    protected List<Item> getAllToppings() {
         List<Item> toppingList = new ArrayList<>();
         if (!Objects.isNull(this.getFirstTopping())) toppingList.add(this.getFirstTopping());
         if (!Objects.isNull(this.getSecondTopping())) toppingList.add(this.getSecondTopping());

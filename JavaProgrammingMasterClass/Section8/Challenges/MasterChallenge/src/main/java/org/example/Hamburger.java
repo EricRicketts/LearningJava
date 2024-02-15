@@ -7,7 +7,7 @@ public record Hamburger(String size) {
 
     public double getPrice() {
         Map<String, Double> hamburgerPrices = new HashMap<>() {{
-            put("Small", 7.99); put("Medium", 9.99); put("Large", 10.99);
+            put("Small", 7.99); put("Medium", 9.99); put("Large", 10.99); put("Deluxe", 17.99);
         }};
         return hamburgerPrices.get(size);
     }
