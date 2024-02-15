@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MealTest {
 
     private Meal defaultMeal, meal;
@@ -87,5 +90,26 @@ public class MealTest {
 
     @Test
     public void testPrintItemizedList() {
+        expectedPrice = 10.99 + (1.50 + 1.00 + 1.00) + 4.99 + 4.99;
+        expectedList = "Large Hamburger $10.99\n" +
+                "Cheese $1.50\n" + "Ketchup $1.00\n" + "Mustard $1.00\n" +
+                "Medium Coke $4.99\n" + "Medium Fries $4.99\n" +
+                String.format("Total $%.2f\n", expectedPrice);
+        resultantList = meal.printItemizedList();
+        Assertions.assertEquals(expectedList, resultantList);
+    }
+
+    @Test
+    public void testChangeDrinkSize() {
+        expected = new Object[]{
+                new Item("Medium", "Drink", "Coke"),
+                new Item("Large", "Drink", "Coke"),
+        };
+        List<Item> resultantDrinkList = new ArrayList<>();
+        resultantDrinkList.add(meal.getDrink());
+        meal.changeDrinkSizeTo("Large");
+        resultantDrinkList.add(meal.getDrink());
+
+        Assertions.assertArrayEquals(expected, resultantDrinkList.toArray());
     }
 }
