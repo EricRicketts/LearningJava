@@ -107,6 +107,5 @@ public class ArraysPartOneTest {
 
 
         Object[] result = new Object[]{objectAry[0], objectAry[1], fourthElement};
-
     }
 }
