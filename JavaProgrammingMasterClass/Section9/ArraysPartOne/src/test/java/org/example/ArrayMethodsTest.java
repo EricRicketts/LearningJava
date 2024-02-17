@@ -85,5 +85,12 @@ public class ArrayMethodsTest {
         Assertions.assertArrayEquals(new int[]{0, 1, 2, 3, 0, 0}, largeAry);
     }
 
-
+    @Test
+    public void testBinarySearch() {
+        // the most important item to remember about this method is that the
+        // array being searched must be sorted.
+        String[] nameAry = {"Elmer", "Mark", "Andy", "Zigfried", "Bill"};
+        Arrays.sort(nameAry);
+        Assertions.assertEquals(1, Arrays.binarySearch(nameAry, "Bill"));
+    }
 }
