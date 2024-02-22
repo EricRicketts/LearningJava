@@ -64,4 +64,14 @@ public class MoreListsTest {
         Assertions.assertArrayEquals(expected, results);
     }
 
+    @Test
+    public void testAddAllMethod() {
+        ArrayList<String> newList = new ArrayList<>(stringList);
+        List<String> listToAdd = List.of("yogurt", "cabbage", "carrots",
+                "brocolli", "onions", "celery");
+        boolean listAddedTo = newList.addAll(listToAdd);
+        Assertions.assertTrue(listAddedTo);
+        Assertions.assertEquals(10, newList.size());
+    }
+
 }
