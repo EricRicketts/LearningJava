@@ -164,5 +164,4 @@ public class MoreListsTest {
         result = new String[]{list.get(1), array[1]};
         Assertions.assertArrayEquals(expected, result);
     }
-
 }
