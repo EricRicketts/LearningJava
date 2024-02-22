@@ -74,4 +74,36 @@ public class MoreListsTest {
         Assertions.assertEquals(10, newList.size());
     }
 
+    @Test
+    public void testArrayListRetrievalMethods() {
+        // apples, bananas, milk, eggs
+        ArrayList<String> newList = new ArrayList<>(stringList);
+        boolean listWasAdded = newList.addAll(List.of("yogurt", "cabbage", "brocolli", "carrots"));
+        Assertions.assertEquals("yogurt", newList.get(4));
+        Assertions.assertEquals(5, newList.indexOf("cabbage"));
+        Assertions.assertEquals(6, newList.lastIndexOf("brocolli"));
+    }
+
+    @Test
+    public void testArrayRemovalMethods() {
+        // apples, bananas, milk, eggs
+        ArrayList<String> newList = new ArrayList<>(stringList);
+        boolean listWasAdded = newList.addAll(List.of("yogurt", "cabbage", "brocolli", "carrots"));
+        Assertions.assertEquals(8, newList.size());
+        newList.remove(0); // remove apples
+        Assertions.assertEquals(-1, newList.indexOf("apples"));
+        boolean itemsRemoved = newList.removeAll(List.of("brocolli", "carrots"));
+        Assertions.assertTrue(itemsRemoved);
+        Assertions.assertEquals(5, newList.size());
+        boolean itemsRetained = newList.retainAll(List.of("bananas", "milk", "eggs", "beats"));
+        Assertions.assertTrue(itemsRetained); // note retained even though item "beats" is not
+        // part of the original list
+        boolean listChanges = newList.retainAll(List.of("bananas", "milk", "eggs"));
+        // retainAll only returns false if the list does not change
+        Assertions.assertFalse(listChanges);
+        Assertions.assertEquals(3, newList.size());
+        newList.clear();
+        Assertions.assertTrue(newList.isEmpty());
+    }
+
 }
