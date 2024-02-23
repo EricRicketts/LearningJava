@@ -41,4 +41,34 @@ public class GroceryListChallengeTest {
 
         Assertions.assertEquals(expected, results);
     }
+
+    @Test
+    public void testEliminateDuplicateItems() {
+        expected = new ArrayList<>(){
+            {
+                add("butter"); add("cheese"); add("cream");
+                add("ghee"); add("milk"); add("yogurt");
+            }};
+        groceryList.addItems("milk", "cheese", "butter");
+        groceryList.addItems("yogurt", "ghee", "cream", "butter");
+        groceryList.addItems("yogurt", "milk", "cream", "cheese");
+        results = groceryList.getItems();
+
+        Assertions.assertEquals(expected, results);
+    }
+
+    @Test
+    public void testRemoveItemsInTheList() {
+        expected = new ArrayList<>(){{
+             add("cheese"); add("cream");
+             add("milk"); add("yogurt");
+        }};
+        groceryList.addItems("milk", "cheese", "butter");
+        groceryList.addItems("yogurt", "ghee", "cream");
+        groceryList.removeItems("ghee", "butter");
+        results = groceryList.getItems();
+
+        Assertions.assertEquals(expected, results);
+    }
+
 }
