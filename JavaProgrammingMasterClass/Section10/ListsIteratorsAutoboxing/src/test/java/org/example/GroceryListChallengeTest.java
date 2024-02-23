@@ -71,4 +71,18 @@ public class GroceryListChallengeTest {
         Assertions.assertEquals(expected, results);
     }
 
+    @Test
+    public void testItemsShouldBeRemovedOnlyIfInList() {
+        expected = new ArrayList<>(){{
+            add("butter"); add("cheese"); add("cream");
+            add("ghee"); add("milk"); add("yogurt");
+        }};
+        groceryList.addItems("milk", "cheese", "butter");
+        groceryList.addItems("yogurt", "ghee", "cream");
+        groceryList.removeItems("foo", "bar");
+        results = groceryList.getItems();
+        
+        Assertions.assertEquals(expected, results);
+    }
+
 }
