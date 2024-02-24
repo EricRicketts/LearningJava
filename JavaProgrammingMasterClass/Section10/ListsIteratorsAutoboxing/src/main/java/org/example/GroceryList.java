@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class GroceryList {
 
@@ -31,11 +28,55 @@ public class GroceryList {
         this.items.sort(Comparator.naturalOrder());
     }
 
+    public void addItemsFromPrompt(GroceryList groceryList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Add item(s) [separate items by comma]:");
+        String[] items = scanner.nextLine().split(",\\s*");
+        groceryList.addItems(items);
+    }
+
     public void removeItems(String... items) {
         List<String> listOfItems = new ArrayList<>(Arrays.asList(items));
         this.items.removeAll(listOfItems);
         this.removeDuplicates();
         this.items.sort(Comparator.naturalOrder());
+    }
+
+    public void removeItemsFromPrompt(GroceryList groceryList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Remove item(s) [separate items by comma]");
+        String[] items = scanner.nextLine().split(",?\\s*");
+        groceryList.removeItems(items);
+    }
+
+    public void readInput() {
+        Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
+        GroceryList groceryList = new GroceryList();
+
+        while (flag) {
+            printActions();
+            switch(Integer.parseInt(scanner.nextLine())) {
+                case 1 -> addItemsFromPrompt(groceryList);
+                case 2 -> removeItemsFromPrompt(groceryList);
+                default -> flag = false;
+            }
+        }
+        System.out.println(groceryList.printItems());
+    }
+
+    public String printActions() {
+
+        return """
+                Available Actions:
+                
+                0 - to shutdown
+                
+                1 - to add item(s) to list (comma delimited list)
+                
+                2 - to remove any items (comma delimited list)
+                
+                Enter a number for which action you want to do:""";
     }
 
     public String printItems() {
