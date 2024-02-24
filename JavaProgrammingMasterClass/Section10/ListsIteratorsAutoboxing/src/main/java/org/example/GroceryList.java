@@ -37,6 +37,14 @@ public class GroceryList {
         this.removeDuplicates();
         this.items.sort(Comparator.naturalOrder());
     }
+
+    public String printItems() {
+        String output = "";
+        for (String item : this.items) output += item + "\n";
+
+        return output;
+    }
+
     public GroceryList() {
         this.items = new ArrayList<>();
     }

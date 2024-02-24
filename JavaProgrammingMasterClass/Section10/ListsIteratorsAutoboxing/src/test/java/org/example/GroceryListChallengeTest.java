@@ -81,7 +81,18 @@ public class GroceryListChallengeTest {
         groceryList.addItems("yogurt", "ghee", "cream");
         groceryList.removeItems("foo", "bar");
         results = groceryList.getItems();
-        
+
+        Assertions.assertEquals(expected, results);
+    }
+
+    @Test
+    public void testPrintOutItems() {
+        String expected = "butter\n" + "cheese\n" + "cream\n" +
+                "ghee\n" + "milk\n" + "yogurt\n";
+        groceryList.addItems("milk", "cheese", "butter");
+        groceryList.addItems("yogurt", "ghee", "cream");
+        String results = groceryList.printItems();
+
         Assertions.assertEquals(expected, results);
     }
 
