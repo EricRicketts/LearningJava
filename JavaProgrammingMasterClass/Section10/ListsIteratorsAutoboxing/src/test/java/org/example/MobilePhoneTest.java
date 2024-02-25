@@ -9,6 +9,7 @@ public class MobilePhoneTest {
 
     private MobilePhone mobilePhone;
     private Contact contact;
+    String[] expected, results;
 
     @BeforeEach
     public void setUp() {
@@ -30,5 +31,20 @@ public class MobilePhoneTest {
     public void testCannotAddDuplicateContact() {
         contact = new Contact("Daffy Duck", "999-335-1234");
         Assertions.assertFalse(mobilePhone.addNewContact(contact));
+    }
+
+    @Test
+    public void testQueryContactWhenContactExists() {
+        contact = mobilePhone.queryContact("Bugs Bunny");
+        expected = new String[]{"Bugs Bunny", "703-553-1295"};
+        results = new String[]{contact.getName(), contact.getPhoneNumber()};
+
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testQueryContactWhenNoContactExists() {
+        contact = mobilePhone.queryContact("Henry Hawk");
+        Assertions.assertNull(contact);
     }
 }

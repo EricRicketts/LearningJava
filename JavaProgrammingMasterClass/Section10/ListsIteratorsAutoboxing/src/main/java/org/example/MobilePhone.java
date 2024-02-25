@@ -1,22 +1,35 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MobilePhone {
 
     private final String myNumber;
     private final ArrayList<Contact> myContacts;
 
-    private boolean sameContact(Contact firstContact, Contact secondContact) {
-        return firstContact.getName().equals(secondContact.getName());
+    private boolean sameContact(Contact contact, Contact currentContact) {
+        return contact.getName().equals(currentContact.getName());
+    }
+
+    private boolean sameContact(String contactName, Contact currentContact) {
+        return contactName.equals(currentContact.getName());
     }
 
     private int findContact(Contact contact) {
-        return this.myContacts.indexOf(contact.getName());
+        for (int index = 0; index < myContacts.size(); index++) {
+            Contact currentContact = myContacts.get(index);
+            if (this.sameContact(contact, currentContact)) return index;
+        }
+        return -1;
     }
 
     private int findContact(String name) {
-        return this.myContacts.indexOf(name);
+        for (int index = 0; index < myContacts.size(); index++) {
+            Contact currentContact = myContacts.get(index);
+            if (this.sameContact(name, currentContact)) return index;
+        }
+        return -1;
     }
 
     public boolean addNewContact(Contact newContact) {
@@ -33,6 +46,11 @@ public class MobilePhone {
         } else {
             return false;
         }
+    }
+
+    public Contact queryContact(String name) {
+        int searchResult = this.findContact(name);
+        return (searchResult < 0) ? null : myContacts.get(searchResult);
     }
 
     public MobilePhone(String myNumber) {
