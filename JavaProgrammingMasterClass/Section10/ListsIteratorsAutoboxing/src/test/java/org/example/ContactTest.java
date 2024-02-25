@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ContactTest {
 
     private Contact contact;
-    private final String name = "Elmer Fudd", phoneNumber = "919-449-1266";
+    private final String name = "Elmer Fudd", phoneNumber = "9194491266";
 
     @BeforeEach
     public void setUp() {

@@ -2,7 +2,7 @@ package org.example;
 
 public class Contact {
 
-    String name, phoneNumber;
+    private final String name, phoneNumber;
 
     public String getName() {
         return name;
