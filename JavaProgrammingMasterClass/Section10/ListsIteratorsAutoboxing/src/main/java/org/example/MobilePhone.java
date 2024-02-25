@@ -53,6 +53,17 @@ public class MobilePhone {
         return (searchResult < 0) ? null : myContacts.get(searchResult);
     }
 
+    public boolean updateContact(Contact oldContact, Contact newContact) {
+        for(int index = 0; index < myContacts.size(); index++) {
+            Contact currentContact = this.myContacts.get(index);
+            if (this.sameContact(currentContact, oldContact)) {
+                this.myContacts.set(index, newContact);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
         this.myContacts = new ArrayList<>();

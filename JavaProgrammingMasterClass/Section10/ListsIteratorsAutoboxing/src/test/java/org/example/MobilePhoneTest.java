@@ -47,4 +47,18 @@ public class MobilePhoneTest {
         contact = mobilePhone.queryContact("Henry Hawk");
         Assertions.assertNull(contact);
     }
+
+    @Test
+    public void testUpdateExistingContact() {
+        contact = mobilePhone.queryContact("Foghorn Leghorn");
+        Contact newContact = new Contact("Henry Hawk", "703-343-2839");
+        Assertions.assertTrue(mobilePhone.updateContact(contact, newContact));
+    }
+
+    @Test
+    public void testUpdateNonExistingContact() {
+        contact = new Contact("Gossamer", "703-897-9876");
+        Contact newContact = new Contact("Henry Hawk", "703-343-2839");
+        Assertions.assertFalse(mobilePhone.updateContact(contact, newContact));
+    }
 }
