@@ -61,4 +61,16 @@ public class MobilePhoneTest {
         Contact newContact = new Contact("Henry Hawk", "703-343-2839");
         Assertions.assertFalse(mobilePhone.updateContact(contact, newContact));
     }
+
+    @Test
+    public void testRemoveExistingContact() {
+        contact = mobilePhone.queryContact("Daffy Duck");
+        Assertions.assertTrue(mobilePhone.removeContact(contact));
+    }
+
+    @Test
+    public void testRemoveNonExistingContact() {
+        contact = new Contact("Henry Hawk", "703-343-2839");
+        Assertions.assertFalse(mobilePhone.removeContact(contact));
+    }
 }

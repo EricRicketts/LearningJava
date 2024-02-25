@@ -53,6 +53,16 @@ public class MobilePhone {
         return (searchResult < 0) ? null : myContacts.get(searchResult);
     }
 
+    public boolean removeContact(Contact contact) {
+        for (int index = 0; index < myContacts.size(); index++) {
+            Contact currentContact = this.myContacts.get(index);
+            if (this.sameContact(contact, currentContact)) {
+                this.myContacts.remove(index);
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean updateContact(Contact oldContact, Contact newContact) {
         for(int index = 0; index < myContacts.size(); index++) {
             Contact currentContact = this.myContacts.get(index);
