@@ -10,6 +10,19 @@ public class Travel {
         return distancesFromSydney;
     }
 
+    public String printMenuOption() {
+        String menu = """
+                Available Actions (select word or letter): 
+                (F)orward
+                (B)ackward
+                (L)ist Places
+                (M)enu
+                (Q)uit
+                """;
+
+        return menu;
+    }
+
     public Travel() {
         distancesFromSydney = new LinkedList<>();
         Object[][] data = new Object[][]{

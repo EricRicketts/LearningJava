@@ -38,4 +38,18 @@ public class LinkedListChallengeTest {
             index += 1;
         }
     }
+
+    @Test
+    public void testPrintMenuOptions() {
+        String expected = """
+                Available Actions (select word or letter): 
+                (F)orward
+                (B)ackward
+                (L)ist Places
+                (M)enu
+                (Q)uit
+                """;
+        String results = travel.printMenuOption();
+        Assertions.assertEquals(expected, results);
+    }
 }
