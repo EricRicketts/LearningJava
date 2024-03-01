@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class LinkedListChallengeTest {
     @Test
     public void testPrintMenuOptions() {
         String expected = """
-                Available Actions (select word or letter): 
+                Available Actions (select word or letter):
                 (F)orward
                 (B)ackward
                 (L)ist Places
@@ -51,5 +52,25 @@ public class LinkedListChallengeTest {
                 """;
         String results = travel.printMenuOption();
         Assertions.assertEquals(expected, results);
+    }
+
+    @Test
+    public void testTravelNextAndTravelPrevious() {
+        Map<String, Integer> placeMovingForward = new HashMap<>();
+        Map<String, Integer> placeMovingBackward = new HashMap<>();
+        placeMovingForward = travel.nextPlace();
+        placeMovingForward = travel.nextPlace();
+        placeMovingForward = travel.nextPlace();
+        placeMovingForward = travel.nextPlace();
+        placeMovingBackward = travel.previousPlace();
+        placeMovingBackward = travel.previousPlace();
+
+        Object[] expected = new Object[]{true, 1374, true, 917};
+        Object[] results = new Object[]{
+                placeMovingForward.containsKey("Adelaide"), placeMovingForward.get("Adelaide"),
+                placeMovingBackward.containsKey("Brisbane"), placeMovingBackward.get("Brisbane")
+        };
+
+        Assertions.assertArrayEquals(expected, results);
     }
 }

@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Travel {
 
+    private int indexOfCurrentPlace = 0;
     private final List<Map<String, Integer>> distancesFromSydney;
     private final Object[][] data = new Object[][]{
             {"Sydney", 0}, {"Melbourne", 877},
@@ -26,18 +27,49 @@ public class Travel {
         return distancesFromSydney;
     }
 
+    public int getIndexOfCurrentPlace() {
+        return indexOfCurrentPlace;
+    }
+
+    public void setIndexOfCurrentPlace(int indexOfCurrentPlace) {
+        this.indexOfCurrentPlace = indexOfCurrentPlace;
+    }
+
     public String printMenuOption() {
-        String menu = """
-                Available Actions (select word or letter): 
+        return """
+                Available Actions (select word or letter):
                 (F)orward
                 (B)ackward
                 (L)ist Places
                 (M)enu
                 (Q)uit
                 """;
-
-        return menu;
     }
+
+    public Map<String, Integer> nextPlace() {
+        Map<String, Integer> nextPlace = new HashMap<>();
+        ListIterator<Map<String, Integer>> iterator =
+                this.distancesFromSydney.listIterator(indexOfCurrentPlace);
+        if (iterator.hasNext()) {
+            nextPlace = iterator.next();
+            this.setIndexOfCurrentPlace(this.getIndexOfCurrentPlace() + 1);
+        }
+
+        return nextPlace;
+    }
+
+    public Map<String, Integer> previousPlace() {
+        Map<String, Integer> previousPlace = new HashMap<>();
+        ListIterator<Map<String, Integer>> iterator =
+                this.distancesFromSydney.listIterator(indexOfCurrentPlace);
+        if (iterator.hasPrevious()) {
+            previousPlace = iterator.previous();
+            this.setIndexOfCurrentPlace(this.getIndexOfCurrentPlace() - 1);
+        }
+
+        return previousPlace;
+    }
+
 
     public Travel() {
         distancesFromSydney = new LinkedList<>();
