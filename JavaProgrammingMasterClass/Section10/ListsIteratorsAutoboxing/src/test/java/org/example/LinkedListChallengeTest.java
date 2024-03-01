@@ -55,6 +55,23 @@ public class LinkedListChallengeTest {
     }
 
     @Test
+    public void testPrintItinerary() {
+        String expected = """
+                Travel Itinerary (numbers are distances from Sydney):
+                Sydney -> 0
+                Melbourne -> 877
+                Brisbane -> 917
+                Adelaide -> 1374
+                Alice Springs -> 2771
+                Perth -> 3923
+                Darwin -> 3972
+                """;
+        String results = travel.printItinerary();
+
+        Assertions.assertEquals(expected, results);
+    }
+
+    @Test
     public void testTravelNextAndTravelPrevious() {
         Map<String, Integer> placeMovingForward = new HashMap<>();
         Map<String, Integer> placeMovingBackward = new HashMap<>();

@@ -35,6 +35,19 @@ public class Travel {
         this.indexOfCurrentPlace = indexOfCurrentPlace;
     }
 
+    public String printItinerary() {
+        return """
+                Travel Itinerary (numbers are distances from Sydney):
+                Sydney -> 0
+                Melbourne -> 877
+                Brisbane -> 917
+                Adelaide -> 1374
+                Alice Springs -> 2771
+                Perth -> 3923
+                Darwin -> 3972
+                """;
+    }
+
     public String printMenuOption() {
         return """
                 Available Actions (select word or letter):
