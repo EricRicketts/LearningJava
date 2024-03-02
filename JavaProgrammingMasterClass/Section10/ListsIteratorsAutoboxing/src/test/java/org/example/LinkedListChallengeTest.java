@@ -2,42 +2,38 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 public class LinkedListChallengeTest {
 
     private Travel travel;
+    private LinkedList<Place> places;
+
+    private final Object[][] data = new Object[][]{
+            {"Sydney", 0}, {"Melbourne", 877},
+            {"Brisbane", 917}, {"Adelaide", 1374},
+            {"Alice Springs", 2771}, {"Perth", 3923},
+            {"Darwin", 3972}, {"Perth", 3923}
+    };
 
     @BeforeEach
     public void setUp() {
         travel = new Travel();
+        for (Object[] element : data) {
+            Place place = new Place((String) element[0], (Integer) element[1]);
+            travel.addPlace((LinkedList<Place>) travel.getPlaces(), place);
+        }
+        places = (LinkedList<Place>) travel.getPlaces();
     }
 
     @Test
-    public void testListOfMaps() {
-        List<Map<String, Integer>> listOfMaps = travel.getDistancesFromSydney();
-        ListIterator<Map<String, Integer>> iterator = listOfMaps.listIterator();
-        Object[][] expectedData = new Object[][]{
-                {"Sydney", 0}, {"Melbourne", 877},
-                {"Brisbane", 917}, {"Adelaide", 1374},
-                {"Alice Springs", 2771}, {"Perth", 3923},
-                {"Darwin", 3972}
-        };
-        int index = 0;
-        while (iterator.hasNext()) {
-            Object[] expected = expectedData[index];
-            String expectedKey = (String) expected[0];
-            Integer expectedValue = (Integer) expected[1];
-            Map<String, Integer> map = iterator.next();
-            Assertions.assertTrue(map.containsKey(expectedKey));
-            Assertions.assertEquals(map.get(expectedKey), expectedValue);
-            index += 1;
-        }
+    public void testResultsOfAddPlace() {
+        Assertions.assertEquals(7, places.size());
+        Place lastPlace = places.getLast();
+        Assertions.assertEquals(new Place("Darwin", 3972), lastPlace);
     }
 
     @Test
@@ -73,21 +69,23 @@ public class LinkedListChallengeTest {
 
     @Test
     public void testTravelNextAndTravelPrevious() {
-        Map<String, Integer> placeMovingForward = new HashMap<>();
-        Map<String, Integer> placeMovingBackward = new HashMap<>();
-        placeMovingForward = travel.nextPlace();
-        placeMovingForward = travel.nextPlace();
-        placeMovingForward = travel.nextPlace();
-        placeMovingForward = travel.nextPlace();
-        placeMovingBackward = travel.previousPlace();
-        placeMovingBackward = travel.previousPlace();
-
-        Object[] expected = new Object[]{true, 1374, true, 917};
-        Object[] results = new Object[]{
-                placeMovingForward.containsKey("Adelaide"), placeMovingForward.get("Adelaide"),
-                placeMovingBackward.containsKey("Brisbane"), placeMovingBackward.get("Brisbane")
-        };
-
-        Assertions.assertArrayEquals(expected, results);
+        Place place;
+        Place expectedPlace;
+        for (int index = 0; index < places.size(); index++) {
+            Object[] element = data[index];
+            String location = (String) element[0];
+            Integer distance = (Integer) element[1];
+            expectedPlace = new Place(location, distance);
+            place = travel.nextPlace();
+            Assertions.assertEquals(expectedPlace, place);
+        }
+        for (int index = places.size() - 1; index > -1; index--) {
+            Object[] element = data[index];
+            String location = (String) element[0];
+            Integer distance = (Integer) element[1];
+            expectedPlace = new Place(location, distance);
+            place = travel.previousPlace();
+            Assertions.assertEquals(expectedPlace, place);
+        }
     }
 }
