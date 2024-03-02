@@ -20,7 +20,18 @@ public class Travel {
     }
 
     public void addPlace(LinkedList<Place> list, Place place) {
-        if(!list.contains(place)) list.add(place);
+        for (Place p : list) {
+            if (p.name().equalsIgnoreCase(place.name())) return;
+        }
+        int matchedIndex = 0;
+        for (Place listPlace: list) {
+            if (place.distance() < listPlace.distance()) {
+                list.add(matchedIndex, place);
+                return;
+            }
+            matchedIndex++;
+        }
+        list.add(place);
     }
 
     public String printItinerary() {
@@ -70,6 +81,7 @@ public class Travel {
 
         return previousPlace;
     }
+
 
 
     public Travel() {

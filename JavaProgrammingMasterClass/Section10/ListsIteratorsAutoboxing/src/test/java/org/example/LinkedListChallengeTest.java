@@ -13,11 +13,12 @@ public class LinkedListChallengeTest {
     private LinkedList<Place> places;
 
     private final Object[][] data = new Object[][]{
-            {"Sydney", 0}, {"Melbourne", 877},
-            {"Brisbane", 917}, {"Adelaide", 1374},
             {"Alice Springs", 2771}, {"Perth", 3923},
-            {"Darwin", 3972}, {"Perth", 3923}
+            {"Brisbane", 917}, {"Adelaide", 1374},
+            {"Sydney", 0}, {"Melbourne", 877},
+            {"Darwin", 3972}
     };
+    private LinkedList<Place> expectedPlaces;
 
     @BeforeEach
     public void setUp() {
@@ -27,13 +28,25 @@ public class LinkedListChallengeTest {
             travel.addPlace((LinkedList<Place>) travel.getPlaces(), place);
         }
         places = (LinkedList<Place>) travel.getPlaces();
+        expectedPlaces = new LinkedList<>(Arrays.asList(
+                new Place("Sydney", 0),
+                new Place("Melbourne", 877),
+                new Place("Brisbane", 917),
+                new Place("Adelaide", 1374),
+                new Place("Alice Springs", 2771),
+                new Place("Perth", 3923),
+                new Place("Darwin", 3972)
+            )
+        );
     }
 
     @Test
-    public void testResultsOfAddPlace() {
-        Assertions.assertEquals(7, places.size());
-        Place lastPlace = places.getLast();
-        Assertions.assertEquals(new Place("Darwin", 3972), lastPlace);
+    public void testAddPlaceOrdering() {
+        for (int index = 0; index < places.size(); index++) {
+            Place place = places.get(index);
+            Place expectedPlace = expectedPlaces.get(index);
+            Assertions.assertEquals(expectedPlace, place);
+        }
     }
 
     @Test
@@ -72,18 +85,12 @@ public class LinkedListChallengeTest {
         Place place;
         Place expectedPlace;
         for (int index = 0; index < places.size(); index++) {
-            Object[] element = data[index];
-            String location = (String) element[0];
-            Integer distance = (Integer) element[1];
-            expectedPlace = new Place(location, distance);
+            expectedPlace = places.get(index);
             place = travel.nextPlace();
             Assertions.assertEquals(expectedPlace, place);
         }
         for (int index = places.size() - 1; index > -1; index--) {
-            Object[] element = data[index];
-            String location = (String) element[0];
-            Integer distance = (Integer) element[1];
-            expectedPlace = new Place(location, distance);
+            expectedPlace = places.get(index);
             place = travel.previousPlace();
             Assertions.assertEquals(expectedPlace, place);
         }
