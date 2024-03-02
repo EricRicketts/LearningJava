@@ -50,6 +50,18 @@ public class LinkedListChallengeTest {
     }
 
     @Test
+    public void testAddDuplicates() {
+        travel.addPlace(places, new Place("Perth", 3923));
+        travel.addPlace(places, new Place("brisbane", 917));
+        Assertions.assertEquals(expectedPlaces.size(), places.size());
+        for (int index = 0; index < places.size(); index++) {
+            Place place = places.get(index);
+            Place expectedPlace = expectedPlaces.get(index);
+            Assertions.assertEquals(expectedPlace, place);
+        }
+    }
+
+    @Test
     public void testPrintMenuOptions() {
         String expected = """
                 Available Actions (select word or letter):
