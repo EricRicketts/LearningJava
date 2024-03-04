@@ -69,8 +69,7 @@ public class LinkedListChallengeTest {
                 (B)ackward
                 (L)ist Places
                 (M)enu
-                (Q)uit
-                """;
+                (Q)uit""";
         String results = travel.printMenuOption();
         Assertions.assertEquals(expected, results);
     }

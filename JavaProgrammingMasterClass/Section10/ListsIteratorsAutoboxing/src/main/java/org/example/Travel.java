@@ -54,8 +54,7 @@ public class Travel {
                 (B)ackward
                 (L)ist Places
                 (M)enu
-                (Q)uit
-                """;
+                (Q)uit""";
     }
 
     public Place nextPlace() {
