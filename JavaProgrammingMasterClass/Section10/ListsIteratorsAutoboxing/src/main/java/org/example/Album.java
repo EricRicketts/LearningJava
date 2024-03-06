@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 public class Album {
@@ -37,7 +36,7 @@ public class Album {
 
     public boolean addToPlayList(int track, LinkedList<Song> playList) {
         int index = track - 1;
-        if (index > 0 && index < songs.size()) {
+        if (index > -1 && index < songs.size()) {
             Song song = songs.get(index);
             playList.add(song);
             return true;

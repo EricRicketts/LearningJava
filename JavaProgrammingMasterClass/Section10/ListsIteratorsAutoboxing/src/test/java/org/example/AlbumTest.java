@@ -70,5 +70,15 @@ public class AlbumTest {
         Assertions.assertFalse(albums.get(1).addToPlayList(24, playList));
     }
 
+    @Test
+    public void testLowerEdgeCase() {
+        Assertions.assertTrue(albums.get(0).addToPlayList(1, playList));
+    }
+
+    @Test
+    public void testUpperEdgeCase() {
+        Assertions.assertTrue(albums.get(1).addToPlayList(9, playList));
+        Assertions.assertFalse(albums.get(1).addToPlayList(10, playList));
+    }
 
 }
