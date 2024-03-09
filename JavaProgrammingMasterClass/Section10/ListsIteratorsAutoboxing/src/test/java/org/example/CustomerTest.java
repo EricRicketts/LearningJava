@@ -37,4 +37,5 @@ public class CustomerTest {
             Assertions.assertEquals(expectedTransaction, resultantTransaction);
         }
     }
+
 }

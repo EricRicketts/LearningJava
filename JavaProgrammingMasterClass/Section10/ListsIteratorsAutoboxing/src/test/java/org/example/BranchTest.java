@@ -34,4 +34,15 @@ public class BranchTest {
         };
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testAddCustomerSuccess() {
+        Object[] expected = {true, 5};
+        boolean customerAdded = branch.newCustomer("Yosemite Sam", 600.00);
+        Object[] results = {
+                customerAdded,
+                branch.getCustomers().size()
+        };
+        Assertions.assertArrayEquals(expected, results);
+    }
 }
