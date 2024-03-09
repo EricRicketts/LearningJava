@@ -26,6 +26,16 @@ public class Branch {
         return customerAdded;
     }
 
+    public boolean addCustomerTransaction(String name, double transactionAmount) {
+        boolean completedTransaction = false;
+        Customer customer = findCustomer(name);
+        if (!Objects.isNull(customer)) {
+            customer.addTransaction(transactionAmount);
+            completedTransaction = true;
+        }
+        return completedTransaction;
+    }
+
     private Customer findCustomer(String name) {
         Customer customer = null;
         for (Customer currentCustomer : customers) {

@@ -45,4 +45,33 @@ public class BranchTest {
         };
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testAddCustomerFailure() {
+        Object[] expected = {false, 4};
+        boolean customerAdded = branch.newCustomer("Bugs Bunny", 200.00);
+        Object[] results = {
+                customerAdded,
+                branch.getCustomers().size()
+        };
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testAddCustomerTransactionSuccess() {
+        Object[] expected = {true, 350.00};
+        boolean transactionCompleted = branch.addCustomerTransaction("Elmer Fudd", 350.00);
+        Object[] results = {
+                transactionCompleted,
+                branch.getCustomers().get(0).getTransactions().get(1)
+        };
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testAddCustomerTransactionFailure() {
+        Object[] expected = {false, 1};
+        boolean transactionCompleted = branch.addCustomerTransaction("Tweety Bird", 100.00);
+        Assertions.assertFalse(transactionCompleted);
+    }
 }
