@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Branch {
 
@@ -16,7 +17,13 @@ public class Branch {
     }
 
     public boolean newCustomer(String name, double initialTransaction) {
-        return true;
+        boolean customerAdded = false;
+        Customer customer = findCustomer(name);
+        if (Objects.isNull(customer)) {
+            getCustomers().add(new Customer(name, initialTransaction));
+            customerAdded = true;
+        }
+        return customerAdded;
     }
 
     private Customer findCustomer(String name) {
