@@ -8,58 +8,32 @@ import java.util.Objects;
 public class Bank {
 
     private String name;
-    private ArrayList<Customer> customers;
+    private ArrayList<Branch> branches;
 
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void addNewCustomer(Customer customer) {
-        customers.add(customer);
-    }
-
-    public void addTransactionForCustomer(String name, double amount) {
-        Customer customer = null;
-        for (Customer currentCustomer : customers) {
-            if (currentCustomer.getName().equals(name)) {
-                customer = currentCustomer;
-            }
+    public boolean addBranch(String branchName) {
+        boolean branchAdded = false;
+        Branch branch = findBranch(branchName);
+        if (Objects.isNull(branch)) {
+            branches.add(new Branch(branchName));
+            branchAdded = true;
         }
-        if (!Objects.isNull(customer)) customer.addTransaction(amount);
+        return branchAdded;
     }
 
-    public String print(String customerName) {
-        DecimalFormat df = new DecimalFormat("0.00");
-        df.setRoundingMode(RoundingMode.UP);
-
-        String customerTransactions = "";
-        Customer customer = null;
-        for (Customer currentCustomer : customers) {
-            if (currentCustomer.getName().equals(customerName)) {
-                customer = currentCustomer;
+    
+    private Branch findBranch(String branchName) {
+        Branch branch = null;
+        for (Branch currentBranch : branches) {
+            if (currentBranch.getName().equalsIgnoreCase(branchName)) {
+                branch = currentBranch;
                 break;
             }
         }
-        if (Objects.isNull(customer)) {
-            return "No Transactions\n";
-        } else {
-            customerTransactions += "Customer Name: " + customer.getName() + "\n";
-            customerTransactions += "Transactions:\n";
-        }
-        for (int j = 0; j < customer.getTransactions().size(); j++) {
-            Double transaction = customer.getTransactions().get(j);
-            String transactionString = df.format(transaction);
-            customerTransactions += transactionString + "\n";
-        }
-        return customerTransactions;
+        return branch;
     }
 
     public Bank(String name) {
         this.name = name;
-        customers = new ArrayList<>();
+        branches = new ArrayList<>();
     }
 }
