@@ -1,11 +1,16 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class BankTest {
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
 
     private Bank bank;
 
@@ -22,8 +27,16 @@ public class BankTest {
         bank.addCustomerTransaction("Adelaide", "Mike", 1.65);
     }
 
+    @AfterEach
+    public void tearDown() {
+    }
+
     @Test
     public void testListCustomersWithTransactions() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
         String expected = """
                 Customer details for branch Adelaide
                 Customer: Tim[1]
@@ -39,19 +52,34 @@ public class BankTest {
                 Transactions
                 [1] Amount 220.12
                 """;
-        String results = bank.listCustomers("Adelaide", true);
-        Assertions.assertEquals(expected, results);
+        boolean results = bank.listCustomers("Adelaide", true);
+        Assertions.assertTrue(results);
+        Assertions.assertEquals(expected, outContent.toString());
+        System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 
     @Test
     public void testListCustomersWithNoTransactions() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
         String expected = """
                 Customer details for branch Adelaide
                 Customer: Tim[1]
                 Customer: Mike[2]
                 Customer: Percy[3]
                 """;
-        String results = bank.listCustomers("Adelaide", false);
-        Assertions.assertEquals(expected, results);
+        boolean results = bank.listCustomers("Adelaide", false);
+        Assertions.assertTrue(results);
+        Assertions.assertEquals(expected, outContent.toString());
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
+    @Test
+    public void testNoBranchForListCustomers() {
+        Assertions.assertFalse(bank.listCustomers("FooBar", true));
     }
 }

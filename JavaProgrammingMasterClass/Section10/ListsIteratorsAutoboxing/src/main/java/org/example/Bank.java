@@ -35,8 +35,9 @@ public class Bank {
         return transactionAdded;
     }
 
-    public String listCustomers(String branchName, boolean printTransactions) {
+    public boolean listCustomers(String branchName, boolean printTransactions) {
         Branch branch = findBranch(branchName);
+        if (Objects.isNull(branch)) return false;
         String output = "";
         output += "Customer details for branch " + branch.getName() + "\n";
         int numberOfCustomers = branch.getCustomers().size();
@@ -54,7 +55,8 @@ public class Bank {
                 }
             }
         }
-        return output;
+        System.out.print(output);
+        return true;
     }
 
     private Branch findBranch(String branchName) {
