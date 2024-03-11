@@ -1,8 +1,7 @@
 package org.example;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Bank {
@@ -20,7 +19,44 @@ public class Bank {
         return branchAdded;
     }
 
-    
+    public boolean addCustomer(String branchName, String customerName, double initialTransaction) {
+        boolean customerAdded = false;
+        Branch branch = findBranch(branchName);
+        if (!Objects.isNull(branch)) customerAdded = branch.newCustomer(customerName, initialTransaction);
+
+        return customerAdded;
+    }
+
+    public boolean addCustomerTransaction(String branchName, String customerName, double initialTransaction) {
+        boolean transactionAdded = false;
+        Branch branch = findBranch(branchName);
+        if (!Objects.isNull(branch)) transactionAdded = branch.addCustomerTransaction(customerName, initialTransaction);
+
+        return transactionAdded;
+    }
+
+    public String listCustomers(String branchName, boolean printTransactions) {
+        Branch branch = findBranch(branchName);
+        String output = "";
+        output += "Customer details for branch " + branch.getName() + "\n";
+        int numberOfCustomers = branch.getCustomers().size();
+
+        for (int i = 0; i < numberOfCustomers; i++) {
+            Customer customer = branch.getCustomers().get(i);
+            output += "Customer: " + customer.getName() + "[" + (i + 1) + "]\n";
+            List<Double> transactions = customer.getTransactions();
+            int numberOfTransactions = transactions.size();
+            if (numberOfTransactions > 0 & printTransactions) {
+                output += "Transactions\n";
+                for (int j = 0; j < numberOfTransactions; j++) {
+                    Double transaction = transactions.get(j);
+                    output += "[" + (j + 1) + "] " + "Amount " + transaction + "\n";
+                }
+            }
+        }
+        return output;
+    }
+
     private Branch findBranch(String branchName) {
         Branch branch = null;
         for (Branch currentBranch : branches) {
