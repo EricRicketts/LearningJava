@@ -1,15 +1,15 @@
 package org.example;
 
-public class Dog extends Animal {
+public class Fish extends Animal {
 
     @Override
     public String move(String speed) {
-        return speed.equalsIgnoreCase("slow") ? type + " walking" : type + " running";
+        return speed.equalsIgnoreCase("slow") ? type + " lazily swimming" : type + " darting frantically";
     }
 
     @Override
     public String makeNoise() {
-        return type.equalsIgnoreCase("wolf") ? "Howling" : "Barking";
+        return type.equalsIgnoreCase("goldfish") ? "swish" : "splash";
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Dog extends Animal {
         return weight;
     }
 
-    public Dog(String type, String size, double weight) {
+    public Fish(String type, String size, double weight) {
         super(type, size, weight);
     }
 }
