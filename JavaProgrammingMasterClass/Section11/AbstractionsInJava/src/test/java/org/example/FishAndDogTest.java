@@ -71,4 +71,13 @@ public class FishAndDogTest {
         };
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testExplicitTypeMethod() {
+        expected = new String[]{"Dog (Wolf)", "Fish (Goldfish)"};
+        results = new String[]{
+                animals.get(0).getExplicitType(), animals.get(2).getExplicitType()
+        };
+        Assertions.assertArrayEquals(expected, results);
+    }
 }
