@@ -20,4 +20,18 @@ public class HorseTest {
         results = new Object[]{horse.getSize(), horse.getWeight()};
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testMakeNoiseAndMove() {
+        expected = new String[]{"Neigh, Neigh!!", "Horse (Thoroughbred) runs"};
+        results = new String[]{horse.makeNoise(), horse.move("fast")};
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testShedHair() {
+        String expected = "Horse (Thoroughbred) shedding hair";
+        String results = horse.shedHair();
+        Assertions.assertEquals(expected, results);
+    }
 }
