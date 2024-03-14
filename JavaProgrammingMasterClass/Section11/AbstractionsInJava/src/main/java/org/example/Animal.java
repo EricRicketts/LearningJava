@@ -15,8 +15,9 @@ public abstract class Animal {
     protected abstract double getWeight();
 
     // Note this is an important feature of abstract classes they can contain concrete methods
-    // which will be inherited by their subclasses.
-    public String getExplicitType() {
+    // which will be inherited by their subclasses.  The "final" modifier means that the method
+    // cannot be overridden by a subclass.
+    public final String getExplicitType() {
         return getClass().getSimpleName() + " (" + type + ")";
     }
 
