@@ -1,5 +1,6 @@
 package org.example;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -8,18 +9,20 @@ public abstract class ProductForSale {
     private String type, description;
     private double price;
 
-    public String getType() {
+    protected String getType() {
         return type;
     }
 
-    public String getDescription() {
+    protected String getDescription() {
         return description;
     }
 
-    public double getPrice() {
+    protected double getPrice() { return price; }
+
+    protected String formatPrice() {
         DecimalFormat df = new DecimalFormat("0.00");
-        df.setRoundingMode(RoundingMode.UP);
-        return Double.parseDouble(df.format(price));
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        return df.format(getPrice());
     }
 
     public double getSalesPrice(int quantity) {
