@@ -61,4 +61,14 @@ public class FishAndDogTest {
         };
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testDogAndFishGetters() {
+        expected = new Object[]{"Big", 25.0, "small", 75.0};
+        results = new Object[]{
+                animals.get(0).getSize(), animals.get(1).getWeight(),
+                animals.get(2).getSize(), animals.get(3).getWeight()
+        };
+        Assertions.assertArrayEquals(expected, results);
+    }
 }
