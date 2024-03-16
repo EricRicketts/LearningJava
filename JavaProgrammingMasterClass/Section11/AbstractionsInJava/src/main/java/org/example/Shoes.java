@@ -4,7 +4,7 @@ public class Shoes extends ProductForSale {
 
     @Override
     public String showDetails() {
-        return "Shoes " + "(" + getType() + ")" + " "
+        return getClass().getSimpleName() + " " + "(" + getType() + ")" + " "
                 + "Description: " + getDescription() + " " + "Price: " + formatPrice();
     }
 

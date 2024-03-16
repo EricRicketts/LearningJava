@@ -7,7 +7,7 @@ public class Shirt extends ProductForSale {
 
     @Override
     public String showDetails() {
-        return "Shirt " + "(" + getType() + ")" + " "
+        return getClass().getSimpleName() + " " + "(" + getType() + ")" + " "
                 + "Description: " + getDescription() + " " + "Price: " + formatPrice();
     }
 

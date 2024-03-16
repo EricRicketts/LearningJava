@@ -7,7 +7,7 @@ public class Trousers extends ProductForSale {
 
     @Override
     public String showDetails() {
-        return "Trousers " + "(" + getType() + ")" + " "
+        return getClass().getSimpleName() + " " + "(" + getType() + ")" + " "
                 + "Description: " + getDescription() + " " + "Price: " + formatPrice();
     }
 
