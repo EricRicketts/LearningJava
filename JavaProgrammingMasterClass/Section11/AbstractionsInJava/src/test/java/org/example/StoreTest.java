@@ -117,15 +117,16 @@ public class StoreTest {
         Assertions.assertEquals(originalSizeOfSecondOrderItemList, newSizeOfSecondOrderItemList);
     }
 
-    @Disabled
     @Test
     public void testPrintReceipt() {
         String expected = """
                 Order (1)
-                Quantity: 2 Trousers (Corduroy) Price: $85.50 each
+                Quantity: 2 Trousers (Corduroy) Price: 85.50 each
+                Quantity: 4 Shirt (Flannel) Price: 45.99 each
+                Quantity: 2 Shoes (Oxford) Price: 99.99 each
                 Order (2)
-                Quantity: 4 Shirt (Flannel) Price: $45.99 each
-                Sales Total: $262.98
+                Quantity: 8 Underwear (Trunks) Price: 5.99 each
+                Quantity: 6 Undershirt (Thompson Tee) Price: 9.99 each
                 """;
         String results = clothingStore.printOrderItems();
         Assertions.assertEquals(expected, results);
