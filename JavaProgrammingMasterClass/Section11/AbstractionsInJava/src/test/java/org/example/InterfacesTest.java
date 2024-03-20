@@ -69,6 +69,18 @@ public class InterfacesTest {
     public void testTrackableObject() {
         Assertions.assertEquals("Bird has a tracking device attached.", tracked.track());
     }
+
+    @Test
+    public void testFlierAndTracked() {
+        String results = "";
+        if (flier instanceof Trackable tracked) {
+            results = tracked.track();
+        }
+        Assertions.assertEquals("Bird has a tracking device attached.", results);
+        // this is a bit confusing to understand with the instanceof operator.  If we try to call the track() method
+        // on the flier object we will get a compile error.  However, the bird object is an instance of a class that
+        // does implement both the FlightEnabled and Trackable Interfaces.
+    }
     /*
         I cannot test calling a Trackable method from a FlightEnabled object because a compiler error is
         immediately thrown.  flier.track() shows a compile error.
