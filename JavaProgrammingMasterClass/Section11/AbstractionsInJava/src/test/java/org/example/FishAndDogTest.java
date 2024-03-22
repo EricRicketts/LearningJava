@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,5 +81,14 @@ public class FishAndDogTest {
                 animals.get(0).getExplicitType(), animals.get(2).getExplicitType()
         };
         Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testInterfaceConstants() {
+        DecimalFormat df = new DecimalFormat("##.####");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        double km_traveled = 100.00;
+        Double results = km_traveled * FlightEnabled.KM_TO_MILES;
+        Assertions.assertEquals(df.format(62.1371), df.format(results));
     }
 }
