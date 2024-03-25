@@ -13,4 +13,9 @@ public enum FlightStages implements Trackable {
         }
         return trackingResult;
     }
+
+    public FlightStages getNextStage() {
+        FlightStages[] allStages = values();
+        return allStages[(ordinal() + 1) % allStages.length];
+    }
 }

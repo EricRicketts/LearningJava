@@ -21,4 +21,9 @@ public class Jet implements FlightEnabled, Trackable {
     public String track() {
         return getClass().getSimpleName() + " being tracked by NORAD.";
     }
+
+    @Override
+    public FlightStages transition (FlightStages stage) {
+        return FlightEnabled.super.transition(stage);
+    }
 }

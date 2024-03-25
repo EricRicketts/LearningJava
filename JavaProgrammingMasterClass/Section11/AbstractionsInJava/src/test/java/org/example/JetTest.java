@@ -31,4 +31,10 @@ public class JetTest {
     public void testTrackableMethods() {
         Assertions.assertEquals("Jet being tracked by NORAD.", jet.track());
     }
+
+    @Test
+    public void testTransition() {
+        Assertions.assertEquals(FlightStages.CRUISE, jet.transition(FlightStages.LAUNCH));
+        Assertions.assertEquals(FlightStages.LAUNCH, jet.transition(FlightStages.GROUNDED));
+    }
 }
