@@ -17,12 +17,12 @@ public class Satellite implements OrbitEarth {
 
     @Override
     public String land() {
-        return className + transition(" is landing");
+        return className + transition(" is landing.");
     }
 
     @Override
     public String fly() {
-        return achieveOrbit() + transition(" data collection while orbiting.");
+        return className + transition(" maintaining orbit.") + " Currently engaging in data collection.";
     }
 
     @Override

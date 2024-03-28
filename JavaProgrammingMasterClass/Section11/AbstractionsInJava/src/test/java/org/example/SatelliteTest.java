@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -47,27 +48,32 @@ public class SatelliteTest {
         */
     }
 
-    @Disabled
     @Test
-    public void testLand() {
-        expected = "Satellite fell out of orbit.";
-        results = satellite.land();
+    public void testAchieveOrbit() {
+        satellite.transition("to CRUISE");
+        expected = "Satellite has achieved orbit. Monitoring CRUISE from the ground station.";
+        results = satellite.achieveOrbit();
         Assertions.assertEquals(expected, results);
     }
 
-    @Disabled
     @Test
     public void testFly() {
-        expected = "Satellite has separated from its rocket.";
+        satellite.transition("to CRUISE");
+        satellite.transition("to DATA_COLLECTION");
+        expected = "Satellite maintaining orbit. " +
+                "Monitoring DATA_COLLECTION from the ground station. " +
+                "Currently engaging in data collection.";
         results = satellite.fly();
         Assertions.assertEquals(expected, results);
     }
 
-    @Disabled
     @Test
-    public void testAchieveOrbit() {
-        expected = "Satellite has achieved orbit.";
-        results = satellite.achieveOrbit();
+    public void testLand() {
+        satellite.transition("to CRUISE");
+        satellite.transition("to DATA_COLLECTION");
+        satellite.transition("to GROUNDED");
+        expected = "Satellite is landing. Not currently tracking.";
+        results = satellite.land();
         Assertions.assertEquals(expected, results);
     }
 }
