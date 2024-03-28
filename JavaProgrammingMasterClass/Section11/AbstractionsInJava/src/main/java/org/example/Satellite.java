@@ -6,25 +6,32 @@ public class Satellite implements OrbitEarth {
         automatically, otherwise one has to remember to add them in manually or IntelliJ will flag
         an error.
     */
+
+    FlightStages stage = FlightStages.GROUNDED;
     String className = getClass().getSimpleName();
 
     @Override
     public String takeOff() {
-        return className + " launched by rocket.";
+        return className + transition(" taking off.");
     }
 
     @Override
     public String land() {
-        return className + " fell out of orbit.";
+        return className + transition(" is landing");
     }
 
     @Override
     public String fly() {
-        return className + " has separated from its rocket.";
+        return achieveOrbit() + transition(" data collection while orbiting.");
     }
 
     @Override
     public String achieveOrbit() {
-        return className + " has achieved orbit.";
+        return className + transition(" has achieved orbit.");
+    }
+
+    public String transition(String description) {
+        stage = transition(stage); // this is the OrbitEarth transition method
+        return description + " " + stage.track();
     }
 }
