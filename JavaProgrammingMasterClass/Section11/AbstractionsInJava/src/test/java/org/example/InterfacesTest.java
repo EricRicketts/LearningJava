@@ -81,6 +81,11 @@ public class InterfacesTest {
         In this case the flier object implements the methods from FlightEnabled, they are called from bird
         as bird is the runtime object.  Likewise, the bird object is type Trackable implements the methods defined
         in the Trackable interface, they are called from the bird as bird is the runtime object.
+
+        One of the key points to remember here is that an Object's type determines what methods it has access to.
+        If a variable is of type FlightEnabled then, in this case, it has a different method set by which to call on
+        an object if it were of Trackable type.  In either case, neither FlightEnabled or Trackable has a move()
+        method as this is only defined in the abstract GenericAnimal class.
     */
 
     @Test
@@ -160,7 +165,21 @@ public class InterfacesTest {
         Assertions.assertEquals(expected, results);
     }
     /*
-        I cannot test calling a Trackable method from a FlightEnabled object because a compiler error is
-        immediately thrown.  flier.track() shows a compile error.
+        Very important to remember with regard to classes and interfaces.  If an access modifier is omitted on a
+        CLASS MEMBER then it is implicitly package-private.  What scope is "package-private"?  package-private means
+        the other members of the same package have access to the item, which is typically a method.  In this case
+        if I were to specify a package name other than "org.example" say "ricketts.example" for GenericAnimal,
+        Bird, Jet, DragonFly, Satellite, FlightEnabled, FlightStages, and Trackable, then a method without an access
+        modifier would be accessible by all instances created within package "ricketts.example".
+
+       For an Interface the rules are different.  If we omit an access modifier on an interface member then it is
+       implicitly public.  Additionally, for all non-concrete methods in an interface, the abstract modifier is
+       implied.  As an example if we define a method in the following manner in an interface, "String move();" then
+       it fully qualified signature is "public abstract String move();".  We are not required to declare the modifiers
+       "public abstract".
+
+       The protected access modifier is not allowed for an interface.
+
+       In an interface and a class only a concrete method can have private access.
     */
 }
