@@ -51,8 +51,14 @@ public class Player implements ISaveable {
 
     @Override
     public void read(List<String> playerAttributes) {
-        List<String> storedAttributes = new ArrayList<>();
-        if (playerAttributes.size() > 0) storedAttributes = playerAttributes;
+        if (playerAttributes == null)
+            return;
+        if (playerAttributes.size() <= 0)
+            return;
+        name = playerAttributes.get(0);
+        hitPoints = Integer.parseInt(playerAttributes.get(1));
+        strength = Integer.parseInt(playerAttributes.get(2));
+        weapon = playerAttributes.get(3);
     }
 
     @Override

@@ -1,8 +1,5 @@
 package org.example;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 public class Node extends ListItem {
 
     ListItem next() {
@@ -11,7 +8,7 @@ public class Node extends ListItem {
 
     ListItem setNext(ListItem rightLink) {
         this.rightLink = rightLink;
-        return rightLink;
+        return this.rightLink;
     }
 
     ListItem previous() {
@@ -20,12 +17,18 @@ public class Node extends ListItem {
 
     ListItem setPrevious(ListItem leftLink) {
         this.leftLink = leftLink;
-        return leftLink;
+        return this.leftLink;
     }
 
     @Override
     public int compareTo(ListItem listLink) {
-        return 0;
+        if (listLink != null) {
+            String currentValue = (String) super.getValue();
+            String otherValue = (String) listLink.getValue();
+            return currentValue.compareTo(otherValue);
+        } else {
+            return -1;
+        }
     }
 
     public Node(Object value) {

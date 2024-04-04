@@ -30,8 +30,13 @@ public class Monster implements ISaveable {
 
     @Override
     public void read(List<String> monsterAttributes) {
-        List<String> storedAttributes;
-        if (monsterAttributes.size() > 0) storedAttributes = monsterAttributes;
+        if (monsterAttributes == null)
+            return;
+        if (monsterAttributes.size() <= 0)
+            return;
+        name = monsterAttributes.get(0);
+        hitPoints = Integer.parseInt(monsterAttributes.get(1));
+        strength = Integer.parseInt(monsterAttributes.get(2));
     }
 
     @Override

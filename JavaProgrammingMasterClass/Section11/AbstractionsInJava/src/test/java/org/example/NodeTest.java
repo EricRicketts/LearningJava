@@ -33,7 +33,18 @@ public class NodeTest {
     }
 
     @Test
-    public void testCompareTo() {
+    public void testCompareToGreaterThan() {
+        Assertions.assertTrue(rightNode.compareTo(node) > 0);
+    }
 
+    @Test
+    public void testCompareToLessThan() {
+        Assertions.assertTrue(leftNode.compareTo(node) < 0);
+    }
+
+    @Test
+    public void testCompareToEqual() {
+        Node testNode = new Node("def");
+        Assertions.assertEquals(0, node.compareTo(testNode));
     }
 }
