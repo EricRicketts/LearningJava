@@ -28,13 +28,10 @@ public class MyLinkedList implements NodeList {
                 }
             } else if (comparison > 0) {
                 if (currentItem.previous() != null) {
-                    currentItem.previous().setNext(newItem);
-                    newItem.setPrevious(currentItem.previous());
-                    newItem.setNext(currentItem);
-                    currentItem.setPrevious(newItem);
+                    currentItem.previous().setNext(newItem).setPrevious(currentItem.previous());
+                    newItem.setNext(currentItem).setPrevious(newItem);
                 } else {
-                    newItem.setNext(this.root);
-                    this.root.setPrevious(newItem);
+                    newItem.setNext(this.root).setPrevious(newItem);
                     this.root = newItem;
                 }
                 return true;
@@ -52,7 +49,13 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public void traverse(ListItem root) {
-
+        if (root == null) {
+            return;
+        } else {
+            while (root != null) {
+                root = root.next();
+            }
+        }
     }
 
     public MyLinkedList(ListItem root) {
