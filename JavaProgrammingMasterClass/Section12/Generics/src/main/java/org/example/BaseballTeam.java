@@ -39,7 +39,9 @@ public class BaseballTeam {
 
     public String listTeamMembers() {
         String teamMembersList = teamName + " Roster:\n";
-        for (BaseballPlayer player : teamMembers) teamMembersList.concat(player.toString() + "\n");
+        for (BaseballPlayer player : teamMembers) {
+            teamMembersList += "Name: " + player.name() + " Position: " + player.position() + "\n";
+        };
         return teamMembersList;
     }
 
