@@ -1,12 +1,12 @@
 package org.example;
 
-public class MyLinkedList implements NodeList {
+public class SearchTree implements NodeList {
 
-    private ListItem root = null;
+    private ListItem root;
 
     @Override
     public ListItem getRoot() {
-        return this.root;
+        return root;
     }
 
     @Override
@@ -46,39 +46,32 @@ public class MyLinkedList implements NodeList {
     public boolean removeItem(ListItem item) {
         ListItem currentItem = this.root;
         while (currentItem != null) {
-           int comparison = (currentItem.compareTo(item));
-           if (comparison == 0) {
-               if (currentItem == this.root) {
-                   this.root = currentItem.next();
-               } else {
-                   currentItem.previous().setNext(currentItem.next());
-                   if (currentItem.next() != null) {
-                       currentItem.next().setPrevious(currentItem.previous());
-                   }
-               }
-               return true;
-           } else if (comparison < 0) {
-               currentItem = currentItem.next();
-           } else {
-               return false;
-           }
+            int comparison = (currentItem.compareTo(item));
+            if (comparison == 0) {
+                if (currentItem == this.root) {
+                    this.root = currentItem.next();
+                } else {
+                    currentItem.previous().setNext(currentItem.next());
+                    if (currentItem.next() != null) {
+                        currentItem.next().setPrevious(currentItem.previous());
+                    }
+                }
+                return true;
+            } else if (comparison < 0) {
+                currentItem = currentItem.next();
+            } else {
+                return false;
+            }
         }
         return false;
     }
 
     @Override
     public void traverse(ListItem root) {
-        if (root == null) {
-            System.out.println("The list is empty");
-        } else {
-            while (root != null) {
-                System.out.println(root.getValue());
-                root = root.next();
-            }
-        }
+
     }
 
-    public MyLinkedList(ListItem root) {
+    public SearchTree(ListItem root) {
         this.root = root;
     }
 }
