@@ -31,6 +31,18 @@ public class BaseballTeam {
         return totalTies;
     }
 
+    public void setTotalWins(int totalWins) {
+        this.totalWins = totalWins;
+    }
+
+    public void setTotalLosses(int totalLosses) {
+        this.totalLosses = totalLosses;
+    }
+
+    public void setTotalTies(int totalTies) {
+        this.totalTies = totalTies;
+    }
+
     public void addTeamMember(BaseballPlayer player) {
         if (!teamMembers.contains(player)) {
             teamMembers.add(player);
