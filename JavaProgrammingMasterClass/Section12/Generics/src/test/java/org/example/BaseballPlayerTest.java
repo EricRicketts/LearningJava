@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.DecimalFormat;
+
 public class BaseballPlayerTest {
 
     private BaseballPlayer baseballPlayer;
@@ -11,14 +13,24 @@ public class BaseballPlayerTest {
     @BeforeEach
     public void setUp() {
         baseballPlayer = new BaseballPlayer(
-                "Elmer Fudd", "Pitcher"
+                "Elmer Fudd", "Pitcher", 0.257
         );
     }
 
     @Test
     public void testPlayerName() {
+        Assertions.assertEquals("Elmer Fudd", baseballPlayer.name());
+    }
+
+    @Test
+    public void testPlayerPosition() {
+        Assertions.assertEquals("Pitcher", baseballPlayer.position());
+    }
+
+    @Test
+    public void testPlayerBattingAverage() {
         Assertions.assertEquals(
-                "Elmer Fudd", baseballPlayer.name()
+                "0.257", BaseballPlayer.formatBattingAverage(baseballPlayer.battingAverage())
         );
     }
 }

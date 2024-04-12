@@ -17,10 +17,18 @@ public class BaseballTeamTest {
 
     @BeforeEach
     public void setUp() {
-        BaseballPlayer firstPlayer = new BaseballPlayer("Elmer Fudd", "Pitcher");
-        BaseballPlayer secondPlayer = new BaseballPlayer("Bugs Bunny", "Catcher");
-        BaseballPlayer thirdPlayer = new BaseballPlayer("Daffy Duck", "First Base");
-        BaseballPlayer fourthPlayer = new BaseballPlayer("Foghorn Leghorn", "Short Stop");
+        BaseballPlayer firstPlayer = new BaseballPlayer(
+                "Elmer Fudd", "Pitcher", 0.200
+        );
+        BaseballPlayer secondPlayer = new BaseballPlayer(
+                "Bugs Bunny", "Catcher", 0.250
+        );
+        BaseballPlayer thirdPlayer = new BaseballPlayer(
+                "Daffy Duck", "First Base", 0.275
+        );
+        BaseballPlayer fourthPlayer = new BaseballPlayer(
+                "Foghorn Leghorn", "Short Stop", 0.280
+        );
 
         firstTeam = new BaseballTeam("Oriels");
         secondTeam = new BaseballTeam("Blue Jays");
@@ -58,8 +66,12 @@ public class BaseballTeamTest {
 
     @Test
     public void testAddTeamMember() {
-        BaseballPlayer fifthPlayer = new BaseballPlayer("Tweety Bird", "Second Base");
-        BaseballPlayer sixthPlayer = new BaseballPlayer("Yosemite Sam", "Third Base");
+        BaseballPlayer fifthPlayer = new BaseballPlayer(
+                "Tweety Bird", "Second Base", 0.239
+        );
+        BaseballPlayer sixthPlayer = new BaseballPlayer(
+                "Yosemite Sam", "Third Base", 0.225
+        );
         int[] expectedSizes = new int[]{2, 3};
         int[] resultantSizes = new int[4];
         // before adding a team member
