@@ -18,6 +18,26 @@ public class Team<T> {
     private int totalLosses = 0;
     private int totalTies = 0;
 
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public List<T> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public int getTotalWins() {
+        return totalWins;
+    }
+
+    public int getTotalLosses() {
+        return totalLosses;
+    }
+
+    public int getTotalTies() {
+        return totalTies;
+    }
+
     public void addTeamMember(T t) {
         if (!teamMembers.contains(t)) {
             teamMembers.add(t);
@@ -55,7 +75,7 @@ public class Team<T> {
 
     @Override
     public String toString() {
-        return "BaseballTeam " + teamName + " ( Ranked " + ranking() + ")";
+        return this.getClass().getSimpleName() + " " + teamName + " (Ranked " + ranking() + ")";
     }
 
     public Team(String teamName) {
