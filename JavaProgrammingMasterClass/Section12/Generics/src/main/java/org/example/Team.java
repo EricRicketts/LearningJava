@@ -4,13 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    A comment is due here, the "T" in this generic class can be any class, most likely it will be of some
-    player type upon implementation.  This is important because for a given team we only want one player type.
-    For instance, we do not want to put basketball players on a baseball team.  Given the player type upon
-    implementation, Java will run type checking to ensure that only that player type is included on the team
-    roster.
+    A comment is due here, the "T" in this generic class can be any class, in this case with the statement
+    "Team<T extends Player>" we are requiring that T be the Player class or any subclass of Player.  If we had only
+    "Team<T>" then T could be any class such as String or Integer.  Note we cannot use primitives with Generics, so
+    "Team<int>" is not allowed, however, the primitive wrappers are allowed, i.e., "Team<Integer>" so essentially, the
+    use of primitives is covered by this use of the primitive wrapper classes.
+
+    Note just to make sure all confusion is alleviated, "Team<T extends Player>" does not have the same effect as
+    when we use it in declaring subclasses, i.e., "public class MountainBike extends Bicycle".  As mentioned above
+    using "extends" within the "<>" in this case means the parameterized type T must be the Player class or a subtype
+    of the Player class.
+
+    Player could have been either a Class or an Interface, the syntax would be the same.  Player serves as the "upper
+    bound" for the type which is allowed to be used with this class.
+
+    Review Reasons for specifying an Upper Bound:
+
+    1.  An upper bound permits access to the bounded type's functionality.
+    2.  An upper bound limits the kind of type parameters you can use when using a Generic Class.  This type must be
+    equal to or a subtype of the bounded type.
 */
-public class Team<T> {
+public class Team<T extends Player> {
 
     private String teamName;
     private List<T> teamMembers = new ArrayList<>();
