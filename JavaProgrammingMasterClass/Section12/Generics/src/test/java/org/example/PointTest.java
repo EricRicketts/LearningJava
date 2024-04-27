@@ -10,34 +10,36 @@ import java.util.List;
 
 public class PointTest {
 
-    private static Double originalXCoord = 44.4882;
-    private static Double originalYCoord = -110.5916;
+    private Double xCoord;
+    private Double yCoord;
     private Point point;
 
     @BeforeEach
     public void setUp() {
-        point = new Point(originalXCoord, originalYCoord);
+        xCoord = 44.4882; // 36.0636, 37.8855;
+        yCoord = -110.5916; // -112.1079, -119.5360;
+        point = new Point(xCoord, yCoord);
     }
 
     @Test
     public void testGetXAndSetCoord() {
-        Double newXCoord = 34.8913;
-        Assertions.assertEquals(originalXCoord, point.getxCoord());
+        Double newXCoord = 36.0636;
+        Assertions.assertEquals(xCoord, point.getxCoord());
         point.setxCoord(newXCoord);
         Assertions.assertEquals(newXCoord, point.getxCoord());
     }
 
     @Test
     public void testGetYAndSetCoord() {
-        Double newYCoord = 30.1122;
-        Assertions.assertEquals(originalYCoord, point.getyCoord());
+        Double newYCoord = -112.1079;
+        Assertions.assertEquals(yCoord, point.getyCoord());
         point.setyCoord(newYCoord);
         Assertions.assertEquals(newYCoord, point.getyCoord());
     }
 
     @Test
     public void testRender() {
-        List<Double> expected = new ArrayList<>(Arrays.asList(originalXCoord, originalYCoord));
+        List<Double> expected = new ArrayList<>(Arrays.asList(xCoord, yCoord));
         List<Double> results = point.render();
         Assertions.assertEquals(expected, results);
     }
