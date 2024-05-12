@@ -10,36 +10,36 @@ import java.util.List;
 
 public class PointTest {
 
-    private Double xCoord;
-    private Double yCoord;
+    private Double latitude;
+    private Double longitude;
     private Point point;
 
     @BeforeEach
     public void setUp() {
-        xCoord = 44.4882; // 36.0636, 37.8855;
-        yCoord = -110.5916; // -112.1079, -119.5360;
-        point = new Point(xCoord, yCoord);
+        latitude = 44.4882; // 36.0636, 37.8855;
+        longitude = -110.5916; // -112.1079, -119.5360;
+        point = new Point(latitude, longitude);
     }
 
     @Test
-    public void testGetXAndSetCoord() {
-        Double newXCoord = 36.0636;
-        Assertions.assertEquals(xCoord, point.getxCoord());
-        point.setxCoord(newXCoord);
-        Assertions.assertEquals(newXCoord, point.getxCoord());
+    public void testGetAndSetLatitude() {
+        Double newLatitude = 36.0636;
+        Assertions.assertEquals(latitude, point.getLatitude());
+        point.setLatitude(newLatitude);
+        Assertions.assertEquals(newLatitude, point.getLatitude());
     }
 
     @Test
-    public void testGetYAndSetCoord() {
-        Double newYCoord = -112.1079;
-        Assertions.assertEquals(yCoord, point.getyCoord());
-        point.setyCoord(newYCoord);
-        Assertions.assertEquals(newYCoord, point.getyCoord());
+    public void testGetAndSetLongitude() {
+        Double newLongitude = -112.1079;
+        Assertions.assertEquals(longitude, point.getLongitude());
+        point.setLongitude(newLongitude);
+        Assertions.assertEquals(newLongitude, point.getLongitude());
     }
 
     @Test
     public void testRender() {
-        List<Double> expected = new ArrayList<>(Arrays.asList(xCoord, yCoord));
+        List<Double> expected = new ArrayList<>(Arrays.asList(latitude, longitude));
         List<Double> results = point.render();
         Assertions.assertEquals(expected, results);
     }

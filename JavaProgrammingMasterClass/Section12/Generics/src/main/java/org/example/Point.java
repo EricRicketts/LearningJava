@@ -6,31 +6,31 @@ import java.util.List;
 
 public class Point implements Mappable {
 
-    Double xCoord;
-    Double yCoord;
+    Double latitude;
+    Double longitude;
 
-    public Double getxCoord() {
-        return xCoord;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setxCoord(Double xCoord) {
-        this.xCoord = xCoord;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
-    public Double getyCoord() {
-        return yCoord;
+    public Double getLongitude() {
+        return longitude;
     }
 
     public List<Double> render() {
-        return new ArrayList<>(Arrays.asList(getxCoord(), getyCoord()));
+        return new ArrayList<>(Arrays.asList(getLatitude(), getLongitude()));
     }
 
-    public void setyCoord(Double yCoord) {
-        this.yCoord = yCoord;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
-    public Point(Double xCoord, Double yCoord) {
-        this.xCoord = xCoord;
-        this.yCoord = yCoord;
+    public Point(Double latitude, Double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }

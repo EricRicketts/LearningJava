@@ -1,10 +1,12 @@
 package org.example;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
 
-    List<Point> points;
+    List<Point> points = new ArrayList<>();
 
     public List<Point> render() {
         return points;
@@ -14,7 +16,11 @@ public class Line {
         return points.get(index);
     }
 
-    public Line(List<Point> points) {
-        this.points = points;
+    public Line(Double[][] inputCoords) {
+        for (Double[] coords : inputCoords) {
+            Double latitude = coords[0];
+            Double longitude = coords[1];
+            points.add(new Point(latitude, longitude));
+        }
     }
 }
