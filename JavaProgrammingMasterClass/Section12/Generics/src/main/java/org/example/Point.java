@@ -1,36 +1,24 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Point implements Mappable {
+abstract class Point implements Mappable {
+// we are not required to implement Mappable's render method as this
+// is an abstract class, so we do not get an error in IntelliJ
+// if we do not implement the render method, the instructor did it anyway
+    private double[] location = new double[2];
 
-    Double latitude;
-    Double longitude;
-
-    public Double getLatitude() {
-        return latitude;
+    @Override
+    public String render() {
+        return "Render " + this + " as POINT (" + location() + ")";
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    private String location() {
+        return Arrays.toString(location);
     }
 
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public List<Double> render() {
-        return new ArrayList<>(Arrays.asList(getLatitude(), getLongitude()));
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Point(Double latitude, Double longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Point(String location) {
+        this.location = Mappable.stringToLatLong(location);
     }
 }
