@@ -16,11 +16,19 @@ abstract class Line implements Mappable {
         return "Render " + this + " as LINE (" + locations() + ")";
     }
 
+    @Override
+    public String toString() {
+        return "Line{" +
+                "locations=" + Arrays.toString(locations) +
+                '}';
+    }
+
     public Line(String... locations) {
         this.locations = new double[locations.length][];
         int index = 0;
         for (var location : locations) {
-            this.locations[index++] = Mappable.stringToLatLong(location);
+            this.locations[index] = Mappable.stringToLatLong(location);
+            index += 1;
         }
     }
 }

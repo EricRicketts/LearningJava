@@ -16,7 +16,7 @@ public class River extends Line {
     public String toString() {
         return "River{" +
                 "name='" + name + '\'' +
-                "} " + super.toString();
+                "}";
     }
 
     public River(String name, String... locations) {
