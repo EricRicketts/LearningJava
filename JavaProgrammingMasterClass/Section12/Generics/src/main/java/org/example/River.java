@@ -1,6 +1,6 @@
 package org.example;
 
-public class Park extends Point {
+public class River extends Line {
 
     private String name;
 
@@ -14,13 +14,13 @@ public class Park extends Point {
 
     @Override
     public String toString() {
-        return "Park{" +
+        return "River{" +
                 "name='" + name + '\'' +
-                "}";
+                "} " + super.toString();
     }
 
-    public Park(String name, String location) {
-        super(location);
+    public River(String name, String... locations) {
+        super(locations);
         this.name = name;
     }
 }
