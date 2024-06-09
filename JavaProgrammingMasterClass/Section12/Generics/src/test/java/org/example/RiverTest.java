@@ -27,6 +27,13 @@ public class RiverTest {
     }
 
     @Test
+    public void testToString() {
+        expected = "River{name='James River'}";
+        results = river.toString();
+        Assertions.assertEquals(expected, results);
+    }
+
+    @Test
     public void testRender() {
         expected = "Render River{name='James River'} as LINE ([[37.47779, -78.9589], [37.4777903, -78.9588954]," +
                 " [37.497949, -78.927825], [37.516878, -78.895896]])";
