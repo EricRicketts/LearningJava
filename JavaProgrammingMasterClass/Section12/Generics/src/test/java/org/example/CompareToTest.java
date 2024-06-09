@@ -3,6 +3,8 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class CompareToTest {
 
     private String expected, results;
@@ -10,6 +12,9 @@ public class CompareToTest {
     private static Integer[] otherIntegers = {0, 5, 10};
     private static String banana = "banana";
     private static String[] fruits = {"apple", "banana", "pear", "BANANA"};
+    private SimpleStudent zak = new SimpleStudent("Zak"), april = new SimpleStudent("April"),
+            tim = new SimpleStudent("Teim");
+    private SimpleStudent[] students = new SimpleStudent[]{zak, tim, april};
 
     @Test
     public void testComparingIntegers() {
@@ -50,4 +55,13 @@ public class CompareToTest {
             }
         Assertions.assertEquals(expected, results);
         }
+
+    @Test
+    public void testCompareStudent() {
+        SimpleStudent[] beforeSorting = new SimpleStudent[]{zak, tim, april};
+        Assertions.assertArrayEquals(beforeSorting, students);
+        SimpleStudent[] afterSorting = new SimpleStudent[]{april, tim, zak};
+        Arrays.sort(students);
+        Assertions.assertArrayEquals(afterSorting, students);
     }
+}
