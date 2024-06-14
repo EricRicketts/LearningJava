@@ -43,9 +43,10 @@ public class Student {
 
     public Student() {
         int upperCaseA = 65, oneBeyondUpperCaseZ = 91,
-                numberOfFirstNames = firstNames.length;
+                numberOfFirstNames = firstNames.length, numberOfCourses = courses.length;
         int lastNameIndex = random.nextInt(oneBeyondUpperCaseZ - upperCaseA) + upperCaseA;
         name = firstNames[random.nextInt(numberOfFirstNames)] + " " + (char) lastNameIndex;
+        course = courses[random.nextInt(numberOfCourses)];
         yearStarted = random.nextInt(lastYear - firstYear) + firstYear;
     }
 }

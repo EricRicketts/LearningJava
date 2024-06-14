@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,19 +13,56 @@ public class StudentTest {
     private int numberOfStudents = 3;
     private Student[] students = new Student[numberOfStudents];
     private List<String> studentFirstNames = Arrays.asList(Student.getFirstNames());
-    
+    private List<String> courseNames = Arrays.asList(Student.getCourses());
+    private List<String> lastNameInitials = new ArrayList<>();
+
     @BeforeEach
     public void setUp() {
         for (int index = 0; index < numberOfStudents; index++) students[index] = new Student();
+        for (char initial = 'A'; initial <= 'Z'; initial++) {
+            String capitalLetter = Character.toString(initial);
+            lastNameInitials.add(capitalLetter);
+        }
     }
 
     @Test
-    public void testStudentNames() {
+    public void testStudentFirstNames() {
         for (int index = 0; index < numberOfStudents; index++) {
             Student student = students[index];
             String[] firstNameAndInitial = student.getName().split("\\s+");
             String firstName = firstNameAndInitial[0];
             Assertions.assertTrue(studentFirstNames.contains(firstName));
+        }
+    }
+
+    @Test
+    public void testStudentLastNameInitials() {
+        for (int index = 0; index < numberOfStudents; index++) {
+            Student student = students[index];
+            String[] firstNameAndInitial = student.getName().split("\\s+");
+            String initial = firstNameAndInitial[1];
+            Assertions.assertTrue(lastNameInitials.contains(initial));
+        }
+    }
+
+    @Test
+    public void testStudentCourses() {
+        for (int index = 0; index < numberOfStudents; index++) {
+            Student student = students[index];
+            String course = student.getCourse();
+            Assertions.assertTrue(courseNames.contains(course));
+        }
+    }
+
+    @Test
+    public void testStudentCourseYears() {
+        for (int index = 0; index < numberOfStudents; index++) {
+            Student student = students[index];
+            int startYearForCourse = student.getYearStarted();
+            boolean courseWithinYearRange =
+                    startYearForCourse >= Student.getFirstYear() &&
+                            startYearForCourse <= Student.getLastYear();
+            Assertions.assertTrue(courseWithinYearRange);
         }
     }
 }
