@@ -86,4 +86,17 @@ public class StudentTest {
         String[] results = Student.getCourses();
         Assertions.assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testStudentGetString() {
+        Student student = students[0];
+        String results = student.toString();
+        String[] nameCourseYear = results.split("\\s+");
+        String name = nameCourseYear[0], initial = nameCourseYear[1], course = nameCourseYear[2]; int year;
+        year = Integer.valueOf(nameCourseYear[3]);
+        Assertions.assertTrue(Arrays.asList(Student.getFirstNames()).contains(name));
+        Assertions.assertTrue(lastNameInitials.contains(initial));
+        Assertions.assertTrue(Arrays.asList(Student.getCourses()).contains(course));
+        Assertions.assertTrue(year >= Student.getFirstYear() && year <= Student.getLastYear());
+    }
 }
