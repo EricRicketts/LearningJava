@@ -41,6 +41,11 @@ public class Student {
         return yearStarted;
     }
 
+    @Override
+    public String toString() {
+        return "%-15s %-15s %d".formatted(this.getName(), this.getCourse(), this.getYearStarted());
+    }
+
     public Student() {
         int upperCaseA = 65, oneBeyondUpperCaseZ = 91,
                 numberOfFirstNames = firstNames.length, numberOfCourses = courses.length;

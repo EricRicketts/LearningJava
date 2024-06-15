@@ -65,4 +65,25 @@ public class StudentTest {
             Assertions.assertTrue(courseWithinYearRange);
         }
     }
+
+    @Test
+    public void testStudentGetFirstAndLastYears() {
+        int[] expected = new int[]{2018, 2023};
+        int[] results = new int[]{Student.getFirstYear(), Student.getLastYear()};
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testStudentGetFirstNames() {
+        String[] expected = new String[]{"Ann", "Bill", "Cathy", "John", "Tim"};
+        String[] results = Student.getFirstNames();
+        Assertions.assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testStudentGetCourses() {
+        String[] expected = new String[]{"C++", "Java", "Python"};
+        String[] results = Student.getCourses();
+        Assertions.assertArrayEquals(expected, results);
+    }
 }
