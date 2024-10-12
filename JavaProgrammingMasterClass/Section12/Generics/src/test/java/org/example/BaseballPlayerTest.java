@@ -13,7 +13,7 @@ public class BaseballPlayerTest {
     @BeforeEach
     public void setUp() {
         baseballPlayer = new BaseballPlayer(
-                "Elmer Fudd", "Pitcher", 0.257
+                "Elmer Fudd", "Pitcher", 0.25724
         );
     }
 

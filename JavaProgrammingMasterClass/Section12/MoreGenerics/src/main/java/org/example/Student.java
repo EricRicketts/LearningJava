@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Random;
 
 public class Student {
@@ -39,6 +40,23 @@ public class Student {
 
     public int getYearStarted() {
         return yearStarted;
+    }
+
+    public static String printMoreLists(List<? extends Student> students) {
+        // wildcard type parameter => ? can only be used in a method type argument
+        String output = "";
+        for (var student : students) {
+            output = output.concat(student.toString() + "\n");
+        }
+        return output;
+    }
+
+    public static <T> String  printList(List<T> students) {
+        String output = "";
+        for (var student : students) {
+            output = output.concat(student.toString() + "\n");
+        }
+        return output;
     }
 
     @Override

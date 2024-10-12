@@ -2,7 +2,8 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// I defined this class just to show the value of Generics, normally a separate Baseball team would not be defined.
+// A Team Generic with Type Baseball player would be defined.
 public class BaseballTeam {
 
     private String teamName;
