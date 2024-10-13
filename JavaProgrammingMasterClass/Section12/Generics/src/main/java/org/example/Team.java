@@ -24,13 +24,14 @@ import java.util.List;
     2.  An upper bound limits the kind of type parameters you can use when using a Generic Class.  This type must be
     equal to or a subtype of the bounded type.
 */
-public class Team<T extends Player> {
+public class Team<T extends Player, S> {
 
     private String teamName;
     private List<T> teamMembers = new ArrayList<>();
     private int totalWins = 0;
     private int totalLosses = 0;
     private int totalTies = 0;
+    private S affiliation = (S) "";
 
     public String getTeamName() {
         return teamName;
@@ -52,6 +53,14 @@ public class Team<T extends Player> {
         return totalTies;
     }
 
+    public S getAffiliation() {
+        return affiliation;
+    }
+
+    public void setAffiliation(S affiliation) {
+        this.affiliation = affiliation;
+    }
+
     public void addTeamMember(T t) {
         if (!teamMembers.contains(t)) {
             teamMembers.add(t);
@@ -64,6 +73,7 @@ public class Team<T extends Player> {
         // of any player until runtime, we just use to the toString() method as this will work on any
         // object in Java.
         String teamMembersList = teamName + " Roster:\n";
+        String s = affiliation == null ? "" : " AFFILIATION: " + affiliation;
         for (T player : teamMembers) {
             teamMembersList +=  player.toString() + "\n";
         };
@@ -92,7 +102,7 @@ public class Team<T extends Player> {
         return this.getClass().getSimpleName() + " " + teamName + " (Ranked " + ranking() + ")";
     }
 
-    public Team(String teamName) {
+    public Team(String teamName, Affiliation philly) {
         this.teamName = teamName;
     }
 }

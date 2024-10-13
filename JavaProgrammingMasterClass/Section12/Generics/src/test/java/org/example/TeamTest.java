@@ -6,17 +6,20 @@ import org.junit.jupiter.api.Test;
 
 public class TeamTest {
 
-    private Team<BaseballPlayer> baseballTeam;
-    private Team<BasketballPlayer> basketballTeam;
-    private Team<FootballPlayer> footballTeam;
+    private Team<BaseballPlayer, Affiliation> baseballTeam;
+    private Team<BasketballPlayer, Affiliation> basketballTeam;
+    private Team<FootballPlayer, Affiliation> footballTeam;
     String expected, actual;
     int ourScore, theirScore;
 
     @BeforeEach
     public void setUp() {
-        baseballTeam = new Team<>("Toronto Blue Jays");
-        basketballTeam = new Team<>("Dallas Mavericks");
-        footballTeam = new Team<>("Washington Redskins");
+        var philly = new Affiliation("city", "Philadelphia, PA", "US");
+        var dallas = new Affiliation("city", "Dallas TX", "US");
+        var dc = new Affiliation("city", "Washington DC", "US");
+        baseballTeam = new Team<>("Philadelphia Phillies", philly);
+        basketballTeam = new Team<>("Dallas Mavericks", dallas);
+        footballTeam = new Team<>("Washington Redskins", dc);
 
         BaseballPlayer firstBaseballPlayer = new BaseballPlayer(
                 "George Chelston Springer",
@@ -91,27 +94,33 @@ public class TeamTest {
 
     @Test
     public void testListBaseballTeamMembers() {
-        expected = "Toronto Blue Jays Roster:\n" +
-            "BaseballPlayer[name=George Chelston Springer, position=Right Fielder, battingAverage=0.266]\n" +
-            "BaseballPlayer[name=Bo Joseph Bichette, position=Short Stop, battingAverage=0.297]\n";
+        expected = """
+                Philadelphia Phillies Roster:
+                BaseballPlayer[name=George Chelston Springer, position=Right Fielder, battingAverage=0.266]
+                BaseballPlayer[name=Bo Joseph Bichette, position=Short Stop, battingAverage=0.297]
+                """;
         actual = baseballTeam.listTeamMembers();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void testListBasketBallTeamMembers() {
-        expected = "Dallas Mavericks Roster:\n" +
-            "BasketballPlayer[name=Luka Doncic, position=Point Guard, ppg=28.7]\n" +
-            "BasketballPlayer[name=Dirk Nowitzki, position=Power Forward, ppg=20.7]\n";
+        expected = """
+                Dallas Mavericks Roster:
+                BasketballPlayer[name=Luka Doncic, position=Point Guard, ppg=28.7]
+                BasketballPlayer[name=Dirk Nowitzki, position=Power Forward, ppg=20.7]
+                """;
         actual = basketballTeam.listTeamMembers();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void testListFootballTeamMembers() {
-        expected = "Washington Redskins Roster:\n" +
-                "FootballPlayer[name=Tom Brady, OffenseOrDefense=Offense, position=Quarterback]\n" +
-                "FootballPlayer[name=Lawrence Taylor, OffenseOrDefense=Defense, position=Outside Linebacker]\n";
+        expected = """
+                Washington Redskins Roster:
+                FootballPlayer[name=Tom Brady, OffenseOrDefense=Offense, position=Quarterback]
+                FootballPlayer[name=Lawrence Taylor, OffenseOrDefense=Defense, position=Outside Linebacker]
+                """;
         actual = footballTeam.listTeamMembers();
         Assertions.assertEquals(expected, actual);
     }
@@ -137,7 +146,7 @@ public class TeamTest {
     @Test
     public void testToString() {
         String[] expected = {
-                "Team Toronto Blue Jays (Ranked 7)",
+                "Team Philadelphia Phillies (Ranked 7)",
                 "Team Dallas Mavericks (Ranked 4)",
                 "Team Washington Redskins (Ranked 5)"
         };
