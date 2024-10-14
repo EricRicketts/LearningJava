@@ -9,6 +9,7 @@ public class LayerTest {
     String expected, results;
     Park[] nationalUSParks;
     River[] majorUSRivers;
+    Layer[] parksAndRivers;
     /*
         Note only Park and River can be instantiated as Point and Line are abstract classes and cannot be instantiated.
         Park and River have render() methods, so the renderLayer() method ends up calling an objects render() method.
@@ -27,6 +28,16 @@ public class LayerTest {
                 ),
                 new River("Missouri",
                         "45.9239, -111.4983", "38.8146, -90.1218"
+                )
+        };
+        parksAndRivers = new Layer[]{
+                new Layer(new Park[]{
+                    nationalUSParks[0], nationalUSParks[1]
+                    }
+                ),
+                new Layer(new River[]{
+                    majorUSRivers[0], majorUSRivers[1]
+                    }
                 )
         };
     }
@@ -62,5 +73,9 @@ public class LayerTest {
         );
         results = riverLayer.renderLayer();
         Assertions.assertEquals(expected, results);
+    }
+
+    @Test
+    public void testAddParksAndRivers() {
     }
 }

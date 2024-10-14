@@ -18,6 +18,10 @@ public class Layer <T extends Mappable> {
         this.layerElements = new ArrayList<>(List.of(layerElements));
     }
 
+    public void addElement(T element) {
+        this.layerElements.add(element);
+    }
+
     @SafeVarargs
     public final void addElements(T... elements) {
         this.layerElements.addAll(List.of(elements));
