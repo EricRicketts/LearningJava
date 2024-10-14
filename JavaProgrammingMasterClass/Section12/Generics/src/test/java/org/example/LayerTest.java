@@ -9,6 +9,10 @@ public class LayerTest {
     String expected, results;
     Park[] nationalUSParks;
     River[] majorUSRivers;
+    /*
+        Note only Park and River can be instantiated as Point and Line are abstract classes and cannot be instantiated.
+        Park and River have render() methods, so the renderLayer() method ends up calling an objects render() method.
+    */
 
     @BeforeEach
     public void setUp() {
