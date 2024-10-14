@@ -1,12 +1,16 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Map;
 
 abstract class Line implements Mappable {
 
-    private double[][] locations;
+    private final double[][] locations;
 
+    /*
+        Arrays.deepToString() is important as Java will display the arrays properly,
+        i.e., 2D, 3D, etc.  So a 2x2 2D array will be displayed in String format as:
+        [[x0, y0], [x1, y1]]
+    */
     private String locations() {
         return Arrays.deepToString(locations);
     }
