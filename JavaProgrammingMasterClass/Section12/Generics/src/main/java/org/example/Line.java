@@ -7,6 +7,8 @@ abstract class Line implements Mappable {
     private final double[][] locations;
 
     /*
+        The comments made in the abstract Point class apply to this abstract Line class.
+
         Arrays.deepToString() is important as Java will display the arrays properly,
         i.e., 2D, 3D, etc.  So a 2x2 2D array will be displayed in String format as:
         [[x0, y0], [x1, y1]]

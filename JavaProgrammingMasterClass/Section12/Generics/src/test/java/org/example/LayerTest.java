@@ -52,8 +52,15 @@ public class LayerTest {
                 Render Park{name='Yellowstone'} as POINT ([44.4882, -110.5916])
                 Render Park{name='Grand Canyon'} as POINT ([36.1085, -112.0965])
                 Render Park{name='Yosemite'} as POINT ([37.8855, -119.536])
+                Render Park{name='Zion'} as POINT ([37.27, 112.19])
+                Render Park{name='Great Smokey Mountains National Park'} as POINT ([35.63, 83.45])
                 """;
         Layer<Park> parkLayer = new Layer<>(nationalUSParks);
+        Park[] parksToAdd = new Park[]{
+                new Park("Zion", "37.27, 112.19"),
+                new Park("Great Smokey Mountains National Park", "35.63, 83.45")
+        };
+        parkLayer.addElements(parksToAdd);
         results = parkLayer.renderLayer();
         Assertions.assertEquals(expected, results);
     }

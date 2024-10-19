@@ -3,7 +3,7 @@ package org.example;
 import java.util.Arrays;
 
 abstract class Point implements Mappable {
-/* we are not required to implement Mappable's render method as this
+/*  we are not required to implement Mappable's render method as this
     is an abstract class, so we do not get an error in IntelliJ
     if we do not implement the render method, the instructor did it anyway
 
