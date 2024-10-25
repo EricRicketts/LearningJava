@@ -27,7 +27,7 @@ public class StudentTest {
     public void testSortByComparatorAscending() {
         Arrays.sort(students, studentGPAComparator);
         double lowestGPA = students[0].getGpa();
-        compareToOtherGPAs = lowestGPA < students[1].getGpa() && lowestGPA < students[2].getGpa();
+        compareToOtherGPAs = lowestGPA < students[1].getGpa() && students[1].getGpa() < students[2].getGpa();
         Assertions.assertTrue(compareToOtherGPAs);
     }
 
@@ -35,7 +35,7 @@ public class StudentTest {
     public void testSortByComparatorDescending() {
         Arrays.sort(students, studentGPAComparator.reversed());
         double highestGPA = students[0].getGpa();
-        compareToOtherGPAs = highestGPA > students[1].getGpa() && highestGPA > students[2].getGpa();
+        compareToOtherGPAs = highestGPA > students[1].getGpa() && students[1].getGpa() > students[2].getGpa();
         Assertions.assertTrue(compareToOtherGPAs);
     }
 }
