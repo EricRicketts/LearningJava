@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class StudentTest {
 
     String expected, results;
@@ -37,5 +39,23 @@ public class StudentTest {
         double highestGPA = students[0].getGpa();
         compareToOtherGPAs = highestGPA > students[1].getGpa() && students[1].getGpa() > students[2].getGpa();
         Assertions.assertTrue(compareToOtherGPAs);
+    }
+
+    @Test
+    public void testSortingWithoutRandomGPAs() {
+        Student frank = new Student("Frank");
+        Student april = new Student("April");
+        Student ted = new Student("Ted");
+        Student mary = new Student("Mary");
+        frank.setGpa(2.56);
+        april.setGpa(1.98);
+        ted.setGpa(2.78);
+        mary.setGpa(3.25);
+        Student[] students = {april, frank, ted, mary};
+        Arrays.sort(students, studentGPAComparator.reversed());
+        String[] expected = {"Mary", "Ted", "Frank", "April"};
+        for(int index = 0; index < students.length; index++) {
+            assertEquals(expected[index], students[index].getName());
+        }
     }
 }
