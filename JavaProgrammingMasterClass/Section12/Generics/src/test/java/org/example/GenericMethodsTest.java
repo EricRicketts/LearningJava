@@ -3,16 +3,21 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GenericMethodsTest {
 
-    private <T extends StudentModel> String genericPrintListOne(List<T> students) {
+    private <T extends StudentModel> String genericPrintListVersionOne(List<T> students) {
+        /*
+            <T extends StudentModel> sets an upperbound on the type, allowing StudentModel and any subclass of
+            StudentModel
+        */
         String output = "";
         for(var student : students) {
-            output = student.getYearStarted() + ":" + student.toString();
+            output = output.concat(student.toStringWithCarriageReturn());
         }
         return output;
     }
@@ -32,17 +37,16 @@ public class GenericMethodsTest {
 
     @Test
     public void testStudentModel() {
-        for(int index = 0; index < studentModels.length; index++) {
-            StudentModel studentModel = studentModels[index];
-            String studentModelString = studentModel.toString();
-            boolean checkStudentModel =
-                    studentModelString.contains("StudentModel") && !studentModelString.contains("LPAStudent");
-            boolean checkLPAStudent =
-                    studentModelString.contains("LPAStudent") && studentModelString.contains("StudentModel");
-            if(index % 2 == 0) {
-                assertTrue(checkStudentModel);
+        String listOfStudentsString = genericPrintListVersionOne(Arrays.asList(studentModels));
+        List<String> listOfStudents = Arrays.asList(listOfStudentsString.split("\n"));
+        for(int index = 0; index < listOfStudents.size(); index++) {
+            String studentString = listOfStudents.get(index);
+            boolean studentModelCheck = studentString.contains("StudentModel") && !studentString.contains("LPAStudent");
+            boolean LPAStudentCheck = studentString.contains("StudentModel") && studentString.contains("LPAStudent");
+            if (index % 2 == 0) {
+                assertTrue(studentModelCheck);
             } else {
-                assertTrue(checkLPAStudent);
+                assertTrue(LPAStudentCheck);
             }
         }
     }

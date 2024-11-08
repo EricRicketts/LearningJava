@@ -33,6 +33,10 @@ public class StudentModel {
                 '}';
     }
 
+    public String toStringWithCarriageReturn() {
+        return this.toString() + "\n";
+    }
+
     public String getName() {
         return name;
     }

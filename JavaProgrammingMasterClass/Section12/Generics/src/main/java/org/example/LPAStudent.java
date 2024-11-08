@@ -22,6 +22,10 @@ public class LPAStudent extends StudentModel {
                 "}";
     }
 
+    public String toStringWithCarriageReturn() {
+        return this.toString() + "\n";
+    }
+
     public LPAStudent() {
         super();
         Random random = new Random();
