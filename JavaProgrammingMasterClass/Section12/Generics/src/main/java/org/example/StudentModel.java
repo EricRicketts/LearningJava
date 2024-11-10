@@ -1,8 +1,9 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Random;
 
-public class StudentModel {
+public class StudentModel implements QueryItem {
 
     private String name;
     private String course;
@@ -14,6 +15,7 @@ public class StudentModel {
     private static final String[] courses = {"C++", "Java", "Python"};
 
     public StudentModel() {
+//        int largestChar = 67; // for testing restrict to "A", "B", and "C"
         int largestChar = 90;
         int smallestChar = 65;
         int firstYear = 2018;
@@ -67,5 +69,31 @@ public class StudentModel {
 
     public static String[] getCourses() {
         return courses;
+    }
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        String fName = fieldName.toUpperCase();
+        boolean selectFieldValue = false;
+        switch(fName) {
+            case "NAME":
+                String[] firstAndLastNameInitial = value.split(" ");
+                String firstName = firstAndLastNameInitial[0];
+                String lastNameInitial = firstAndLastNameInitial[1];
+                boolean firstNameCheck = Arrays.asList(firstNames).contains(firstName);
+                boolean lastNameCheck = lastNameInitial.compareTo("A") >= 0 && lastNameInitial.compareTo("Z") <= 0;
+                selectFieldValue = firstNameCheck && lastNameCheck;
+                break;
+            case "COURSE":
+                selectFieldValue = this.getCourse().equalsIgnoreCase(value);
+                break;
+            case "YEARSTARTED":
+                selectFieldValue = this.getYearStarted() == (Integer.parseInt(value));
+                break;
+            default:
+                selectFieldValue = false;
+                break;
+        };
+        return selectFieldValue;
     }
 }
