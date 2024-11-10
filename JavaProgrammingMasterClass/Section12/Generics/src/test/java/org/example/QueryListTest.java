@@ -3,20 +3,22 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class QueryListTest {
 
     private QueryList<?> queryListOne, queryListTwo;
     private List<?> matches;
+    StudentModel[] studentModels = new StudentModel[20];
+    LPAStudent[] lpaStudents = new LPAStudent[20];
 
     @BeforeEach
     public void setUp() {
-    StudentModel[] studentModels = new StudentModel[20];
-    LPAStudent[] lpaStudents = new LPAStudent[20];
     for(int index = 0; index < studentModels.length; index++) {
         studentModels[index] = new StudentModel();
         lpaStudents[index] = new LPAStudent();
@@ -81,5 +83,18 @@ public class QueryListTest {
             boolean checkYearStarted = yearStarted >= 2018 && yearStarted <= 2022;
             assertTrue(checkYearStarted);
         }
+    }
+
+    @Test
+    public void testGetMatchesWithPassedInList() {
+        var matches2021 = QueryList.getMatches(Arrays.asList(studentModels), "yearStarted", "2021");
+        var matches2019 = QueryList.<StudentModel>getMatches(new ArrayList<>(), "yearStarted", "2019");
+        int five = 5;
+        if (!matches2021.isEmpty()) {
+            for(var match : matches2021) {
+                assertEquals(2021, match.getYearStarted());
+            }
+        }
+        assertTrue(matches2019.isEmpty());
     }
 }
