@@ -34,7 +34,7 @@ public class StudentModelTest {
     private String parseStudentModelComponent(String studentModelComponent) {
         String separator = "=";
         int indexOfSeparator = studentModelComponent.indexOf(separator);
-        return studentModelComponent.substring(indexOfSeparator + 1);
+        return studentModelComponent.substring(indexOfSeparator + 1).trim();
     }
 
     @BeforeEach
@@ -50,7 +50,7 @@ public class StudentModelTest {
     public void testNamesOfStudentModels() {
         for(String individualStudentModel : individualStudentModels) {
             String[] parsedStudentModelElements = parseStudentModel(individualStudentModel);
-            String studentModelName = parseStudentModelComponent(parsedStudentModelElements[0]);
+            String studentModelName = parseStudentModelComponent(parsedStudentModelElements[1]);
             String[] firstAndLastNameInitial = studentModelName.split(" ");
             String firstName = firstAndLastNameInitial[0];
             String lastNameInitial = firstAndLastNameInitial[1];
@@ -65,7 +65,7 @@ public class StudentModelTest {
     public void testCoursesOfStudentModels() {
         for(String individualStudentModel : individualStudentModels) {
             String[] parsedStudentModelElements = parseStudentModel(individualStudentModel);
-            String course = parseStudentModelComponent(parsedStudentModelElements[1]);
+            String course = parseStudentModelComponent(parsedStudentModelElements[2]);
 
             assertTrue(Arrays.asList(courses).contains(course));
         }
@@ -75,7 +75,7 @@ public class StudentModelTest {
     public void testYearsOfStudentModels() {
         for(String individualStudentModel : individualStudentModels) {
             String[] parsedStudentModelElements = parseStudentModel(individualStudentModel);
-            String year = parseStudentModelComponent(parsedStudentModelElements[2]);
+            String year = parseStudentModelComponent(parsedStudentModelElements[3]);
 
             assertTrue(Arrays.asList(years).contains(year));
         }

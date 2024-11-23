@@ -33,4 +33,12 @@ public class LPAStudent extends StudentModel {
         double max = 100.00;
         percentComplete = (random.nextDouble() * (max - min)) + min;
     }
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        if (fieldName.equalsIgnoreCase("percentComplete")) {
+            return this.getPercentComplete() <= Integer.parseInt(value);
+        }
+        return super.matchFieldValue(fieldName, value);
+    }
 }

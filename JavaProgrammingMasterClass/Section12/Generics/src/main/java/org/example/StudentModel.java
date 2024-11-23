@@ -3,8 +3,10 @@ package org.example;
 import java.util.Arrays;
 import java.util.Random;
 
-public class StudentModel implements QueryItem {
+public class StudentModel implements QueryItem, Comparable<StudentModel> {
 
+    private static int LAST_ID = 10_000;
+    private int studentID;
     private String name;
     private String course;
     private int yearStarted;
@@ -15,8 +17,8 @@ public class StudentModel implements QueryItem {
     private static final String[] courses = {"C++", "Java", "Python"};
 
     public StudentModel() {
-//        int largestChar = 67; // for testing restrict to "A", "B", and "C"
-        int largestChar = 90;
+        studentID = LAST_ID++;
+        int largestChar = 67; // restrict testing to A, B, and C to ensure matches
         int smallestChar = 65;
         int firstYear = 2018;
         int lastYear = 2022;
@@ -29,9 +31,10 @@ public class StudentModel implements QueryItem {
     @Override
     public String toString() {
         return "StudentModel{" +
-                "name='" + name + '\'' +
-                ", course='" + course + '\'' +
-                ", yearStarted=" + yearStarted +
+                "id = '" + studentID + '\'' +
+                ", name= '" + name + '\'' +
+                ", course= '" + course + '\'' +
+                ", yearStarted= " + yearStarted +
                 '}';
     }
 
@@ -71,6 +74,14 @@ public class StudentModel implements QueryItem {
         return courses;
     }
 
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
     @Override
     public boolean matchFieldValue(String fieldName, String value) {
         String fName = fieldName.toUpperCase();
@@ -95,5 +106,10 @@ public class StudentModel implements QueryItem {
                 break;
         };
         return selectFieldValue;
+    }
+
+    @Override
+    public int compareTo(StudentModel o) {
+        return Integer.compare(this.getStudentID(), o.getStudentID());
     }
 }

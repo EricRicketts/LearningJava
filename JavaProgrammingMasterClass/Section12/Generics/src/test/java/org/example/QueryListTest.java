@@ -65,13 +65,23 @@ public class QueryListTest {
 
     @Test
     public void testGetMatchesStudentModelCheckCourse() {
-        // provides a list of 20 objects, keys are name, course,a nd yearStarted
+        // provides a list of 20 objects, keys are name, course and yearStarted
          matches = queryListOne.getMatches("Name", "Cathy B");
          for(var match : matches) {
              String course = ((StudentModel) match).getCourse();
              boolean checkCourse = Arrays.asList(StudentModel.getCourses()).contains(course);
              assertTrue(checkCourse);
          }
+    }
+
+    @Test
+    public void testGetMatchesLPAStudentCheckCourse() {
+        matches = queryListTwo.getMatches("Name", "Bill A");
+        for(var match : matches) {
+            String course = ((StudentModel) match).getCourse();
+            boolean checkCourse = Arrays.asList(StudentModel.getCourses()).contains((course));
+            assertTrue(checkCourse);
+        }
     }
 
     @Test
