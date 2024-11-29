@@ -96,10 +96,32 @@ public class QueryListTest {
     }
 
     @Test
-    public void testGetMatchesWithPassedInList() {
+    public void testGetMatchesLPAStudentModelCheckYearStarted() {
+        matches = queryListTwo.getMatches("yearStarted", "2021");
+        for(var match: matches) {
+            // getYearStarted returns an int
+            int yearStarted = ((StudentModel) match).getYearStarted();
+            boolean checkYearStarted = yearStarted >= 2018 && yearStarted <= 2022;
+            assertTrue(checkYearStarted);
+        }
+    }
+
+    @Test
+    public void testStudentModelGetMatchesWithPassedInList() {
         var matches2021 = QueryList.getMatches(Arrays.asList(studentModels), "yearStarted", "2021");
         var matches2019 = QueryList.<StudentModel>getMatches(new ArrayList<>(), "yearStarted", "2019");
-        int five = 5;
+        if (!matches2021.isEmpty()) {
+            for(var match : matches2021) {
+                assertEquals(2021, match.getYearStarted());
+            }
+        }
+        assertTrue(matches2019.isEmpty());
+    }
+
+    @Test
+    public void testLPAStudentGetMatchesWithPassedInList() {
+        var matches2021 = QueryList.getMatches(Arrays.asList(lpaStudents), "yearStarted", "2021");
+        var matches2019 = QueryList.<StudentModel>getMatches(new ArrayList<>(), "yearStarted", "2019");
         if (!matches2021.isEmpty()) {
             for(var match : matches2021) {
                 assertEquals(2021, match.getYearStarted());

@@ -1,12 +1,12 @@
 package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StudentModelTest {
@@ -16,6 +16,7 @@ public class StudentModelTest {
     private static final String[] years = {"2018", "2019", "2020", "2021", "2022"};
 
     private String[] individualStudentModels;
+    List<StudentModel> students = new ArrayList<>();
 
     private String printStudentModels(List<StudentModel> studentModels) {
         String studentModelsOutput = "";
@@ -44,6 +45,7 @@ public class StudentModelTest {
         for(int index = 0; index < studentCount; index++) studentModels.add(new StudentModel());
         String actual = printStudentModels(studentModels);
         individualStudentModels = actual.split("\n");
+        for (int index = 0; index < 25; index++) students.add(new StudentModel());
     }
 
     @Test
@@ -78,6 +80,44 @@ public class StudentModelTest {
             String year = parseStudentModelComponent(parsedStudentModelElements[3]);
 
             assertTrue(Arrays.asList(years).contains(year));
+        }
+    }
+
+    @Test
+    public void testSetAndGetStudentID() {
+        StudentModel student = new StudentModel();
+        assertTrue(student.getStudentID() >= 1000);
+        student.setStudentID(50);
+        assertEquals(50, student.getStudentID());
+    }
+
+    @Test
+    public void testSortByStudentID() {
+        Collections.reverse(students);
+        /*
+            Students are initialized in studentID order from low to high, so a sort would return the same list.
+            Reversing the list should sort the list from high to low, the test right after the sort proves this.
+            Then the list can be sorted and the following test proves the list is sorted by studentID from low
+            to high.
+        */
+        for (int index = 0; index < students.size() - 1; index++) {
+            assertTrue(students.get(index).getStudentID() > students.get(index + 1).getStudentID());
+        }
+        Collections.sort(students);
+        for (int index = 0; index < students.size() - 1; index++) {
+            assertTrue(students.get(index).getStudentID() < students.get(index + 1).getStudentID());
+        }
+    }
+
+    @Test
+    public void testSortByComparator() {
+        Collections.reverse(students);
+        for (int index = 0; index < students.size() - 1; index++) {
+            assertTrue(students.get(index).getStudentID() > students.get(index + 1).getStudentID());
+        }
+        students.sort(Comparator.naturalOrder());
+        for (int index = 0; index < students.size() - 1; index++) {
+            assertTrue(students.get(index).getStudentID() < students.get(index + 1).getStudentID());
         }
     }
 }
