@@ -48,7 +48,33 @@ public class LPAStudentTest {
         }
     }
 
-    /*
-        write another test that sorts the matches by LPAComparator and then sorts by studentID
-    */
+    @Test
+    public void testSortMatchesByLPAComparator() {
+        var matches = queryList
+                .getMatches("PercentComplete", "50")
+                .getMatches("Course", "Java");
+        matches.sort(new LPAStudentComparator());
+        // the result of the sort should be percentComplete by increasing value
+        for(int index = 0; index < matches.size() - 1; index++) {
+            var currentMatch = matches.get(index);
+            var nextMatch = matches.get(index + 1);
+            boolean orderByPercentComplete = nextMatch.getPercentComplete() >= currentMatch.getPercentComplete();
+            assertTrue(orderByPercentComplete);
+        }
+    }
+
+    @Test
+    public void testMatchesWithNullArgument() {
+        var matches = queryList
+                .getMatches("PercentComplete", "50")
+                .getMatches("Course", "Java");
+        matches.sort(null);
+        // the result of the sort should be percentComplete by increasing value
+        for (int index = 0; index < matches.size() - 1; index++) {
+            var currentMatch = matches.get(index);
+            var nextMatch = matches.get(index + 1);
+            boolean orderByPercentComplete = nextMatch.getStudentID() >= currentMatch.getStudentID();
+            assertTrue(orderByPercentComplete);
+        }
+    }
 }
