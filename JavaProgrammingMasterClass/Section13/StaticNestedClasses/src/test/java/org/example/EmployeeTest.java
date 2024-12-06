@@ -33,14 +33,15 @@ public class EmployeeTest {
     @Test
     public void testSortByEmployeeName() {
         List<String> results = new ArrayList<>();
-        employeeList.sort(employeeComparator);
+        employeeList.sort(employeeComparator); // sort default is to sort by name
         for(Employee employee : employeeList) {
-            results.add(employee.getName());
+            results.add(employee.getName()); // add the sorted names to the list
         }
         for(int index = 0; index < results.size() - 1; index++) {
             String firstResult = results.get(index);
             String secondResult = results.get(index + 1);
             assertTrue(firstResult.compareTo(secondResult) < 0);
+            // the first name should be alphabetically less than the next name if properly sorted
         }
     }
 }
