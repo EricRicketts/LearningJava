@@ -51,4 +51,15 @@ public class EmployeeWithComparatorTest {
             assertTrue(Integer.compare(firstEmployeeYearStarted, secondEmployeeYearStarted) <= 0);
         }
     }
+
+    @Test
+    public void testSortByEmployeeID() {
+        employeeWithComparatorList
+                .sort(new EmployeeWithComparator.EmployeeComparator<>("employeeID"));
+        for(int index = 0; index < employeeWithComparatorList.size() - 1; index++) {
+            int firstEmployeeYearStarted = employeeWithComparatorList.get(index).getEmployeeId();
+            int secondEmployeeYearStarted = employeeWithComparatorList.get(index + 1).getEmployeeId();
+            assertTrue(Integer.compare(firstEmployeeYearStarted, secondEmployeeYearStarted) <= 0);
+        }
+    }
 }
