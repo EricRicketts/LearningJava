@@ -51,7 +51,10 @@ public class StoreEmployeeTest {
             Stores are sorted alphabetically and year started by the earliest year first.
         */
         var genericStoreEmployee = new StoreEmployee();
+        // inner class call requires an instance of the outer class
         var comparator = genericStoreEmployee.new StoreComparator<>();
+        // var comparator = new StoreEmployee(). new StoreComparator<>();
+        // this would also be a way to generate the comparator
         storeEmployees.sort(comparator);
         for(int index = 0; index < storeEmployees.size() - 1; index++) {
             String firstStoreEmployeeStore = storeEmployees.get(index).getStore();
